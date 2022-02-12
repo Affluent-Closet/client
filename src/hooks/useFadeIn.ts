@@ -2,7 +2,7 @@
 import { useRef, useEffect, useCallback } from 'react';
 
 const useScrollFadeIn = (direction = 'up', duration = 1, delay = 0) => {
-  const element = useRef<any>();
+  const element = useRef<HTMLDivElement>(null);
 
   const handleDirection = (name: string) => {
     switch (name) {
@@ -21,13 +21,14 @@ const useScrollFadeIn = (direction = 'up', duration = 1, delay = 0) => {
 
   const handleScroll = useCallback(
     ([entry]) => {
+      if (!element.current) return;
       const { current } = element;
       if (entry.isIntersecting) {
         current.style.transitionProperty = 'all';
         current.style.transitionDuration = `${duration}s`;
         current.style.transitionTimingFunction = 'cubic-bezier(0, 0, 0.2, 1)';
         current.style.transitionDelay = `${delay}s`;
-        current.style.opacity = 1;
+        current.style.opacity = '1';
         current.style.transform = 'translate3d(0, 0, 0)';
       }
     },
