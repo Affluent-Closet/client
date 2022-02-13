@@ -5,12 +5,13 @@ import { palette } from 'libs/styles/palette';
 import media from 'libs/styles/media';
 import { categoryMenus } from 'libs/categoryMenus';
 import { communityMenus } from 'libs/communityMenus';
+import NavBarProfile from './NavBarProfile';
 
 const NavBarBlock = styled.div`
   position: fixed;
   background-color: ${palette.backgroundColor};
   width: 75%;
-  max-width: 331px;
+  max-width: 300px;
   height: 100%;
   left: 0px;
   top: 0px;
@@ -57,6 +58,7 @@ const CommunityMenuListStyled = styled.div`
 function NavBar() {
   return (
     <NavBarBlock>
+      <NavBarProfile />
       <CommunityMenuListStyled>
         <NavBarH2>CATEGORY</NavBarH2>
         {categoryMenus.map(({ href, name }, index) => (
