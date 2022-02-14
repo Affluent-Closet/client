@@ -43,7 +43,11 @@ const Infos = styled.div<{ isOpen: boolean }>`
     `}
 `;
 
-function NavBarItems() {
+interface NavBarProfileProps {
+  onToggleNav: () => void;
+}
+
+function NavBarItems({ onToggleNav }: NavBarProfileProps) {
   const [menuList, setMenuList] = useState(shopMenus);
 
   const onToggle = (name: string) => {
@@ -69,7 +73,7 @@ function NavBarItems() {
                 <span>{name}</span>
                 {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}
               </NavBarMiddleItems>
-              <Infos isOpen={isOpen}>
+              <Infos isOpen={isOpen} onClick={onToggleNav}>
                 {subMenus.map((menu) => (
                   <NavLink to={menu.href} key={`CategoryMenu_${menu.name}`}>
                     <div>{menu.name}</div>
