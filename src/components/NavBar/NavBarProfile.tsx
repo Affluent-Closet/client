@@ -83,15 +83,19 @@ function NavBarProfile() {
         <div>
           <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
           <MemberInfoBox>
-            <div>이름</div>
+            <div>이도현</div>
             <div className="member-email">cctv1998@naver.com</div>
           </MemberInfoBox>
         </div>
-        <MemberLinkBox isModal={value} ref={targetEl}>
+        <MemberLinkBox isModal={value}>
           <CgMoreVertical color="white" onClick={onToggle} />
-          <div className={value ? 'link-box' : 'non-link-box'}>
+          <div className={value ? 'link-box' : 'non-link-box'} ref={targetEl}>
             {btnGroup.map(({ name, href }) => (
-              <MemberLinkStyled to={href} key={`btnGroup_${name}`}>
+              <MemberLinkStyled
+                to={href}
+                key={`btnGroup_${name}`}
+                onClick={onToggle}
+              >
                 {name}
               </MemberLinkStyled>
             ))}
