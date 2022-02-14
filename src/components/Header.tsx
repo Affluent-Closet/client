@@ -1,6 +1,6 @@
 import useToggle from 'hooks/useToggle';
 import React from 'react';
-import NavBar from './NavBar/NavBar';
+import NavBar from './NavBar';
 
 function Header() {
   const [isNav, onToggleNav] = useToggle();
