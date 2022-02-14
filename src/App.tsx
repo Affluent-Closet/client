@@ -1,5 +1,4 @@
 import Header from 'components/Header';
-import NavBar from 'components/NavBar';
 import GlobalStyles from 'libs/styles/globalStyles';
 import React from 'react';
 import styled from 'styled-components';
@@ -17,7 +16,6 @@ function App() {
       <Header />
       <AsideLayout>
         <GlobalStyles />
-        {/* <NavBar /> */}
         <Routing />
       </AsideLayout>
     </div>
