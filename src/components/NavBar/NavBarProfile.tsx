@@ -65,8 +65,11 @@ const MemberLinkStyled = styled(Link)`
   height: 36px;
   padding: 8px 16px;
 `;
+interface NavBarProfileProps {
+  onToggleNav: () => void;
+}
 
-function NavBarProfile() {
+function NavBarProfile({ onToggleNav }: NavBarProfileProps) {
   const btnGroup = [
     { name: '마이페이지', href: `${Path.TestPage}` },
     { name: '장바구니', href: `${Path.TestPage}` },
@@ -75,6 +78,10 @@ function NavBarProfile() {
   ];
 
   const [value, onToggle] = useToggle();
+  const useToggleLink = () => {
+    onToggle();
+    onToggleNav();
+  };
   const { targetEl } = useOutSideClick(value, onToggle);
   return (
     <PorfileWrapper>
@@ -94,7 +101,7 @@ function NavBarProfile() {
               <MemberLinkStyled
                 to={href}
                 key={`btnGroup_${name}`}
-                onClick={onToggle}
+                onClick={useToggleLink}
               >
                 {name}
               </MemberLinkStyled>
