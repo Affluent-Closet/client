@@ -28,7 +28,7 @@ const NavBackground = styled.div`
   display: block;
   width: 100%;
   height: 100%;
-  background-color: ${palette.blackBackground};
+  background-color: black;
   position: absolute;
   left: 0;
   top: 0;
