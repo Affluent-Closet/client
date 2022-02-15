@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { palette } from 'libs/styles/palette';
-import { mediaSize } from 'libs/styles/media';
+import { mediaMinQuery, mediaSize } from 'libs/styles/media';
 import { AiOutlineLeft } from 'react-icons/ai';
 import NavBarProfile from './NavBarProfile';
 import NavBarMiddleItem from './NavBarItems';
 
 const NavBarBlock = styled.div`
-  @media (min-width: ${mediaSize.large}px) {
+  ${mediaMinQuery(mediaSize.large)} {
     display: none;
   }
   .close {
