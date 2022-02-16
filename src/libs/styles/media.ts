@@ -1,6 +1,9 @@
 export const mediaQuery = (maxWidth: number) =>
   `@media (max-width: ${maxWidth}px)`;
 
+export const mediaMinQuery = (minWidth: number) =>
+  `@media (min-width: ${minWidth}px)`;
+
 /**
  * xxlarge : large Desktop size,
  * xlarge : Desktop size,

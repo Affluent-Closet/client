@@ -78,7 +78,7 @@ function NavBarProfile({ onToggleNav }: NavBarProfileProps) {
   ];
 
   const [value, onToggle] = useToggle();
-  const useToggleLink = () => {
+  const handleToggleLink = () => {
     onToggle();
     onToggleNav();
   };
@@ -101,7 +101,7 @@ function NavBarProfile({ onToggleNav }: NavBarProfileProps) {
               <MemberLinkStyled
                 to={href}
                 key={`btnGroup_${name}`}
-                onClick={useToggleLink}
+                onClick={handleToggleLink}
               >
                 {name}
               </MemberLinkStyled>

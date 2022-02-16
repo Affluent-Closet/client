@@ -1,4 +1,4 @@
-import { shopMenus } from 'libs/menus';
+import { shopMenus } from 'libs/Lists/NavItems';
 import media from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import transitions from 'libs/styles/transitions';
@@ -26,7 +26,7 @@ const NavBarMiddleItems = styled.div`
 
 const Infos = styled.div<{ isOpen: boolean }>`
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
-  margin: 6px 20px;
+  margin: 0px 20px;
   font-size: 14px;
   line-height: 21px;
   text-align: left;

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { palette } from 'libs/styles/palette';
-import { mediaSize } from 'libs/styles/media';
+import { mediaMinQuery, mediaSize } from 'libs/styles/media';
 import { AiOutlineLeft } from 'react-icons/ai';
 import NavBarProfile from './NavBarProfile';
 import NavBarMiddleItem from './NavBarItems';
 
 const NavBarBlock = styled.div`
-  @media (min-width: ${mediaSize.large}px) {
+  ${mediaMinQuery(mediaSize.large)} {
     display: none;
   }
   .close {
@@ -28,7 +28,7 @@ const NavBackground = styled.div`
   display: block;
   width: 100%;
   height: 100%;
-  background-color: ${palette.blackBackground};
+  background-color: black;
   position: absolute;
   left: 0;
   top: 0;
