@@ -1,38 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
-import { palette } from 'libs/styles/palette';
-import { mediaMinQuery, mediaSize } from 'libs/styles/media';
 import NavBarProfile from './NavBarProfile';
 import NavBarMiddleItem from './NavBarItems';
 
 const NavBarBlock = styled.div<{ isNav: boolean }>`
-  ${mediaMinQuery(mediaSize.large)} {
-    display: none;
-  }
-  .close {
-    display: none;
-  }
-`;
-const NavBarInner = styled.div`
-  position: fixed;
-  background-color: ${palette.backgroundColor};
-  width: 75%;
+  width: 75vw;
   max-width: 300px;
-  height: 100%;
-  left: 0px;
-  top: 0px;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #fff;
   z-index: 900;
+  ${({ isNav }) => (isNav ? 'visibility: visible' : 'visibility : hidden')};
+  transition: all 0.3s ease-in-out;
+  transform: translateX(${({ isNav }) => (isNav ? 0 : -75)}vw);
 `;
-const NavBackground = styled.div`
-  display: block;
+
+const NavBackground = styled.div<{ isNav: boolean }>`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: black;
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 0.4;
-  z-index: 1;
+  z-index: 800;
+  opacity: 0.5;
+  ${({ isNav }) => (isNav ? 'display: block' : 'display: none')}
 `;
 
 interface NavBarProps {
@@ -41,15 +35,13 @@ interface NavBarProps {
 }
 function NavBar({ isNav, onToggleNav }: NavBarProps) {
   return (
-    <NavBarBlock isNav={isNav}>
-      <div className={isNav ? '' : 'close'}>
-        <NavBarInner>
-          <NavBarProfile onToggleNav={onToggleNav} />
-          <NavBarMiddleItem onToggleNav={onToggleNav} />
-        </NavBarInner>
-        <NavBackground onClick={onToggleNav} />
-      </div>
-    </NavBarBlock>
+    <>
+      <NavBarBlock isNav={isNav}>
+        <NavBarProfile onToggleNav={onToggleNav} />
+        <NavBarMiddleItem onToggleNav={onToggleNav} />
+      </NavBarBlock>
+      <NavBackground onClick={onToggleNav} isNav={isNav} />
+    </>
   );
 }
 
