@@ -5,9 +5,18 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { palette } from 'libs/styles/palette';
 import { communityMenus } from 'libs/Lists/NavItems';
 import { Link } from 'react-router-dom';
+import media from 'libs/styles/media';
 import NavBar from './NavBar';
 
 const MobileHeaderBlock = styled.div`
+  display: none;
+  position: relative;
+  ${media.large} {
+    display: block;
+  }
+`;
+
+const MobileHeaderInner = styled.div`
   display: flex;
   padding: 12px 10px;
   justify-content: space-between;
@@ -37,32 +46,34 @@ function MobileHeader() {
   return (
     <div>
       <MobileHeaderBlock>
-        <HambergerStyled>
-          <GiHamburgerMenu
-            color={palette.mainColor}
-            size={18}
-            onClick={onToggleNav}
-          />
-        </HambergerStyled>
-        <div>
-          <div>네모</div>
-          <div>검색창</div>
-        </div>
-        <div>
-          <CommutityBox>
-            {communityMenus.map(({ name, href }, index) => (
-              <Link
-                key={`community_${index}`}
-                to={href}
-                className="community-list"
-              >
-                {name}
-              </Link>
-            ))}
-          </CommutityBox>
-        </div>
+        <MobileHeaderInner>
+          <HambergerStyled>
+            <GiHamburgerMenu
+              color={palette.mainColor}
+              size={18}
+              onClick={onToggleNav}
+            />
+          </HambergerStyled>
+          <div>
+            <div>네모</div>
+            <div>검색창</div>
+          </div>
+          <div>
+            <CommutityBox>
+              {communityMenus.map(({ name, href }, index) => (
+                <Link
+                  key={`community_${index}`}
+                  to={href}
+                  className="community-list"
+                >
+                  {name}
+                </Link>
+              ))}
+            </CommutityBox>
+          </div>
+        </MobileHeaderInner>
+        <NavBar isNav={isNav} onToggleNav={onToggleNav} />
       </MobileHeaderBlock>
-      <NavBar isNav={isNav} onToggleNav={onToggleNav} />
     </div>
   );
 }
