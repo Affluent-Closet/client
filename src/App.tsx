@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import './App.css';
 import MobileHeader from 'components/base/MobileHeader';
+import WebHeader from 'components/base/WebHeader';
 import Routing from './routes/Routing';
 
 const AsideLayout = styled.div`
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <MobileHeader />
+      <WebHeader />
       <AsideLayout>
         <Routing />
       </AsideLayout>
