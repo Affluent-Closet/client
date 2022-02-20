@@ -1,3 +1,6 @@
+import React from 'react';
+import { AiOutlineUser, AiOutlineSearch } from 'react-icons/ai';
+import { FiShoppingCart } from 'react-icons/fi';
 import Path from 'routes/Path';
 
 export const categoryMenus = [
@@ -31,14 +34,17 @@ export const communityMenus = [
   {
     name: 'Login',
     href: '/login',
+    icon: <AiOutlineUser size="22" />,
   },
   {
     name: 'Mypage',
     href: '/mypage',
+    icon: <AiOutlineSearch size="22" />,
   },
   {
-    name: 'Like',
-    href: '/like',
+    name: 'Cart',
+    href: '/cart',
+    icon: <FiShoppingCart size="22" />,
   },
 ];
 

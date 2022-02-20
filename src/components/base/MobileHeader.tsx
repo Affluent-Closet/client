@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import media from 'libs/styles/media';
 import { TextLogo } from 'assets/Img';
 import Path from 'routes/Path';
-import NavBar from './NavBar';
+import NavBar from '.';
 
 const MobileHeaderBlock = styled.div`
   display: none;
@@ -39,7 +39,7 @@ const CommutityBox = styled.div`
 
 const LogoStyled = styled(Link)`
   img {
-    width: 80px;
+    width: 40px;
     height: 30px;
   }
 `;
@@ -68,13 +68,13 @@ function MobileHeader() {
           </LogoStyled>
           <div>
             <CommutityBox>
-              {communityMenus.map(({ name, href }, index) => (
+              {communityMenus.map(({ icon, href }, index) => (
                 <Link
                   key={`community_${index}`}
                   to={href}
                   className="community-list"
                 >
-                  {name}
+                  {icon}
                 </Link>
               ))}
             </CommutityBox>
