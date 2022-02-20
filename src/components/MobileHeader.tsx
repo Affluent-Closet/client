@@ -6,6 +6,8 @@ import { palette } from 'libs/styles/palette';
 import { communityMenus } from 'libs/Lists/NavItems';
 import { Link } from 'react-router-dom';
 import media from 'libs/styles/media';
+import { TextLogo } from 'assets/Img';
+import Path from 'routes/Path';
 import NavBar from './NavBar';
 
 const MobileHeaderBlock = styled.div`
@@ -35,6 +37,13 @@ const CommutityBox = styled.div`
   }
 `;
 
+const LogoStyled = styled(Link)`
+  img {
+    width: 80px;
+    height: 30px;
+  }
+`;
+
 const HambergerStyled = styled.div`
   width: 122px;
   text-align: left;
@@ -54,10 +63,9 @@ function MobileHeader() {
               onClick={onToggleNav}
             />
           </HambergerStyled>
-          <div>
-            <div>네모</div>
-            <div>검색창</div>
-          </div>
+          <LogoStyled to={Path.HomePage}>
+            <img src={TextLogo} alt="사이트 로고" />
+          </LogoStyled>
           <div>
             <CommutityBox>
               {communityMenus.map(({ name, href }, index) => (

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { palette } from 'libs/styles/palette';
 import NavBarProfile from './NavBarProfile';
 import NavBarMiddleItem from './NavBarItems';
 
@@ -10,7 +11,7 @@ const NavBarBlock = styled.div<{ isNav: boolean }>`
   height: 100vh;
   top: 0;
   left: 0;
-  background: #fff;
+  background: ${palette.backgroundColor};
   z-index: 900;
   ${({ isNav }) => (isNav ? 'visibility: visible' : 'visibility : hidden')};
   transition: all 0.3s ease-in-out;
