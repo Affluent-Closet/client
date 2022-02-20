@@ -85,7 +85,6 @@ function NavBarProfile({ onToggleNav }: NavBarProfileProps) {
   const { targetEl } = useOutSideClick(value, onToggle);
   return (
     <PorfileWrapper>
-      {/* 1줄       */}
       <ProfileBox>
         <div>
           <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
