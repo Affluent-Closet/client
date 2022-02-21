@@ -1,4 +1,6 @@
+import { profileMenus } from 'libs/Lists/NavItems';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const WebHeaderRightBox = styled.div`
@@ -15,9 +17,13 @@ const WebHeaderRightBox = styled.div`
 function RightHeaderBox() {
   return (
     <WebHeaderRightBox>
-      <div className="right-text">로그인</div>
-      <div className="right-text">로그인</div>
-      <div className="right-text">로그인</div>
+      {profileMenus.map(({ name, href }, index) => (
+        <Link to={href}>
+          <div className="right-text" key={`profile_menu_${index}`}>
+            {name}
+          </div>
+        </Link>
+      ))}
     </WebHeaderRightBox>
   );
 }
