@@ -70,3 +70,10 @@ export const shopMenus = [
     isOpen: false,
   },
 ];
+
+export const profileMenus = [
+  { name: '마이페이지', href: `${Path.TestPage}` },
+  { name: '장바구니', href: `${Path.TestPage}` },
+  { name: '주문배송', href: `${Path.TestPage}` },
+  { name: '로그아웃', href: `${Path.TestPage}` },
+];
