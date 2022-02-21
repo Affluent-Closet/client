@@ -1,11 +1,12 @@
 import { TextLogo } from 'assets/Img';
-import LeftHeaderBox from 'components/LeftHeaderBox';
+import LeftHeaderBox from 'components/base/LeftHeaderBox';
 import { mediaMinQuery, mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Path from 'routes/Path';
 import styled from 'styled-components';
+import RightHeaderBox from './RightHeaderBox';
 
 const WebHeaderBlock = styled.div`
   display: none;
@@ -20,23 +21,6 @@ const WebHeaderBlock = styled.div`
   }
 `;
 
-const WebHeaderLeftBox = styled.div`
-  display: flex;
-  align-items: center;
-  width: 400px;
-`;
-
-const WebHeaderRightBox = styled.div`
-  display: flex;
-  align-items: center;
-  width: 400px;
-  justify-content: right;
-  .right-text {
-    font-size: 16px;
-    padding: 0px 8px;
-  }
-`;
-
 const LogoStyled = styled(Link)`
   img {
     width: 120px;
@@ -47,17 +31,11 @@ const LogoStyled = styled(Link)`
 function WebHeader() {
   return (
     <WebHeaderBlock>
-      <WebHeaderLeftBox>
-        <LeftHeaderBox />
-      </WebHeaderLeftBox>
+      <LeftHeaderBox />
       <LogoStyled to={Path.HomePage}>
         <img src={TextLogo} alt="사이트 로고" />
       </LogoStyled>
-      <WebHeaderRightBox>
-        <div className="right-text">로그인</div>
-        <div className="right-text">로그인</div>
-        <div className="right-text">로그인</div>
-      </WebHeaderRightBox>
+      <RightHeaderBox />
     </WebHeaderBlock>
   );
 }

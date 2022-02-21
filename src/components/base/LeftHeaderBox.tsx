@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LeftHeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 400px;
+`;
+const LeftBox = styled.div`
   .menu-box {
     visibility: hidden;
     position: absolute;
@@ -46,9 +51,9 @@ const LeftHeaderWrapper = styled.div`
 
 function LeftHeaderBox() {
   return (
-    <>
+    <LeftHeaderWrapper>
       {shopMenus.map((shopMenu, index) => (
-        <LeftHeaderWrapper key={`LeftBox_${index}`}>
+        <LeftBox key={`LeftBox_${index}`}>
           {shopMenu.href && (
             <Link to={shopMenu.href}>
               <div className="menu-styled">{shopMenu.name}</div>
@@ -71,9 +76,9 @@ function LeftHeaderBox() {
               </div>
             </>
           )}
-        </LeftHeaderWrapper>
+        </LeftBox>
       ))}
-    </>
+    </LeftHeaderWrapper>
   );
 }
 
