@@ -50,12 +50,12 @@ export const communityMenus = [
 
 export const shopMenus = [
   {
-    name: 'Best Items',
+    name: 'Best',
     href: `${Path.TestPage}`,
     isOpen: false,
   },
   {
-    name: 'New Arrival',
+    name: 'New',
     href: `${Path.HomePage}`,
     isOpen: false,
   },
