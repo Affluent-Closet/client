@@ -1,4 +1,5 @@
 import { TextLogo } from 'assets/Img';
+import LeftHeaderBox from 'components/LeftHeaderBox';
 import { mediaMinQuery, mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
@@ -25,43 +26,6 @@ const WebHeaderLeftBox = styled.div`
   width: 400px;
 `;
 
-const LeftHeaderBox = styled.div`
-  .menu-box {
-    display: none;
-  }
-  .menu-styled {
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    padding: 0px 15px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-  }
-  &:hover {
-    .menu-styled {
-      color: ${palette.mainLightColor};
-    }
-    .menu-box {
-      display: block;
-      position: absolute;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-      margin-left: 15px;
-    }
-    .menu-box-list {
-      transition: background-color 0.2s linear;
-      width: 160px;
-      padding: 30px 20px;
-      font-weight: bold;
-      background-color: ${palette.backgroundColor};
-      &:hover {
-        background-color: ${palette.mainColor};
-        color: ${palette.backgroundColor};
-      }
-    }
-  }
-`;
-
 const WebHeaderRightBox = styled.div`
   display: flex;
   align-items: center;
@@ -84,42 +48,7 @@ function WebHeader() {
   return (
     <WebHeaderBlock>
       <WebHeaderLeftBox>
-        <LeftHeaderBox>
-          <div className="menu-styled">Best</div>
-          <div className="menu-box">
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-          </div>
-        </LeftHeaderBox>
-        <LeftHeaderBox>
-          <div className="menu-styled">Best</div>
-          <div className="menu-box">
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-          </div>
-        </LeftHeaderBox>
-        <LeftHeaderBox>
-          <div className="menu-styled">Best</div>
-          <div className="menu-box">
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-          </div>
-        </LeftHeaderBox>
-        <LeftHeaderBox>
-          <div className="menu-styled">Best</div>
-          <div className="menu-box">
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-            <div className="menu-box-list">Outer</div>
-          </div>
-        </LeftHeaderBox>
+        <LeftHeaderBox />
       </WebHeaderLeftBox>
       <LogoStyled to={Path.HomePage}>
         <img src={TextLogo} alt="사이트 로고" />
