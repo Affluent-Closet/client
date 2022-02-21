@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { palette } from 'libs/styles/palette';
-import { communityMenus } from 'libs/Lists/NavItems';
+import { profileMenus } from 'libs/Lists/NavItems';
 import { Link } from 'react-router-dom';
 import media from 'libs/styles/media';
 import { TextLogo } from 'assets/Img';
@@ -68,7 +68,7 @@ function MobileHeader() {
           </LogoStyled>
           <div>
             <CommutityBox>
-              {communityMenus.map(({ icon, href }, index) => (
+              {profileMenus.map(({ icon, href }, index) => (
                 <Link
                   key={`community_${index}`}
                   to={href}

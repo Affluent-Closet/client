@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineUser, AiOutlineSearch } from 'react-icons/ai';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart, FiLogOut } from 'react-icons/fi';
 import Path from 'routes/Path';
 
 export const categoryMenus = [
@@ -32,19 +32,16 @@ export const categoryMenus = [
 
 export const communityMenus = [
   {
-    name: 'Login',
-    href: '/login',
-    icon: <AiOutlineUser size="22" />,
+    name: 'Q&A',
+    href: '/qna',
   },
   {
-    name: 'Mypage',
-    href: '/mypage',
-    icon: <AiOutlineSearch size="22" />,
+    name: 'Review',
+    href: '/Review',
   },
   {
-    name: 'Cart',
-    href: '/cart',
-    icon: <FiShoppingCart size="22" />,
+    name: 'Order',
+    href: '/order',
   },
 ];
 
@@ -72,8 +69,24 @@ export const shopMenus = [
 ];
 
 export const profileMenus = [
-  { name: '마이페이지', href: `${Path.TestPage}` },
-  { name: '장바구니', href: `${Path.TestPage}` },
-  { name: '주문배송', href: `${Path.TestPage}` },
-  { name: '로그아웃', href: `${Path.TestPage}` },
+  {
+    name: 'myPage',
+    href: `${Path.TestPage}`,
+    icon: <AiOutlineUser size="22" />,
+  },
+  {
+    name: 'cart',
+    href: `${Path.TestPage}`,
+    icon: <FiShoppingCart size="22" />,
+  },
+  {
+    name: 'search',
+    href: `${Path.TestPage}`,
+    icon: <AiOutlineSearch size="22" />,
+  },
+  {
+    name: 'logout',
+    href: `${Path.TestPage}`,
+    icon: <FiLogOut size="22" />,
+  },
 ];
