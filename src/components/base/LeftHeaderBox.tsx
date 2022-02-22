@@ -64,13 +64,8 @@ function LeftHeaderBox() {
               <div className="menu-styled">{shopMenu.name}</div>
               <div className="menu-box">
                 {shopMenu.subMenus.map((subMenu, subMenuIndex) => (
-                  <Link to={subMenu.href}>
-                    <div
-                      key={`subMenu_${subMenuIndex}`}
-                      className="menu-box-list"
-                    >
-                      {subMenu.name}
-                    </div>
+                  <Link to={subMenu.href} key={`subMenu_${subMenuIndex}`}>
+                    <div className="menu-box-list">{subMenu.name}</div>
                   </Link>
                 ))}
               </div>
