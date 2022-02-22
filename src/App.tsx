@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import './App.css';
 import MobileHeader from 'components/base/MobileHeader';
 import WebHeader from 'components/base/WebHeader';
+import { mediaSize } from 'libs/styles/media';
 import Routing from './routes/Routing';
 
-const AsideLayout = styled.div`
-  margin-left: 331px;
-  height: 100%;
+const ContentsLayout = styled.div`
+  background-color: antiquewhite;
+  max-width: ${mediaSize.xlarge}px;
+  margin: 0 auto;
 `;
 
 function App() {
@@ -17,9 +19,9 @@ function App() {
       <GlobalStyles />
       <MobileHeader />
       <WebHeader />
-      <AsideLayout>
+      <ContentsLayout>
         <Routing />
-      </AsideLayout>
+      </ContentsLayout>
     </div>
   );
 }
