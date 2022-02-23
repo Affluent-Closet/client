@@ -21,20 +21,18 @@ const WebHeaderBlock = styled.div`
   }
 `;
 
-const LogoStyled = styled(Link)`
-  img {
-    width: 120px;
-    height: 100px;
-  }
+const LogoStyled = styled.img`
+  width: 120px;
+  height: 100px;
 `;
 
 function WebHeader() {
   return (
     <WebHeaderBlock>
       <LeftHeaderBox />
-      <LogoStyled to={Path.HomePage}>
-        <img src={TextLogo} alt="사이트 로고" />
-      </LogoStyled>
+      <Link to={Path.HomePage}>
+        <LogoStyled src={TextLogo} alt="사이트 로고" />
+      </Link>
       <RightHeaderBox />
     </WebHeaderBlock>
   );
