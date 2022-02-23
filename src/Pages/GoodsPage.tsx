@@ -2,7 +2,8 @@ import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
-const GoodsPageWrapper = styled.div`
+const GoodsInfoWrapper = styled.div`
+  margin: 30px;
   display: flex;
   justify-content: center;
   text-align: left;
@@ -47,23 +48,98 @@ const GoodsTitleStyled = styled.div`
   font-weight: bold;
   padding-bottom: 10px;
 `;
+
+const GoodsDetailWrapper = styled.div`
+  padding: 30px;
+`;
+
+const GoodsImg = styled.img`
+  width: 800px;
+`;
+
 function GoodsPage() {
   return (
-    <GoodsPageWrapper>
-      <GoodsThumbBox src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg" />
+    <>
+      <GoodsInfoWrapper>
+        <GoodsThumbBox src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg" />
 
-      <GoodsInfoBox>
-        <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
-        <GoodsPriceStyled>
-          <div className="discount-price">104,000</div>
-          <div className="original-price">130,000</div>
-          <div className="discount-rate">20%</div>
-        </GoodsPriceStyled>
-        <hr />
-        <div>asd</div>
-        <div className="size-table">사이즈 테이블</div>
-      </GoodsInfoBox>
-    </GoodsPageWrapper>
+        <GoodsInfoBox>
+          <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
+          <GoodsPriceStyled>
+            <div className="discount-price">104,000</div>
+            <div className="original-price">130,000</div>
+            <div className="discount-rate">20%</div>
+          </GoodsPriceStyled>
+          <hr />
+          <div>
+            size :
+            <select>
+              <option key="banana" value="banana">
+                바나나
+              </option>
+              <option key="apple" value="apple">
+                사과
+              </option>
+              <option key="orange" value="orange">
+                오렌지
+              </option>
+            </select>
+            <hr />
+          </div>
+          <div>
+            color :
+            <select>
+              <option key="banana" value="banana">
+                바나나
+              </option>
+              <option key="apple" value="apple">
+                사과
+              </option>
+              <option key="orange" value="orange">
+                오렌지
+              </option>
+            </select>
+            <hr />
+          </div>
+          <div className="size-table">사이즈 테이블</div>
+        </GoodsInfoBox>
+      </GoodsInfoWrapper>
+      <hr />
+      <GoodsDetailWrapper>
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+        <GoodsImg
+          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
+          alt="의상 이미지"
+        />
+      </GoodsDetailWrapper>
+    </>
   );
 }
 
