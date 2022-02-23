@@ -52,18 +52,18 @@ const LeftBox = styled.div`
 function LeftHeaderBox() {
   return (
     <LeftHeaderWrapper>
-      {shopMenus.map((shopMenu, index) => (
+      {shopMenus.map(({ href, name, subMenus }, index) => (
         <LeftBox key={`LeftBox_${index}`}>
-          {shopMenu.href && (
-            <Link to={shopMenu.href}>
-              <div className="menu-styled">{shopMenu.name}</div>
+          {href && (
+            <Link to={href}>
+              <div className="menu-styled">{name}</div>
             </Link>
           )}
-          {shopMenu.subMenus && (
+          {subMenus && (
             <>
-              <div className="menu-styled">{shopMenu.name}</div>
+              <div className="menu-styled">{name}</div>
               <div className="menu-box">
-                {shopMenu.subMenus.map((subMenu, subMenuIndex) => (
+                {subMenus.map((subMenu, subMenuIndex) => (
                   <Link to={subMenu.href} key={`subMenu_${subMenuIndex}`}>
                     <div className="menu-box-list">{subMenu.name}</div>
                   </Link>
