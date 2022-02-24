@@ -1,7 +1,6 @@
 import { TextLogo } from 'assets/Img';
 import LeftHeaderBox from 'components/base/LeftHeaderBox';
 import { mediaMinQuery, mediaSize } from 'libs/styles/media';
-import { palette } from 'libs/styles/palette';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Path from 'routes/Path';
@@ -15,7 +14,7 @@ const WebHeaderBlock = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 0px 15px;
-    color: ${palette.mainColor};
+    color: black;
     max-width: ${mediaSize.xlarge}px;
     margin: 0 auto;
   }

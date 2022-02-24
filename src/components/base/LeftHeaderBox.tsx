@@ -18,7 +18,7 @@ const LeftBox = styled.div`
   }
   .menu-styled {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 1px;
     padding: 0px 15px;
     height: 40px;
@@ -27,7 +27,7 @@ const LeftBox = styled.div`
   }
   &:hover {
     .menu-styled {
-      color: ${palette.mainLightColor};
+      color: ${palette.mainColor};
     }
     .menu-box {
       visibility: visible;
@@ -39,7 +39,7 @@ const LeftBox = styled.div`
       transition: background-color 0.2s linear;
       width: 160px;
       padding: 30px 20px;
-      font-weight: bold;
+      font-weight: 500;
       background-color: ${palette.backgroundColor};
       &:hover {
         background-color: ${palette.mainColor};
