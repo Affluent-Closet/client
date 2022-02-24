@@ -2,22 +2,26 @@ import GlobalStyles from 'libs/styles/globalStyles';
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
-import MobileHeader from 'components/MobileHeader';
+import MobileHeader from 'components/base/MobileHeader';
+import WebHeader from 'components/base/WebHeader';
+import { mediaSize } from 'libs/styles/media';
 import Routing from './routes/Routing';
 
-const AsideLayout = styled.div`
-  margin-left: 331px;
-  height: 100%;
+const ContentsLayout = styled.div`
+  background-color: aliceblue;
+  max-width: ${mediaSize.xlarge}px;
+  margin: 0 auto;
 `;
 
 function App() {
   return (
     <div className="App">
+      <GlobalStyles />
       <MobileHeader />
-      <AsideLayout>
-        <GlobalStyles />
+      <WebHeader />
+      <ContentsLayout>
         <Routing />
-      </AsideLayout>
+      </ContentsLayout>
     </div>
   );
 }

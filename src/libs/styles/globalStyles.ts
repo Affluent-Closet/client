@@ -126,7 +126,7 @@ section {
 body {
   line-height: 1;
   margin: 0;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

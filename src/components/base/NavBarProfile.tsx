@@ -2,12 +2,12 @@
 import useToggle from 'hooks/useToggle';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
-import Path from 'routes/Path';
 import styled, { css } from 'styled-components';
 import { CgMoreVertical } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import transitions from 'libs/styles/transitions';
 import useOutSideClick from 'hooks/useOutSideClick';
+import { profileMenus } from 'libs/Lists/NavItems';
 
 const PorfileWrapper = styled.div`
   background-color: ${palette.mainColor};
@@ -70,22 +70,14 @@ interface NavBarProfileProps {
 }
 
 function NavBarProfile({ onToggleNav }: NavBarProfileProps) {
-  const btnGroup = [
-    { name: '마이페이지', href: `${Path.TestPage}` },
-    { name: '장바구니', href: `${Path.TestPage}` },
-    { name: '주문배송', href: `${Path.TestPage}` },
-    { name: '로그아웃', href: `${Path.TestPage}` },
-  ];
-
   const [value, onToggle] = useToggle();
-  const handleToggleLink = () => {
+  const onToggleLink = () => {
     onToggle();
     onToggleNav();
   };
   const { targetEl } = useOutSideClick(value, onToggle);
   return (
     <PorfileWrapper>
-      {/* 1줄       */}
       <ProfileBox>
         <div>
           <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
@@ -97,11 +89,11 @@ function NavBarProfile({ onToggleNav }: NavBarProfileProps) {
         <MemberLinkBox isModal={value}>
           <CgMoreVertical color="white" onClick={onToggle} />
           <div className={value ? 'link-box' : 'non-link-box'} ref={targetEl}>
-            {btnGroup.map(({ name, href }) => (
+            {profileMenus.map(({ name, href }) => (
               <MemberLinkStyled
                 to={href}
                 key={`btnGroup_${name}`}
-                onClick={handleToggleLink}
+                onClick={onToggleLink}
               >
                 {name}
               </MemberLinkStyled>
