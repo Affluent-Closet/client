@@ -1,6 +1,4 @@
-import Button from 'components/Button/Button';
 import GoodsInfo from 'components/Goods/GoodsInfo';
-import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
