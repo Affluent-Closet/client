@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
 import Button from 'components/Button/Button';
@@ -34,11 +34,13 @@ const QuantityStyled = styled(FlexBox)`
 
 const QuantityCtrlStlyed = styled(QuantityStyled)`
   background-color: #eee;
+  cursor: pointer;
 `;
 
 const DeletOptBtn = styled(AiOutlineClose)`
   margin: 0px 4px 0px 7px;
   border-radius: 4px;
+  cursor: pointer;
   &:hover {
     background-color: ${palette.backgroundHover};
   }
@@ -52,10 +54,11 @@ const BtnGroup = styled.div`
 const BuyButton = styled(Button)`
   margin: 0px 2px;
   width: 100%;
-  max-width: 180px;
+  max-width: 240px;
 `;
 
 function GoodsCalculBox() {
+  const [quantity, setQuantity] = useState(0);
   return (
     <>
       <SelectedOptionBox>
@@ -63,11 +66,17 @@ function GoodsCalculBox() {
           <div>L</div>
           <FlexBox>
             <QuantityCtrlStlyed>
-              <AiOutlineMinus size={18} />
+              <AiOutlineMinus
+                size={18}
+                onClick={() => setQuantity(quantity - 1)}
+              />
             </QuantityCtrlStlyed>
-            <QuantityStyled>2</QuantityStyled>
+            <QuantityStyled>{quantity}</QuantityStyled>
             <QuantityCtrlStlyed>
-              <AiOutlinePlus size={18} />
+              <AiOutlinePlus
+                size={18}
+                onClick={() => setQuantity(quantity + 1)}
+              />
             </QuantityCtrlStlyed>
           </FlexBox>
           <FlexBox>
