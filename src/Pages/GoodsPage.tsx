@@ -8,6 +8,8 @@ const GoodsDetailWrapper = styled.div`
 
 const GoodsImg = styled.img`
   /* width: 800px; */
+  display: block;
+  margin: 0 auto;
 `;
 
 function GoodsPage() {
