@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import useToggle from 'hooks/useToggle';
+import useToggle from 'hooks/common/useToggle';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { CgMoreVertical } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import transitions from 'libs/styles/transitions';
-import useOutSideClick from 'hooks/useOutSideClick';
+import useOutSideClick from 'hooks/common/useOutSideClick';
 import { profileMenus } from 'libs/Lists/NavItems';
 
 const PorfileWrapper = styled.div`

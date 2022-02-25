@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import useScrollFadeIn from 'hooks/useFadeIn';
+import useScrollFadeIn from 'hooks/common/useFadeIn';
 import React from 'react';
 import styled from 'styled-components';
 

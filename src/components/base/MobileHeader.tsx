@@ -1,4 +1,4 @@
-import useToggle from 'hooks/useToggle';
+import useToggle from 'hooks/common/useToggle';
 import React from 'react';
 import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
