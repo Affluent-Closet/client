@@ -1,3 +1,4 @@
+import media from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -9,20 +10,32 @@ const GoodsInfoWrapper = styled.div`
   display: flex;
   justify-content: center;
   text-align: left;
+  ${media.large} {
+    display: block;
+    text-align: center;
+  }
 `;
 
 const GoodsThumbBox = styled.img`
-  width: 500px;
-  height: 600px;
+  width: 100%;
+  max-width: 650px;
+  max-height: 780px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
+  ${media.large} {
+    margin-right: 0px;
+  }
 `;
 
 const GoodsInfoBox = styled.div`
   padding: 10px 0px 0px 15px;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   min-width: 220px;
+  ${media.large} {
+    padding: 40px 10px;
+    margin: 0 auto;
+  }
 `;
 
 const GoodsInfoSection = styled.div`
