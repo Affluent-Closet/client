@@ -1,4 +1,5 @@
 import GoodsInfo from 'components/Goods/GoodsInfo';
+import GoodsReview from 'components/Goods/GoodsReview';
 import TabBox from 'components/Goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
 import React from 'react';
@@ -31,9 +32,10 @@ function GoodsPage() {
           src="https://intempomood.cafe24.com/2022/2022SS/Full Zip-up Cardigan_Black_01.jpg"
           alt="의상 이미지"
         />
-        <TabBox goodsTabs={Array.from(goodsTabs)} th={1} />
-        <TabBox goodsTabs={Array.from(goodsTabs)} th={2} />
       </GoodsDetailWrapper>
+      <TabBox goodsTabs={Array.from(goodsTabs)} th={1} />
+      <GoodsReview />
+      <TabBox goodsTabs={Array.from(goodsTabs)} th={2} />
     </>
   );
 }
