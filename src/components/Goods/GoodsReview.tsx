@@ -34,8 +34,8 @@ const Rating = styled.div`
   font-size: 48px;
 `;
 
-const SummeryEle = styled.div`
-  margin: 8px 0px;
+const SummeryEle = styled(FlexCenter)`
+  margin: 13px 0px;
   font-size: 14px;
   line-height: 24px;
   text-align: center;
@@ -47,11 +47,11 @@ function GoodsReview() {
       <ReviewTit>Review</ReviewTit>
       <SummaryBox>
         <RatingSummeryBox>
-          <FlexCenter>
-            <BsStarFill color={palette.mainLightColor} size="44" />
+          구매 만족도
+          <SummeryEle>
+            <BsStarFill color="coral" size="44" />
             <Rating>4.9</Rating>
-          </FlexCenter>
-          <SummeryEle>98%의 구매자가 이 상품을 좋아합니다.</SummeryEle>
+          </SummeryEle>
           <Button
             width="160px"
             height="50px"

@@ -6,13 +6,13 @@ import styled from 'styled-components';
 const ScorePercentile = styled(FlexCenter)<{ score: number }>`
   width: 100%;
   background-color: ${palette.backgroundHover};
-  border-radius: 20px;
   justify-content: left;
   margin-right: 10px;
+  height: 8px;
   .occupy {
     width: ${(props) => (props.score ? `${props.score}%` : '0%')};
-    background-color: ${palette.hoverDarkColor};
-    border-radius: 8px;
+    background-color: coral;
+    height: 8px;
   }
 `;
 
