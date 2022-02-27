@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BsStarFill } from 'react-icons/bs';
 import { palette } from 'libs/styles/palette';
 import { FlexBetween, FlexCenter } from 'components/common/CommonComponents';
+import Button from 'components/Button/Button';
 
 const ReviewWrapper = styled.div`
   margin: 0px 30px;
@@ -25,8 +26,12 @@ const RatingSummeryBox = styled.div`
   width: 400px;
 `;
 
-const RatingIndexBox = styled.div`
+const RatingScoreBox = styled.div`
   width: 100%;
+`;
+
+const ScoreSection = styled(FlexCenter)`
+  margin: 8px 0px;
 `;
 
 const Rating = styled.div`
@@ -34,11 +39,32 @@ const Rating = styled.div`
 `;
 
 const SummeryEle = styled.div`
-  margin-top: 8px;
+  margin: 8px 0px;
   font-size: 14px;
   line-height: 24px;
   text-align: center;
   color: #14161a;
+`;
+
+const ScorePercentile = styled(FlexCenter)<{ score: number }>`
+  width: 100%;
+  background-color: ${palette.backgroundHover};
+  border-radius: 20px;
+  justify-content: left;
+  margin-right: 10px;
+  .occupy {
+    width: ${(props) => (props.score ? `${props.score}%` : '0%')};
+    background-color: ${palette.hoverDarkColor};
+    border-radius: 10px;
+  }
+`;
+
+const ScoreTit = styled.div`
+  font-weight: 500;
+  min-width: 80px;
+  font-size: 13px;
+  margin-left: 30px;
+  margin-right: 10px;
 `;
 
 function GoodsReview() {
@@ -52,35 +78,54 @@ function GoodsReview() {
             <Rating>4.9</Rating>
           </FlexCenter>
           <SummeryEle>98%의 구매자가 이 상품을 좋아합니다.</SummeryEle>
-          <div>상품 리뷰 작성하기</div>
+          <Button
+            width="160px"
+            height="50px"
+            buttonColor="hoverDarkColor"
+            fontColor="white"
+            hoverButtonColor="backgroundHover"
+            hoverFontColor="hoverDarkColor"
+          >
+            상품 리뷰 작성하기
+          </Button>
         </RatingSummeryBox>
-        <RatingIndexBox>
-          <FlexCenter>
-            <div>아주 좋아요</div>
-            <div>막대기</div>
+        <RatingScoreBox>
+          <ScoreSection>
+            <ScoreTit>아주 좋아요</ScoreTit>
+            <ScorePercentile score={90}>
+              <div className="occupy" />
+            </ScorePercentile>
             <div>361</div>
-          </FlexCenter>
-          <FlexCenter>
-            <div>맘에 들어요</div>
-            <div>막대기</div>
-            <div>29</div>
-          </FlexCenter>
-          <FlexCenter>
-            <div>보통이에요</div>
-            <div>막대기</div>
-            <div>2</div>
-          </FlexCenter>
-          <FlexCenter>
-            <div>그냥 그래요</div>
-            <div>막대기</div>
-            <div>1</div>
-          </FlexCenter>
-          <FlexCenter>
-            <div>별로에요</div>
-            <div>막대기</div>
-            <div>3</div>
-          </FlexCenter>
-        </RatingIndexBox>
+          </ScoreSection>
+          <ScoreSection>
+            <ScoreTit>아주 좋아요</ScoreTit>
+            <ScorePercentile score={90}>
+              <div className="occupy" />
+            </ScorePercentile>
+            <div>361</div>
+          </ScoreSection>
+          <ScoreSection>
+            <ScoreTit>아주 좋아요</ScoreTit>
+            <ScorePercentile score={90}>
+              <div className="occupy" />
+            </ScorePercentile>
+            <div>361</div>
+          </ScoreSection>
+          <ScoreSection>
+            <ScoreTit>아주 좋아요</ScoreTit>
+            <ScorePercentile score={90}>
+              <div className="occupy" />
+            </ScorePercentile>
+            <div>361</div>
+          </ScoreSection>
+          <ScoreSection>
+            <ScoreTit>아주 좋아요</ScoreTit>
+            <ScorePercentile score={90}>
+              <div className="occupy" />
+            </ScorePercentile>
+            <div>361</div>
+          </ScoreSection>
+        </RatingScoreBox>
       </SummaryBox>
     </ReviewWrapper>
   );

@@ -1,3 +1,4 @@
+import media from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -11,6 +12,9 @@ const TabBoxWrapper = styled.div`
     color: black;
     font-weight: 500;
     background-color: white;
+  }
+  ${media.large} {
+    margin: 0px;
   }
 `;
 

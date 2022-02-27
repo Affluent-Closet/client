@@ -13,7 +13,7 @@ interface ButtonStyle {
   fontSize?: string;
   fontWeight?: string;
   hoverButtonColor?: PaletteKeyTypes;
-  hoverFontColor?: string;
+  hoverFontColor?: PaletteKeyTypes;
 }
 
 interface ButtonProps
@@ -39,7 +39,7 @@ const ButtonStyled = styled.button<ButtonStyle>`
     fontSize = '14px',
     fontWeight = 'normal',
     hoverButtonColor = 'mainColor',
-    hoverFontColor = 'white',
+    hoverFontColor = 'hoverDarkColor',
   }) => css`
     width: ${width};
     height: ${height};
@@ -51,7 +51,7 @@ const ButtonStyled = styled.button<ButtonStyle>`
     font-weight: ${fontWeight};
     &:hover {
       background-color: ${palette[hoverButtonColor]};
-      hoverfontcolor: ${hoverFontColor};
+      color: ${palette[hoverFontColor]};
     }
   `}
 `;
