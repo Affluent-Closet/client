@@ -53,7 +53,7 @@ export const shopMenus = [
   },
   {
     name: 'New',
-    href: `${Path.HomePage}`,
+    href: `${Path.LandingPage}`,
     isOpen: false,
   },
   {

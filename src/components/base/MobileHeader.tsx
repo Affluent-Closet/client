@@ -63,7 +63,7 @@ function MobileHeader() {
               onClick={onToggleNav}
             />
           </HambergerStyled>
-          <LogoStyled to={Path.HomePage}>
+          <LogoStyled to={Path.LandingPage}>
             <img src={TextLogo} alt="사이트 로고" />
           </LogoStyled>
           <div>
