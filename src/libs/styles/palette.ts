@@ -6,7 +6,6 @@ export const palette = {
   backgroundColor: '#f6f6f6',
   backgroundHover: '#dedede',
   hoverDarkColor: '#3a3a3a',
-  discountColor: '#AD813E',
 };
 
 export type PaletteKeyTypes = keyof typeof palette;
