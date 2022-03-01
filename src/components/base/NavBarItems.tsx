@@ -1,5 +1,5 @@
 import { shopMenus } from 'libs/Lists/NavItems';
-import media from 'libs/styles/media';
+import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import transitions from 'libs/styles/transitions';
 import React, { useState } from 'react';
@@ -33,7 +33,7 @@ const Infos = styled.div<{ isOpen: boolean }>`
   width: 10rem;
   padding: 5px 20px;
   text-transform: uppercase;
-  ${media.xsmall} {
+  ${mediaMax.xsmall} {
     margin-left: 15px;
   }
   ${(props) =>
