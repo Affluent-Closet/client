@@ -1,5 +1,5 @@
 enum Path {
-  HomePage = '/',
+  LandingPage = '/',
   TestPage = '/test',
   GoodsPage = '/goods',
 }
