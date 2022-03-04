@@ -41,7 +41,7 @@ const SummeryEle = styled(FlexCenter)`
   text-align: center;
   color: #14161a;
 `;
-function GoodsReview() {
+function GoodsReviewSummery() {
   return (
     <ReviewWrapper>
       <ReviewTit>Review</ReviewTit>
@@ -49,7 +49,7 @@ function GoodsReview() {
         <RatingSummeryBox>
           구매 만족도
           <SummeryEle>
-            <BsStarFill color="coral" size="44" />
+            <BsStarFill color="coral" size="42" />
             <Rating>4.9</Rating>
           </SummeryEle>
           <Button
@@ -79,4 +79,4 @@ function GoodsReview() {
   );
 }
 
-export default GoodsReview;
+export default GoodsReviewSummery;
