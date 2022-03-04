@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
-import Button from 'components/Button/Button';
+import Button from 'components/button/Button';
 import { palette } from 'libs/styles/palette';
 
 const SelectedOptionBox = styled.div`

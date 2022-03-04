@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BsStarFill } from 'react-icons/bs';
 import { palette } from 'libs/styles/palette';
 import { FlexBetween, FlexCenter } from 'components/common/CommonComponents';
-import Button from 'components/Button/Button';
+import Button from 'components/button/Button';
 import ReviewScoreBox from './ReviewScoreBox';
 
 const ReviewWrapper = styled.div`
