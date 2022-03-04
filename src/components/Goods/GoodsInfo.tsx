@@ -1,4 +1,4 @@
-import media from 'libs/styles/media';
+import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ const GoodsInfoWrapper = styled.div`
   display: flex;
   justify-content: center;
   text-align: left;
-  ${media.large} {
+  ${mediaMax.large} {
     display: block;
     text-align: center;
   }
@@ -22,7 +22,7 @@ const GoodsThumbBox = styled.img`
   max-height: 780px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
-  ${media.large} {
+  ${mediaMax.large} {
     margin-right: 0px;
   }
 `;
@@ -32,7 +32,7 @@ const GoodsInfoBox = styled.div`
   width: 100%;
   max-width: 450px;
   min-width: 220px;
-  ${media.large} {
+  ${mediaMax.large} {
     padding: 40px 10px;
     margin: 0 auto;
   }
