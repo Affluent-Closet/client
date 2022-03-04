@@ -28,6 +28,7 @@ const SummaryBox = styled(FlexBetween)`
 const RatingSummeryBox = styled.div`
   border-right: 1px solid ${palette.border};
   width: 400px;
+  text-align: center;
 `;
 
 const Rating = styled.div`
@@ -56,7 +57,7 @@ function GoodsReviewSummery() {
             width="160px"
             height="50px"
             buttonColor="hoverDarkColor"
-            fontColor="white"
+            fontColor="#eee"
             hoverButtonColor="backgroundHover"
             hoverFontColor="hoverDarkColor"
           >
