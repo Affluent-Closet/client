@@ -1,5 +1,6 @@
 import GoodsInfo from 'components/goods/GoodsInfo';
-import GoodsReview from 'components/goods/GoodsReviewSummery';
+import GoodsReview from 'components/goods/GoodsReview';
+import GoodsReviewSummery from 'components/goods/GoodsReviewSummery';
 import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
 import React from 'react';
@@ -34,6 +35,7 @@ function GoodsPage() {
         />
       </GoodsDetailWrapper>
       <TabBox goodsTabs={Array.from(goodsTabs)} th={1} />
+      <GoodsReviewSummery />
       <GoodsReview />
       <TabBox goodsTabs={Array.from(goodsTabs)} th={2} />
     </>
