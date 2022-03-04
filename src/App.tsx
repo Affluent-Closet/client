@@ -8,7 +8,7 @@ import { mediaSize } from 'libs/styles/media';
 import Routing from './routes/Routing';
 
 const ContentsLayout = styled.div`
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   max-width: ${mediaSize.xlarge}px;
   margin: 0 auto;
 `;

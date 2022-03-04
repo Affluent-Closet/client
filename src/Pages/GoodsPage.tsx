@@ -1,5 +1,5 @@
 import GoodsInfo from 'components/Goods/GoodsInfo';
-import GoodsReview from 'components/Goods/GoodsReview';
+import GoodsReview from 'components/Goods/GoodsReviewSummery';
 import TabBox from 'components/Goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
 import React from 'react';
