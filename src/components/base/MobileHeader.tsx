@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { palette } from 'libs/styles/palette';
 import { profileMenus } from 'libs/Lists/NavItems';
 import { Link } from 'react-router-dom';
-import media from 'libs/styles/media';
+import { mediaMax } from 'libs/styles/media';
 import { TextLogo } from 'assets/Img';
 import Path from 'routes/Path';
 import NavBar from '.';
@@ -13,7 +13,7 @@ import NavBar from '.';
 const MobileHeaderBlock = styled.div`
   display: none;
   position: relative;
-  ${media.large} {
+  ${mediaMax.large} {
     display: block;
   }
 `;
@@ -63,7 +63,7 @@ function MobileHeader() {
               onClick={onToggleNav}
             />
           </HambergerStyled>
-          <LogoStyled to={Path.HomePage}>
+          <LogoStyled to={Path.LandingPage}>
             <img src={TextLogo} alt="사이트 로고" />
           </LogoStyled>
           <div>

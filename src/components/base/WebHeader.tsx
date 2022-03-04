@@ -29,7 +29,7 @@ function WebHeader() {
   return (
     <WebHeaderBlock>
       <LeftHeaderBox />
-      <Link to={Path.HomePage}>
+      <Link to={Path.LandingPage}>
         <LogoStyled src={TextLogo} alt="사이트 로고" />
       </Link>
       <RightHeaderBox />
