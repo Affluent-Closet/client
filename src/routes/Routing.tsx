@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from 'Pages/HomePage';
-import TestPage from 'Pages/TestPage';
-import GoodsPage from 'Pages/GoodsPage';
+import HomePage from 'pages/HomePage';
+import TestPage from 'pages/TestPage';
+import GoodsPage from 'pages/GoodsPage';
 import Path from './Path';
 
 function Routing() {

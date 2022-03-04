@@ -1,4 +1,4 @@
-import Slide from 'components/Goods/Slide';
+import Slide from 'components/goods/Slide';
 import useSlider from 'hooks/common/useSlider';
 import React from 'react';
 import styled from 'styled-components';
