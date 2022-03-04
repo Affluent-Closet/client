@@ -17,7 +17,7 @@ const LandingListItemInfo = styled.div``;
 const LandingListItemCategory = styled.span`
   display: flex;
   justify-content: flex-start;
-  color: ${palette.landingListItemCategory};
+  color: ${palette.ListItemCategory};
   font-size: 10px;
   margin-top: 20px;
 `;
