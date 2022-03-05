@@ -19,6 +19,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+html{
+  -webkit-tap-highlight-color: transparent; // @Note 모바일에서 클릭했을 때 파란 배경 없애 주는 코드
+}
 html,
 body,
 div,
