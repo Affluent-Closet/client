@@ -3,17 +3,21 @@ import GoodsReview from 'components/goods/GoodsReview';
 import GoodsReviewSummery from 'components/goods/GoodsReviewSummery';
 import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
+import { mediaSize } from 'libs/styles/media';
 import React from 'react';
 import styled from 'styled-components';
 
 const GoodsDetailWrapper = styled.div`
   padding: 30px;
+  width: 100%;
+  max-width: ${mediaSize.xlarge};
 `;
 
 const GoodsImg = styled.img`
   /* width: 800px; */
   display: block;
   margin: 0 auto;
+  width: 100%;
 `;
 
 function GoodsPage() {
