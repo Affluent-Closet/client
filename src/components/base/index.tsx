@@ -7,7 +7,7 @@ import NavBarMiddleItem from './NavBarItems';
 const NavBarBlock = styled.div<{ isNav: boolean }>`
   width: 75vw;
   max-width: 300px;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@ const NavBackground = styled.div<{ isNav: boolean }>`
   width: 100%;
   height: 100vh;
   background-color: black;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 800;
