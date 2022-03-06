@@ -1,4 +1,3 @@
-import LandingListItem from 'components/landing/LandingListItem';
 import { mediaMin } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
@@ -24,13 +23,17 @@ const ReviewGrid = styled.div`
   grid-template-columns: 1fr 1fr;
 
   ${mediaMin.medium} {
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
   ${mediaMin.large} {
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  ${mediaMin.xlarge} {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 `;
 function GoodsReview() {
@@ -42,6 +45,8 @@ function GoodsReview() {
       <ReviewGrid>
         <ReviewItem /> <ReviewItem /> <ReviewItem /> <ReviewItem />
         <ReviewItem /> <ReviewItem />
+        <ReviewItem /> <ReviewItem /> <ReviewItem />
+        <ReviewItem />
       </ReviewGrid>
     </ReviewContainer>
   );
