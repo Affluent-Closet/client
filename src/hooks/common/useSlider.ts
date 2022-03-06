@@ -25,7 +25,7 @@ function useSlider() {
     element.current.style.transform = `translateX(-${currentSlide}00%)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
   }, [currentSlide]);
 
-  return { currentSlide, element, nextSlide, prevSlide };
+  return { currentSlide, element, nextSlide, prevSlide, setCurrentSlide };
 }
 
 export default useSlider;
