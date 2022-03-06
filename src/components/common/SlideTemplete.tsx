@@ -1,5 +1,6 @@
 import Button from 'components/button/Button';
 import useSlider from 'hooks/common/useSlider';
+import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
@@ -12,7 +13,6 @@ const Container = styled.div`
   margin: 0 auto;
   overflow: hidden; // 선을 넘어간 이미지들은 보이지 않도록 처리합니다.
 `;
-const SlideButton = styled(Button)``;
 
 const BtnGroupBox = styled(FlexBetween)``;
 
@@ -31,13 +31,17 @@ const SliderDots = styled.ul`
   }
   button {
     display: block;
-    width: 1rem;
-    height: 1rem;
+    width: 10px;
+    height: 10px;
     padding: 0;
     border: none;
     border-radius: 100%;
     background-color: ${palette.border};
     text-indent: -9999px;
+    ${mediaMax.small} {
+      width: 5px;
+      height: 5px;
+    }
   }
 
   li.slick-active button {
@@ -51,7 +55,7 @@ function SlideTemplete() {
   return (
     <Container>
       <SliderContainer ref={element}>
-        <Slide img="https://media.vlpt.us/images/peppermint100/post/d99e3dff-779f-4000-9857-5844481da5b8/image.png" />
+        <Slide img="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg" />
         <Slide img="https://avatars.githubusercontent.com/u/64634992?v=4" />
         <Slide img="https://image-comic.pstatic.net/webtoon/748105/156/20220223140726_caa0c1e44c7e8737a30f73f75755068d_IMAG01_1.jpg" />
       </SliderContainer>
