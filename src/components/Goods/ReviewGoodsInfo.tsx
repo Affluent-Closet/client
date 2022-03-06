@@ -7,9 +7,6 @@ const GoodsInfoWrapper = styled(FlexBetween)`
   font-size: 13px;
   align-items: center;
   padding-right: 20px;
-  .body-info {
-    color: ${palette.temp};
-  }
 `;
 
 const Image = styled.img`
@@ -24,9 +21,23 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
   .purchase {
-    margin-top: 4px;
+    margin: 4px 0;
     color: ${palette.temp};
   }
+`;
+
+const EmptyRating = styled.img`
+  display: block;
+  width: 100px;
+  height: 17px;
+  float: left;
+  position: absolute;
+`;
+
+const Rating = styled(EmptyRating)<{ ratingIndex: number }>`
+  /* width: ${(props) => props.ratingIndex}px; */
+  overflow: hidden;
+  ${(props) => `clip: rect(0px ${props.ratingIndex}px 17px 0px)`}
 `;
 
 function ReviewGoodsInfo() {
@@ -42,7 +53,20 @@ function ReviewGoodsInfo() {
           <div className="purchase">M 구매</div>
         </Item>
       </FlexCenter>
-      <div className="body-info">남성, 180cm, 85kg</div>
+      <Item>
+        <div className="purchase">남성, 180cm, 85kg</div>
+        <div>
+          <EmptyRating
+            src="https://static.msscdn.net/ui/build/pc/img/common/ic-star-off.svg?v=20220303172627"
+            alt="빈 별점"
+          />
+          <Rating
+            ratingIndex={60}
+            src="https://static.msscdn.net/ui/build/pc/img/common/ic-star-on.svg?v=20220303172627"
+            alt="찬 별점"
+          />
+        </div>
+      </Item>
     </GoodsInfoWrapper>
   );
 }
