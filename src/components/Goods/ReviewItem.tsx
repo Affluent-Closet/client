@@ -1,10 +1,12 @@
 import useToggle from 'hooks/common/useToggle';
 import React from 'react';
 import styled from 'styled-components';
+import ReviewModal from './ReviewModal';
 
 const ReviewItemContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
+  cursor: pointer;
 `;
 const ReviewImg = styled.img`
   width: 160px;
@@ -38,24 +40,28 @@ const ProfileImg = styled.img`
   border-radius: 100%;
   margin-right: 4px;
 `;
+
 const NickName = styled.div`
   line-height: 35px;
   font-size: 14px;
 `;
 
 function ReviewItem() {
-  const [isReview, onToggleReview] = useToggle();
+  const [isModal, onToggleModal] = useToggle();
   return (
-    <ReviewItemContainer>
-      <ReviewImg src="https://kream-phinf.pstatic.net/MjAyMjAzMDRfMjYw/MDAxNjQ2MzU4NDYyOTY3.BeT00qB6ij4ww2CsELmJTUaM0lDe4zk19-da3Q1elp0g.twGmg6RJEq6mZyXGXUl-PjwYHSyzsFg_g3PutPLLXc8g.JPEG/p_4d7c7817e3d04a7cb7be58557ac86c6f.jpg?type=m" />
-      <div>
-        <WriterBox>
-          <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
-          <NickName>jiho.lee</NickName>
-        </WriterBox>
-        <ReviewText>옷 질감이 너무 좋아요</ReviewText>
-      </div>
-    </ReviewItemContainer>
+    <>
+      <ReviewItemContainer onClick={onToggleModal}>
+        <ReviewImg src="https://kream-phinf.pstatic.net/MjAyMjAzMDRfMjYw/MDAxNjQ2MzU4NDYyOTY3.BeT00qB6ij4ww2CsELmJTUaM0lDe4zk19-da3Q1elp0g.twGmg6RJEq6mZyXGXUl-PjwYHSyzsFg_g3PutPLLXc8g.JPEG/p_4d7c7817e3d04a7cb7be58557ac86c6f.jpg?type=m" />
+        <div>
+          <WriterBox>
+            <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
+            <NickName>jiho.lee</NickName>
+          </WriterBox>
+          <ReviewText>옷 질감이 너무 좋음</ReviewText>
+        </div>
+      </ReviewItemContainer>
+      <ReviewModal isModal={isModal} onToggle={onToggleModal} />
+    </>
   );
 }
 
