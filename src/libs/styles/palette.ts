@@ -7,7 +7,7 @@ export const palette = {
   backgroundHover: '#dedede',
   hoverDarkColor: '#3a3a3a',
   discountColor: '#AD813E',
-  temp: 'gray',
+  temp: 'rgba(34,34,34,.5)',
   ListItemCategory: '#AAAAAA',
   // grayLight: '#D4D2CF',
   // grayLightest: '#F3F2EF',

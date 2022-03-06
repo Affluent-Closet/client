@@ -8,6 +8,6 @@ export const FlexCenter = styled.div`
 
 export const FlexBetween = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
