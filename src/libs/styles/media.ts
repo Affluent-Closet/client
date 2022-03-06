@@ -20,7 +20,7 @@ export const mediaSize = {
   medium: 768,
   small: 414,
   xsmall: 320,
-};
+} as const;
 
 const { xxlarge, xlarge, large, medium, small, xsmall } = mediaSize;
 
