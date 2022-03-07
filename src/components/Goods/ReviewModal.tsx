@@ -1,4 +1,5 @@
 import SlideTemplete from 'components/common/SlideTemplete';
+import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import transitions from 'libs/styles/transitions';
 import React, { useEffect } from 'react';
@@ -73,6 +74,13 @@ const Info = styled.div`
   }
 `;
 
+const ReviewDetail = styled.div`
+  padding: 0px 50px;
+  ${mediaMax.medium} {
+    padding: 0px 5px;
+  }
+`;
+
 interface ReviewModalProps {
   isModal: boolean;
   onToggle: () => void;
@@ -96,7 +104,13 @@ function ReviewModal({ isModal, onToggle }: ReviewModalProps) {
           </Info>
         </WriterBox>
         <SlideTemplete />
-        <ReviewGoodsInfo />
+        <ReviewDetail>
+          <ReviewGoodsInfo />
+          <div>
+            글 들어갈 자리입니다.하나 더 사고싶은 의향 있어요! 레이어드로 입기
+            길이가 딱 좋아서 무조건 추천합니다
+          </div>
+        </ReviewDetail>
       </ModalInner>
       <Background onClick={onToggle} />
     </ReviewModalBlock>

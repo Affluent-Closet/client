@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const GoodsInfoWrapper = styled(FlexBetween)`
   font-size: 13px;
   align-items: center;
-  padding-right: 20px;
+  margin-bottom: 10px;
 `;
 
 const Image = styled.img`
