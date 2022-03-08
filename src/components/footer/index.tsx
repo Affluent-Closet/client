@@ -7,7 +7,10 @@ const FooterWrapper = styled.footer`
   line-height: 1.42;
   font-size: 12px;
   border-top: 1px solid ${palette.hoverDarkColor};
-  margin: 0px 10px;
+  padding: 0px 10px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 `;
 
 const FooterInner = styled.div`
