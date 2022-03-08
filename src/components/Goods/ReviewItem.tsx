@@ -57,7 +57,7 @@ function ReviewItem() {
             <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
             <NickName>jiho.lee</NickName>
           </WriterBox>
-          <ReviewText>옷 질감이 너무 좋음</ReviewText>
+          <ReviewText>글 들어갈 자리입니다</ReviewText>
         </div>
       </ReviewItemContainer>
       <ReviewModal isModal={isModal} onToggle={onToggleModal} />

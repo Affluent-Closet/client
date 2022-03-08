@@ -6,9 +6,6 @@ import { ReviewTit } from './GoodsReviewSummery';
 
 const InquirtyWrapper = styled.div`
   margin: 0px 30px;
-  .full-width {
-    width: 100%;
-  }
 `;
 const InquirtyTit = styled(ReviewTit)`
   display: flex;

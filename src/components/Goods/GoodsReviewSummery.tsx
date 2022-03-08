@@ -13,7 +13,7 @@ const ReviewWrapper = styled.div`
   }
 `;
 
-const ReviewTit = styled.div`
+export const ReviewTit = styled.div`
   font-size: 22px;
   text-align: left;
   border-bottom: 2px solid #14161a;

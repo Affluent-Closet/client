@@ -1,4 +1,5 @@
 import GoodsInfo from 'components/goods/GoodsInfo';
+import GoodsInquiry from 'components/goods/GoodsInquiry';
 import GoodsReview from 'components/goods/GoodsReview';
 import GoodsReviewSummery from 'components/goods/GoodsReviewSummery';
 import TabBox from 'components/goods/TabBox';
@@ -42,6 +43,7 @@ function GoodsPage() {
       <GoodsReviewSummery />
       <GoodsReview />
       <TabBox goodsTabs={Array.from(goodsTabs)} th={2} />
+      <GoodsInquiry />
     </>
   );
 }
