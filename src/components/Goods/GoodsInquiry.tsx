@@ -16,6 +16,9 @@ const WriteBtn = styled(Button)`
   height: 25px;
   background-color: black;
   color: ${palette.backgroundColor};
+  &:hover {
+    border: 1px solid ${palette.hoverDarkColor};
+  }
 `;
 const QnaList = styled.li`
   padding: 10px 0px;
@@ -61,6 +64,24 @@ function GoodsInquiry() {
           <div className="qna-date">작성일</div>
         </QnAHead>
         {/* map 돌리기 */}
+        <QnaList>
+          <div className="qna-status">답변완료</div>
+          <div className="qna-contents">이거 궁금해요</div>
+          <div className="qna-writer">이지호</div>
+          <div className="qna-date">2022.03.08</div>
+        </QnaList>
+        <QnaList>
+          <div className="qna-status">답변완료</div>
+          <div className="qna-contents">이거 궁금해요</div>
+          <div className="qna-writer">이지호</div>
+          <div className="qna-date">2022.03.08</div>
+        </QnaList>
+        <QnaList>
+          <div className="qna-status">답변완료</div>
+          <div className="qna-contents">이거 궁금해요</div>
+          <div className="qna-writer">이지호</div>
+          <div className="qna-date">2022.03.08</div>
+        </QnaList>
         <QnaList>
           <div className="qna-status">답변완료</div>
           <div className="qna-contents">이거 궁금해요</div>
