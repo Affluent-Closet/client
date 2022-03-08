@@ -1,51 +1,41 @@
-import Button from 'components/Button/Button';
+import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
-import { BiTrashAlt } from 'react-icons/bi';
+import GoodsCalculBox from './GoodsCalculBox';
+import GoodsPriceBox from './GoodsPriceBox';
 
 const GoodsInfoWrapper = styled.div`
   margin: 30px;
   display: flex;
   justify-content: center;
   text-align: left;
-  width: 100%;
+  ${mediaMax.large} {
+    display: block;
+    text-align: center;
+  }
 `;
 
 const GoodsThumbBox = styled.img`
-  width: 500px;
-  height: 600px;
+  width: 100%;
+  max-width: 650px;
+  max-height: 780px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
-`;
-
-const GoodsPriceStyled = styled.div`
-  display: flex;
-  margin-bottom: 20px;
-  .discount-price {
-    font-size: 25px;
+  ${mediaMax.large} {
+    margin-right: 0px;
   }
-  .original-price {
-    margin: 5px;
-    line-height: 15px;
-    text-decoration: line-through;
-    color: rgba(51, 51, 51, 0.5);
-  }
-  .discount-rate {
-    font-size: 22px;
-    color: ${palette.mainColor};
-  }
-`;
-
-const GoodsTitleStyled = styled.div`
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 20px;
 `;
 
 const GoodsInfoBox = styled.div`
   padding: 10px 0px 0px 15px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 450px;
+  min-width: 220px;
+  ${mediaMax.large} {
+    padding: 40px 10px;
+    margin: 0 auto;
+  }
 `;
 
 const GoodsInfoSection = styled.div`
@@ -79,47 +69,12 @@ const RadioButton = styled.input`
   }
 `;
 
-const BtnGroup = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const BuyButton = styled(Button)`
-  margin: 0px 2px;
-`;
-
-const SelectedOptionBox = styled.div`
-  margin: 10px 0px;
-  border-top: 1px solid ${palette.border};
-`;
-
-const SelectedOptionStyled = styled.div`
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  min-height: 48px;
-  padding: 6px 5px 6px 9px;
-  border: 1px solid ${palette.border};
-  border-top: none;
-  .quantity {
-    display: flex;
-  }
-`;
-
 function GoodsInfo() {
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg" />
-
       <GoodsInfoBox>
-        <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
-        <GoodsPriceStyled>
-          <div className="discount-price">104,000</div>
-          <div className="original-price">130,000</div>
-          <div className="discount-rate">20%</div>
-        </GoodsPriceStyled>
+        <GoodsPriceBox />
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Color :</GoodsInfoTitStyled>
@@ -143,47 +98,7 @@ function GoodsInfo() {
           <Label htmlFor="s3">L</Label>
         </GoodsInfoSection>
         <hr />
-        <SelectedOptionBox>
-          <SelectedOptionStyled>
-            <div>L</div>
-            <div className="quantity">
-              <div>-</div>
-              <div>2</div>
-              <div>+</div>
-            </div>
-            <div>
-              <div> 85,900원</div>
-              <BiTrashAlt />
-            </div>
-          </SelectedOptionStyled>
-          <SelectedOptionStyled>
-            <div>총 상품 금액</div>
-            <div>257,000원</div>
-          </SelectedOptionStyled>
-        </SelectedOptionBox>
-        <BtnGroup>
-          <BuyButton
-            width="160px"
-            height="40px"
-            buttonColor="mainColor"
-            fontColor="white"
-            fontSize="14px"
-            fontWeight="bold"
-            hoverButtonColor="mainHoverColor"
-          >
-            구매하기
-          </BuyButton>
-          <BuyButton
-            width="160px"
-            height="40px"
-            fontSize="14px"
-            fontWeight="bold"
-            hasBorder
-            hoverButtonColor="backgroundHover"
-          >
-            장바구니
-          </BuyButton>
-        </BtnGroup>
+        <GoodsCalculBox />
       </GoodsInfoBox>
     </GoodsInfoWrapper>
   );

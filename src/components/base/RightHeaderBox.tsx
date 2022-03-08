@@ -23,10 +23,8 @@ function RightHeaderBox() {
   return (
     <WebHeaderRightBox>
       {profileMenus.map(({ icon, href }, index) => (
-        <Link to={href}>
-          <EleStyled className="ele-styled " key={`profile_menu_${index}`}>
-            {icon}
-          </EleStyled>
+        <Link to={href} key={`profile_menu_${index}`}>
+          <EleStyled className="ele-styled ">{icon}</EleStyled>
         </Link>
       ))}
     </WebHeaderRightBox>
