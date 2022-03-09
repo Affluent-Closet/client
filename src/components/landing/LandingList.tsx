@@ -1,23 +1,14 @@
-import { mediaMin } from 'libs/styles/media';
+import { ItemGrid } from 'components/common/CommonComponents';
+import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import LandingListItem from './LandingListItem';
+import GridGoodsItem from '../common/GridGoodsItem';
 
 const LandingListContainer = styled.section`
-  /* display: flex;
-  justify-content: center; */
   margin: 0 auto;
   margin-top: 30px;
-  max-width: 364px;
-
-  ${mediaMin.medium} {
-    max-width: 544px;
-  }
-
-  ${mediaMin.large} {
-    max-width: 1024px;
-  }
+  max-width: ${mediaSize.xlarge}px;
 `;
 
 const LandingListInner = styled.div`
@@ -32,22 +23,6 @@ const LandingListCategory = styled.div`
   line-height: 3;
 `;
 
-const LandingGrid = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-
-  ${mediaMin.medium} {
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  ${mediaMin.large} {
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-`;
-
 function LandingList({ children }: { children: ReactNode }) {
   return (
     <LandingListContainer>
@@ -55,16 +30,16 @@ function LandingList({ children }: { children: ReactNode }) {
         <LandingListCategory>
           <h2>{children}</h2>
         </LandingListCategory>
-        <LandingGrid>
-          <LandingListItem />
-          <LandingListItem />
-          <LandingListItem />
-          <LandingListItem />
-          <LandingListItem />
-          <LandingListItem />
-          <LandingListItem />
-          <LandingListItem />
-        </LandingGrid>
+        <ItemGrid>
+          <GridGoodsItem />
+          <GridGoodsItem />
+          <GridGoodsItem />
+          <GridGoodsItem />
+          <GridGoodsItem />
+          <GridGoodsItem />
+          <GridGoodsItem />
+          <GridGoodsItem />
+        </ItemGrid>
       </LandingListInner>
     </LandingListContainer>
   );
