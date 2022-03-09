@@ -13,6 +13,14 @@ export const FlexBetween = styled.div`
   align-items: center;
 `;
 
+export const ListHead = styled.div`
+  font-size: 22px;
+  text-align: left;
+  border-bottom: 2px solid #14161a;
+  padding: 16px 0;
+  width: 100%;
+`;
+
 export const ItemGrid = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;

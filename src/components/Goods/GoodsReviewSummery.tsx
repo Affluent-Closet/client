@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsStarFill } from 'react-icons/bs';
 import { palette } from 'libs/styles/palette';
-import { FlexBetween, FlexCenter } from 'components/common/CommonComponents';
+import {
+  FlexBetween,
+  FlexCenter,
+  ListHead,
+} from 'components/common/CommonComponents';
 import Button from 'components/button/Button';
 import ReviewScoreBox from './ReviewScoreBox';
 
@@ -12,15 +16,6 @@ const ReviewWrapper = styled.div`
     width: 100%;
   }
 `;
-
-export const ReviewTit = styled.div`
-  font-size: 22px;
-  text-align: left;
-  border-bottom: 2px solid #14161a;
-  padding: 16px 0;
-  width: 100%;
-`;
-
 const SummaryBox = styled(FlexBetween)`
   padding: 32px 0px;
 `;
@@ -45,7 +40,7 @@ const SummeryEle = styled(FlexCenter)`
 function GoodsReviewSummery() {
   return (
     <ReviewWrapper>
-      <ReviewTit>Review</ReviewTit>
+      <ListHead>Review</ListHead>
       <SummaryBox>
         <RatingSummeryBox>
           구매 만족도
