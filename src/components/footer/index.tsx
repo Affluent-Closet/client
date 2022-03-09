@@ -3,14 +3,16 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
+  display: block;
   height: 57px;
   line-height: 1.42;
   font-size: 12px;
-  border-top: 1px solid ${palette.hoverDarkColor};
+  border-top: 1px solid ${palette.backgroundHover};
+  background-color: ${palette.backgroundColor};
   padding: 0px 10px;
-  position: absolute;
   width: 100%;
   bottom: 0;
+  margin-top: 10px;
 `;
 
 const FooterInner = styled.div`
