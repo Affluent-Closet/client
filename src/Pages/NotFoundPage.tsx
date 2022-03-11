@@ -1,5 +1,5 @@
 import { NotFoundImg } from 'assets/Img';
-import { PageWrapper } from 'components/common/CommonComponents';
+import { PageContainer } from 'components/common/CommonComponents';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,9 +10,9 @@ const NotFoundWraper = styled.img`
 
 function NotFoundPage() {
   return (
-    <PageWrapper>
+    <PageContainer>
       <NotFoundWraper src={NotFoundImg} alt="404notfound" />
-    </PageWrapper>
+    </PageContainer>
   );
 }
 

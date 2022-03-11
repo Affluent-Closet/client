@@ -43,7 +43,7 @@ export const ItemGrid = styled.div`
   }
 `;
 
-export const PageWrapper = styled.div`
+export const PageContainer = styled.div`
   margin: 30px;
   text-align: center;
 `;
