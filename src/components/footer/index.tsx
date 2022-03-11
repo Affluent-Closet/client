@@ -52,10 +52,10 @@ const FooterMenu = styled.div`
 
 const FooterMenuItem = styled.a``;
 
-const VerticalLine = styled.div`
+export const VerticalLine = styled.div`
   width: 1px;
   height: 17px;
-  margin: 0 19px 0 20px;
+  margin: 0 15px 0 15px;
   background-color: ${palette.hoverDarkColor};
 `;
 
