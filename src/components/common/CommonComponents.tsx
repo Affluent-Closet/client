@@ -42,3 +42,8 @@ export const ItemGrid = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 `;
+
+export const PageWrapper = styled.div`
+  margin: 30px;
+  text-align: center;
+`;
