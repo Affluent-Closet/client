@@ -4,10 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LandingBannerContainer = styled.section`
-  width: 100vw;
-  height: 20vh;
+  width: 100%;
+  height: 180px;
   background-color: ${palette.temp};
-  max-width: ${mediaSize.large}px;
+  max-width: ${mediaSize.xlarge}px;
   margin: 0 auto;
 `;
 

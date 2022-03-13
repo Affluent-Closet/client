@@ -1,13 +1,13 @@
 import Button from 'components/button/Button';
+import { ListHead } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
-import { ReviewTit } from './GoodsReviewSummery';
 
 const InquirtyWrapper = styled.div`
   margin: 0px 30px;
 `;
-const InquirtyTit = styled(ReviewTit)`
+const InquirtyTit = styled(ListHead)`
   display: flex;
   justify-content: space-between;
 `;

@@ -3,11 +3,16 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
+  display: block;
   height: 57px;
   line-height: 1.42;
   font-size: 12px;
-  border-top: 1px solid ${palette.hoverDarkColor};
-  margin: 0px 10px;
+  border-top: 1px solid ${palette.backgroundHover};
+  background-color: ${palette.backgroundColor};
+  padding: 0px 10px;
+  width: 100%;
+  bottom: 0;
+  margin-top: 10px;
 `;
 
 const FooterInner = styled.div`
@@ -47,10 +52,10 @@ const FooterMenu = styled.div`
 
 const FooterMenuItem = styled.a``;
 
-const VerticalLine = styled.div`
+export const VerticalLine = styled.div`
   width: 1px;
   height: 17px;
-  margin: 0 19px 0 20px;
+  margin: 0 15px 0 15px;
   background-color: ${palette.hoverDarkColor};
 `;
 

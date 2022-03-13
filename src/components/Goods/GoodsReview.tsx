@@ -1,4 +1,4 @@
-import { mediaMin } from 'libs/styles/media';
+import { ItemGrid } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -17,37 +17,18 @@ const ReviewBox = styled.div`
   line-height: 3;
 `;
 
-const ReviewGrid = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-
-  ${mediaMin.medium} {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  ${mediaMin.large} {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  ${mediaMin.xlarge} {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-`;
 function GoodsReview() {
   return (
     <ReviewContainer>
       <ReviewBox>
         <h2>스타일</h2>
       </ReviewBox>
-      <ReviewGrid>
+      <ItemGrid>
         <ReviewItem /> <ReviewItem /> <ReviewItem /> <ReviewItem />
         <ReviewItem /> <ReviewItem />
         <ReviewItem /> <ReviewItem /> <ReviewItem />
         <ReviewItem />
-      </ReviewGrid>
+      </ItemGrid>
     </ReviewContainer>
   );
 }
