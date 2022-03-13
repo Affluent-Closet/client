@@ -1,4 +1,4 @@
-import Button from 'components/button/Button';
+import Button from 'components/common/Button';
 import useSlider from 'hooks/common/useSlider';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
