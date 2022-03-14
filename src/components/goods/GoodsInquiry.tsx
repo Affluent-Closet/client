@@ -1,4 +1,4 @@
-import Button from 'components/button/Button';
+import Button from 'components/common/Button';
 import { ListHead } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
