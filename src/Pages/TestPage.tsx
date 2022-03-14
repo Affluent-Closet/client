@@ -1,3 +1,5 @@
+import Slide from 'components/common/Slide';
+import useSlider from 'hooks/common/useSlider';
 import React from 'react';
 
 function TestPage() {

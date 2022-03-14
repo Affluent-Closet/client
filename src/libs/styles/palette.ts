@@ -9,11 +9,11 @@ export const palette = {
   discountColor: '#AD813E',
   temp: 'rgba(34,34,34,.5)',
   ListItemCategory: '#AAAAAA',
-  // grayLight: '#D4D2CF',
-  // grayLightest: '#F3F2EF',
-  // grayDarkest: '#323232',
-  // grayDarker: '#5B5B5B',
-  // grayDark: '#848484',
+  grayLight: '#D4D2CF',
+  grayLightest: '#F3F2EF',
+  grayDarkest: '#323232',
+  grayDarker: '#5B5B5B',
+  grayDark: '#848484',
 };
 
 export type PaletteKeyTypes = keyof typeof palette;

@@ -1,5 +1,5 @@
-import Button from 'components/button/Button';
 import { ListHead } from 'components/common/CommonComponents';
+import Button from 'components/common/Button';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';

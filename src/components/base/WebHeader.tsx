@@ -1,4 +1,4 @@
-import { TextLogo } from 'assets/Img';
+import { TextLogo } from 'assets/img';
 import LeftHeaderBox from 'components/base/LeftHeaderBox';
 import { mediaMinQuery, mediaSize } from 'libs/styles/media';
 import React from 'react';

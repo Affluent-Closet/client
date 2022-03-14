@@ -5,6 +5,7 @@ import TestPage from 'pages/TestPage';
 import GoodsPage from 'pages/GoodsPage';
 import SearchPage from 'pages/SearchPage';
 import SearchResultPage from 'pages/SearchResultPage';
+import OrderPage from 'pages/OrderPage';
 import Path from './Path';
 
 function Routing() {
@@ -15,6 +16,7 @@ function Routing() {
       <Route path={Path.GoodsPage} element={<GoodsPage />} />
       <Route path={Path.SearchPage} element={<SearchPage />} />
       <Route path={Path.SearchResultPage} element={<SearchResultPage />} />
+      <Route path={Path.OrderPage} element={<OrderPage />} />
     </Routes>
   );
 }
