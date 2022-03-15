@@ -7,6 +7,7 @@ import SearchPage from 'pages/SearchPage';
 import SearchResultPage from 'pages/SearchResultPage';
 import CategoryPage from 'pages/CategoryPage';
 import NotFoundPage from 'pages/NotFoundPage';
+import LoginPage from 'pages/LoginPage';
 import Path from './Path';
 
 function Routing() {
@@ -19,6 +20,7 @@ function Routing() {
       <Route path={Path.SearchPage} element={<SearchPage />} />
       <Route path={Path.SearchResultPage} element={<SearchResultPage />} />
       <Route path={Path.CategoryPage} element={<CategoryPage />} />
+      <Route path={Path.LoginPage} element={<LoginPage />} />
     </Routes>
   );
 }
