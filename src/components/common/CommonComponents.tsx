@@ -1,4 +1,4 @@
-import { mediaMin } from 'libs/styles/media';
+import { mediaMax, mediaMin } from 'libs/styles/media';
 import styled from 'styled-components';
 
 export const FlexCenter = styled.div`
@@ -46,4 +46,10 @@ export const ItemGrid = styled.div`
 export const PageContainer = styled.div`
   margin: 30px;
   text-align: center;
+  ${mediaMax.small} {
+    margin: 5px;
+  }
+  ${mediaMax.xsmall} {
+    margin: 0px;
+  }
 `;
