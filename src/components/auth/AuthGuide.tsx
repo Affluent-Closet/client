@@ -3,12 +3,8 @@ import { mediaMax } from 'libs/styles/media';
 import React from 'react';
 import styled from 'styled-components';
 
-interface AuthGuideProps {
-  isLoginPage: boolean;
-}
-
 const AuthTitle = styled.div`
-  font-size: 24px;
+  font-size: 26px;
   text-align: left;
   margin: 50px;
   ${mediaMax.small} {
@@ -18,9 +14,9 @@ const AuthTitle = styled.div`
 `;
 
 const GuideBox = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   text-align: left;
-  margin: 0px 60px;
+  margin: 4px 60px;
   ${mediaMax.small} {
     margin: 0 15px;
     font-size: 12px;
@@ -34,10 +30,10 @@ export const AuthButton = styled(Button)`
   }
 `;
 
-function AuthGuide({ isLoginPage }: AuthGuideProps) {
+function AuthGuide() {
   return (
     <>
-      <AuthTitle>{isLoginPage ? '로그인' : '회원가입'}</AuthTitle>
+      <AuthTitle>로그인</AuthTitle>
       <GuideBox>아이디, 비밀번호, 이름, 휴대번호 입력하기 귀찮으시죠?</GuideBox>
       <GuideBox>카카오로 1초 만에 회원가입 하세요.</GuideBox>
       <AuthButton width="300px" height="40px" buttonColor="kakaoColor">

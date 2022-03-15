@@ -14,7 +14,7 @@ const LoginPageContainer = styled(PageContainer)`
 function LoginPage() {
   return (
     <LoginPageContainer>
-      <AuthGuide isLoginPage />
+      <AuthGuide />
       <LoginForm />
     </LoginPageContainer>
   );
