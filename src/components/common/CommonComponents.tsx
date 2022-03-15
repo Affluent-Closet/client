@@ -13,6 +13,12 @@ export const FlexBetween = styled.div`
   align-items: center;
 `;
 
+export const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const ListHead = styled.h2`
   font-size: 18px;
   text-align: left;

@@ -19,7 +19,7 @@ const SearchListHead = styled(ListHead)`
   }
 `;
 
-const SortMenu = styled.div`
+export const SortMenu = styled.div`
   padding: 0px 4px;
   border-right: 1px solid ${palette.temp};
   color: ${palette.temp};
