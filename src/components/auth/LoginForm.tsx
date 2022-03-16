@@ -1,17 +1,12 @@
 import Button from 'components/common/Button';
-import { FlexCenter, FlexColumn } from 'components/common/CommonComponents';
+import {
+  FlexCenter,
+  FlexColumn,
+  InputStyled,
+} from 'components/common/CommonComponents';
 import { SortMenu } from 'components/search/ResultItems';
-import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
-
-const LoginInputStyled = styled.input`
-  width: 300px;
-  height: 40px;
-  border: 1px solid ${palette.backgroundHover};
-  border-radius: 5px;
-  padding: 10px;
-`;
 
 const LoginBox = styled(FlexColumn)`
   margin: 20px;
@@ -27,8 +22,8 @@ function LoginForm() {
   return (
     <>
       <LoginBox>
-        <LoginInputStyled type="text" placeholder="아이디" />
-        <LoginInputStyled type="password" placeholder="비밀번호" />
+        <InputStyled type="text" placeholder="아이디" />
+        <InputStyled type="password" placeholder="비밀번호" />
       </LoginBox>
       <Button
         width="300px"

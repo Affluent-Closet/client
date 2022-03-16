@@ -1,4 +1,5 @@
 import { mediaMax, mediaMin } from 'libs/styles/media';
+import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
 
 export const FlexCenter = styled.div`
@@ -58,4 +59,11 @@ export const PageContainer = styled.div`
   ${mediaMax.xsmall} {
     margin: 0px;
   }
+`;
+
+export const InputStyled = styled.input`
+  width: 300px;
+  border: 1px solid ${palette.backgroundHover};
+  border-radius: 5px;
+  padding: 10px 0 10px 24px;
 `;
