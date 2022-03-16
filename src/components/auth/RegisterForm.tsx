@@ -1,0 +1,124 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import Button from 'components/common/Button';
+import {
+  FlexBetween,
+  InputStyled,
+  ListHead,
+} from 'components/common/CommonComponents';
+import { palette } from 'libs/styles/palette';
+import React from 'react';
+import styled from 'styled-components';
+
+const RegisterFormWrapper = styled.div`
+  sup {
+    color: ${palette.mainColor};
+  }
+`;
+
+const RegisterFormHead = styled(ListHead)`
+  font-weight: 500;
+`;
+
+const RegisterInput = styled(InputStyled)`
+  width: 100%;
+  margin: 5px 0;
+`;
+
+const RegisterQue = styled.div`
+  margin: 15px 0px 10px 4px;
+`;
+
+const FindAddressBtn = styled(Button)`
+  margin: 5px;
+`;
+
+const TermAllBox = styled.div`
+  font-weight: 500;
+`;
+
+const TermStyled = styled.div`
+  margin: 10px;
+`;
+
+const TermBox = styled.div`
+  border: 1px solid ${palette.border};
+  padding: 5px;
+  margin: 10px 0;
+`;
+
+const TermCB = styled.input`
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+`;
+
+function RegisterForm() {
+  return (
+    <RegisterFormWrapper>
+      <RegisterFormHead>회원가입</RegisterFormHead>
+      <div>
+        <RegisterQue>
+          이메일<sup>*</sup>
+        </RegisterQue>
+        <RegisterInput placeholder="이메일" type="email" />
+        <RegisterQue>
+          비밀번호<sup>*</sup>
+        </RegisterQue>
+        <RegisterInput placeholder="비밀번호" type="password" />
+        <RegisterInput placeholder="비밀번호 확인" type="password" />
+        <RegisterQue>
+          연락처<sup>*</sup>
+        </RegisterQue>
+        <RegisterInput placeholder="연락처" />
+        <RegisterQue>
+          주소<sup>*</sup>
+        </RegisterQue>
+        <FlexBetween>
+          <RegisterInput placeholder="주소" />
+          <FindAddressBtn width="3rem" height="40px" type="button">
+            찾기
+          </FindAddressBtn>
+        </FlexBetween>
+        <RegisterInput placeholder="상세주소" />
+      </div>
+      <hr />
+      <TermAllBox>
+        <TermCB type="checkbox" id="cb1" />
+        <label htmlFor="cb1" className="all">
+          약관 모두 동의
+        </label>
+      </TermAllBox>
+      <TermBox>
+        <TermStyled>
+          <TermCB type="checkbox" id="cb1" />
+          <label htmlFor="cb1">
+            만 14세 이상입니다<sup>*</sup>
+          </label>
+        </TermStyled>
+        <TermStyled>
+          <TermCB type="checkbox" id="cb1" />
+          <label htmlFor="cb1">
+            Afflunt Closet 약관 동의<sup>*</sup>
+          </label>
+        </TermStyled>
+        <TermStyled>
+          <TermCB type="checkbox" id="cb1" />
+          <label htmlFor="cb1">
+            개인정보수집 및 이용에 대한 안내<sup>*</sup>
+          </label>
+        </TermStyled>
+      </TermBox>
+      <Button
+        width="100%"
+        height="40px"
+        buttonColor="mainColor"
+        hoverButtonColor="mainHoverColor"
+        fontColor="white"
+      >
+        회원 로그인
+      </Button>
+    </RegisterFormWrapper>
+  );
+}
+
+export default RegisterForm;
