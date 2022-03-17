@@ -9,6 +9,7 @@ import CategoryPage from 'pages/CategoryPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
+import MyPage from 'pages/MyPage';
 import Path from './Path';
 
 function Routing() {
@@ -23,6 +24,7 @@ function Routing() {
       <Route path={Path.CategoryPage} element={<CategoryPage />} />
       <Route path={Path.LoginPage} element={<LoginPage />} />
       <Route path={Path.RegisterPage} element={<RegisterPage />} />
+      <Route path={Path.MyPage} element={<MyPage />} />
     </Routes>
   );
 }
