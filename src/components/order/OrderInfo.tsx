@@ -2,6 +2,7 @@ import { mediaMin } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
+import OrderInfoCal from './\bOrderInfoCal';
 import OrderInfoGoods from './OrderInfoGoods';
 
 const OrderInfoSection = styled.section`
@@ -10,6 +11,7 @@ const OrderInfoSection = styled.section`
   margin-top: 20px;
   ${mediaMin.large} {
     max-width: 1024px;
+    font-size: 14px;
   }
 `;
 
@@ -41,8 +43,6 @@ const OrderInfoColumnList = styled.div`
   }
 `;
 
-const OrderInfoTotalPrice = styled.div``;
-
 function OrderInfo() {
   return (
     <OrderInfoSection>
@@ -58,6 +58,7 @@ function OrderInfo() {
         </OrderInfoColumnList>
         <OrderInfoGoods />
         <OrderInfoGoods />
+        <OrderInfoCal />
       </OrderInfoInner>
     </OrderInfoSection>
   );

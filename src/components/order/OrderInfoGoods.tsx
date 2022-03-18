@@ -41,7 +41,7 @@ const OrderInfoGoodsDetail = styled.div`
   line-height: 1.3;
 
   span {
-    width: 80px;
+    width: 80%;
     margin: 0 auto;
   }
 
