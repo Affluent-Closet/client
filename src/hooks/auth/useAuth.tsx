@@ -3,7 +3,8 @@ import { IRegisterRequest } from 'type/auth';
 import useAuthValidation from './useAuthValidation';
 
 export default function useAuth() {
-  const { errorMessage, onFormValidation } = useAuthValidation();
+  const { errorMessage, onFormValidation, setErrorMessage } =
+    useAuthValidation();
   const [userForm, setUserForm] = useState<IRegisterRequest>({
     email: '',
     password: '',
@@ -16,7 +17,14 @@ export default function useAuth() {
   const onChangeForm = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserForm((prev) => ({ ...prev, [name]: value }));
-    console.log(onFormValidation(name, value));
+    onFormValidation(name, value);
+    if (name === 'passwordConfirm') {
+      if (userForm.password !== value)
+        setErrorMessage((prev) => ({
+          ...prev,
+          passwordError: '비밀번호가 일치하지 않습니다.',
+        }));
+    }
   }, []);
 
   return { userForm, onChangeForm, errorMessage };

@@ -58,6 +58,22 @@ export default function useAuthValidation() {
     return true;
   };
 
+  // const onCheckPasswordComfirm = (passwordConfirm: string) => {};
+  const onCheckPhoneNum = (phoneNum: string) => {
+    const phoneNumRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
+    if (!phoneNumRegex.test(phoneNum)) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        phoneError: '-를 제외한 휴대번호 11자리를 입력해 주세요',
+      }));
+      return false;
+    }
+    setErrorMessage((prev) => ({
+      ...prev,
+      phoneError: '올바른 전화번호 형식입니다.',
+    }));
+    return true;
+  };
   const onFormValidation = (name: string, value: string) => {
     switch (name) {
       case 'email':
@@ -66,10 +82,13 @@ export default function useAuthValidation() {
       case 'password':
         onCheckPassword(value);
         break;
+      case 'phoneNum':
+        onCheckPhoneNum(value);
+        break;
       default:
         break;
     }
   };
 
-  return { errorMessage, onFormValidation };
+  return { errorMessage, onFormValidation, setErrorMessage };
 }

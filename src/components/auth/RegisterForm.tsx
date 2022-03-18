@@ -53,6 +53,11 @@ const TermCB = styled.input`
   margin: 5px;
 `;
 
+const ErrorBox = styled.div`
+  font-size: 12px;
+  color: ${palette.mainLightColor};
+`;
+
 function RegisterForm() {
   const { userForm, onChangeForm, errorMessage } = useAuth();
   const { email, password, passwordConfirm, phoneNum, address1, address2 } =
@@ -75,7 +80,9 @@ function RegisterForm() {
           value={email}
           onChange={onChangeForm}
         />
-        {errorMessage?.emailError && <div>{errorMessage.emailError}</div>}
+        {errorMessage?.emailError && (
+          <ErrorBox>{errorMessage.emailError}</ErrorBox>
+        )}
         <RegisterQue>
           비밀번호 <sup>*</sup>
         </RegisterQue>
@@ -86,7 +93,7 @@ function RegisterForm() {
           value={password}
           onChange={onChangeForm}
         />
-        {errorMessage?.passwordError && <div>{errorMessage.passwordError}</div>}
+
         <RegisterInput
           placeholder="비밀번호 확인"
           type="password"
@@ -94,6 +101,9 @@ function RegisterForm() {
           value={passwordConfirm}
           onChange={onChangeForm}
         />
+        {errorMessage?.passwordError && (
+          <ErrorBox>{errorMessage.passwordError}</ErrorBox>
+        )}
         <RegisterQue>
           연락처 <sup>*</sup>
         </RegisterQue>
@@ -104,6 +114,9 @@ function RegisterForm() {
           value={phoneNum}
           onChange={onChangeForm}
         />
+        {errorMessage?.phoneError && (
+          <ErrorBox>{errorMessage.phoneError}</ErrorBox>
+        )}
         <RegisterQue>
           주소 <sup>*</sup>
         </RegisterQue>
