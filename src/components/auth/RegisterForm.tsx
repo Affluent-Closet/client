@@ -59,7 +59,8 @@ const ErrorBox = styled.div`
 `;
 
 function RegisterForm() {
-  const { userForm, onChangeForm, errorMessage } = useAuth();
+  const { userForm, onChangeForm, errorMessage, onChangePasswordConfirm } =
+    useAuth();
   const { email, password, passwordConfirm, phoneNum, address1, address2 } =
     userForm;
   return (
@@ -99,7 +100,7 @@ function RegisterForm() {
           type="password"
           name="passwordConfirm"
           value={passwordConfirm}
-          onChange={onChangeForm}
+          onChange={(e) => onChangePasswordConfirm(e, password)}
         />
         {errorMessage?.passwordError && (
           <ErrorBox>{errorMessage.passwordError}</ErrorBox>

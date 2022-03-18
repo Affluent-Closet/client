@@ -58,7 +58,25 @@ export default function useAuthValidation() {
     return true;
   };
 
-  // const onCheckPasswordComfirm = (passwordConfirm: string) => {};
+  // const onCheckPasswordComfirm = (
+  //   passwordConfirm: string,
+  //   password: string,
+  // ) => {
+  //   console.log('비번 : ', password, '비번확인 : ', passwordConfirm);
+  //   if (password !== passwordConfirm) {
+  //     setErrorMessage((prev) => ({
+  //       ...prev,
+  //       passwordError: '비밀번호가 일치하지 않습니다.',
+  //     }));
+  //     return false;
+  //   }
+  //   setErrorMessage((prev) => ({
+  //     ...prev,
+  //     passwordError: '비밀번호가 일치합니다.',
+  //   }));
+  //   return true;
+  // };
+
   const onCheckPhoneNum = (phoneNum: string) => {
     const phoneNumRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
     if (!phoneNumRegex.test(phoneNum)) {
@@ -74,6 +92,7 @@ export default function useAuthValidation() {
     }));
     return true;
   };
+
   const onFormValidation = (name: string, value: string) => {
     switch (name) {
       case 'email':
@@ -85,10 +104,12 @@ export default function useAuthValidation() {
       case 'phoneNum':
         onCheckPhoneNum(value);
         break;
+      // case 'passwordConfirm':
+      //   onCheckPasswordComfirm(value, password);
+      //   break;
       default:
         break;
     }
   };
-
   return { errorMessage, onFormValidation, setErrorMessage };
 }
