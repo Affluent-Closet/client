@@ -5,6 +5,7 @@ import {
   InputStyled,
   ListHead,
 } from 'components/common/CommonComponents';
+import useAuth from 'hooks/auth/useAuth';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -53,11 +54,13 @@ const TermCB = styled.input`
 `;
 
 function RegisterForm() {
+  const { userForm, onChangeForm, errorMessage } = useAuth();
+  const { email, password, passwordConfirm, phoneNum, address1, address2 } =
+    userForm;
   return (
     <RegisterFormWrapper
       onSubmit={() => {
         // eslint-disable-next-line no-console
-        console.log('안녕하세요');
       }}
     >
       <RegisterFormHead>회원가입</RegisterFormHead>
@@ -65,16 +68,42 @@ function RegisterForm() {
         <RegisterQue>
           이메일 <sup>*</sup>
         </RegisterQue>
-        <RegisterInput placeholder="이메일" type="email" />
+        <RegisterInput
+          placeholder="이메일"
+          type="email"
+          name="email"
+          value={email}
+          onChange={onChangeForm}
+        />
+        {errorMessage?.emailError && <div>{errorMessage.emailError}</div>}
         <RegisterQue>
           비밀번호 <sup>*</sup>
         </RegisterQue>
-        <RegisterInput placeholder="비밀번호" type="password" />
-        <RegisterInput placeholder="비밀번호 확인" type="password" />
+        <RegisterInput
+          placeholder="비밀번호"
+          type="password"
+          name="password"
+          value={password}
+          onChange={onChangeForm}
+        />
+        {errorMessage?.passwordError && <div>{errorMessage.passwordError}</div>}
+        <RegisterInput
+          placeholder="비밀번호 확인"
+          type="password"
+          name="passwordConfirm"
+          value={passwordConfirm}
+          onChange={onChangeForm}
+        />
         <RegisterQue>
           연락처 <sup>*</sup>
         </RegisterQue>
-        <RegisterInput placeholder="연락처" />
+        <RegisterInput
+          placeholder="연락처"
+          type="string"
+          name="phoneNum"
+          value={phoneNum}
+          onChange={onChangeForm}
+        />
         <RegisterQue>
           주소 <sup>*</sup>
         </RegisterQue>
