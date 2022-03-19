@@ -1,3 +1,4 @@
+import axios from 'axios';
 import GoodsInfo from 'components/goods/GoodsInfo';
 import GoodsInquiry from 'components/goods/GoodsInquiry';
 import GoodsReview from 'components/goods/GoodsReview';
@@ -5,7 +6,7 @@ import GoodsReviewSummery from 'components/goods/GoodsReviewSummery';
 import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
 import { mediaSize } from 'libs/styles/media';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const GoodsDetailWrapper = styled.div`
@@ -27,6 +28,16 @@ function GoodsPage() {
     2: useMoveScrool('상품 문의'),
     length: 3,
   };
+  // const [asd, setasd] = useState();
+  // useEffect(() => {
+  //   const data = async () => {
+  //     const response = await axios.get(
+  //       'https://affluent-closet.herokuapp.com/goods',
+  //     );
+  //     setasd(response.data);
+  //   };
+  //   data();
+  // }, []);
   return (
     <>
       <GoodsInfo />

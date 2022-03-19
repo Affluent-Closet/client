@@ -39,7 +39,7 @@ const ButtonStyled = styled.button<ButtonStyle>`
     fontSize = '14px',
     fontWeight = '500',
     hoverButtonColor = 'mainColor',
-    hoverFontColor = 'hoverDarkColor',
+    hoverFontColor = 'backgroundColor',
   }) => css`
     width: ${width};
     height: ${height};

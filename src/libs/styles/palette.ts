@@ -9,6 +9,7 @@ export const palette = {
   discountColor: '#AD813E',
   temp: 'rgba(34,34,34,.5)',
   ListItemCategory: '#AAAAAA',
+  kakaoColor: '#F7E600',
   // grayLight: '#D4D2CF',
   // grayLightest: '#F3F2EF',
   // grayDarkest: '#323232',
