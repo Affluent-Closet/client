@@ -1,16 +1,14 @@
+import React from 'react';
 import {
   FlexCenter,
   ItemGrid,
   ListHead,
 } from 'components/common/CommonComponents';
 import GridGoodsItem from 'components/common/GridGoodsItem';
-import SearchField from 'components/search/SearchField';
 import { palette } from 'libs/styles/palette';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Path from 'routes/Path';
 import styled from 'styled-components';
-import { SearchPageWrapper } from './SearchPage';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
@@ -33,10 +31,9 @@ const SortMenu = styled.div`
   }
 `;
 
-function SearchResultPage() {
+function SearchResultItem() {
   return (
-    <SearchPageWrapper>
-      <SearchField />
+    <>
       <SearchListHead>
         <FlexCenter>
           <div className="search-keyword">데님</div>에 대한 검색 결과
@@ -58,8 +55,8 @@ function SearchResultPage() {
         <GridGoodsItem />
         <GridGoodsItem />
       </ItemGrid>
-    </SearchPageWrapper>
+    </>
   );
 }
 
-export default SearchResultPage;
+export default SearchResultItem;

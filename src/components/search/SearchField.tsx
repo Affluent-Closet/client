@@ -33,6 +33,7 @@ export const SearchTit = styled.div`
   text-transform: uppercase;
   margin-bottom: 3%;
 `;
+
 function SearchField() {
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -43,7 +44,7 @@ function SearchField() {
 
   return (
     <>
-      <SearchTit placeholder="어떤 상품을 찾으세요?">Search</SearchTit>
+      <SearchTit>Search</SearchTit>
       <SearchFieldStyled
         type="text"
         placeholder="어떤 상품을 찾으시나요?"
