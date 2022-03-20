@@ -1,8 +1,9 @@
+import { OrderPageWrapper } from 'components/common/CommonComponents';
 import { mediaMin } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
-import OrderInfoCal from './\bOrderInfoCal';
+import OrderInfoCal from './OrderInfoCal';
 import OrderInfoGoods from './OrderInfoGoods';
 
 const OrderInfoSection = styled.section`
@@ -10,14 +11,8 @@ const OrderInfoSection = styled.section`
   margin: 0 auto;
   margin-top: 20px;
   ${mediaMin.large} {
-    max-width: 1024px;
     font-size: 14px;
   }
-`;
-
-const OrderInfoInner = styled.div`
-  margin-top: 6px;
-  border-top: 2px solid ${palette.mainColor};
 `;
 
 const OrderInfoColumnList = styled.div`
@@ -47,7 +42,7 @@ function OrderInfo() {
   return (
     <OrderInfoSection>
       <h3>상품정보</h3>
-      <OrderInfoInner>
+      <OrderPageWrapper>
         <OrderInfoColumnList>
           {/* map 쓸지 고민 */}
           <span>이미지</span>
@@ -59,7 +54,7 @@ function OrderInfo() {
         <OrderInfoGoods />
         <OrderInfoGoods />
         <OrderInfoCal />
-      </OrderInfoInner>
+      </OrderPageWrapper>
     </OrderInfoSection>
   );
 }

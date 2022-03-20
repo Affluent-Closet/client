@@ -1,4 +1,5 @@
 import { mediaMin } from 'libs/styles/media';
+import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
 
 export const FlexCenter = styled.div`
@@ -46,4 +47,9 @@ export const ItemGrid = styled.div`
 export const PageContainer = styled.div`
   margin: 30px;
   text-align: center;
+`;
+
+export const OrderPageWrapper = styled.div`
+  margin-top: 6px;
+  border-top: 2px solid ${palette.mainColor};
 `;

@@ -1,4 +1,4 @@
-import { NotFoundImg } from 'assets/Img';
+import { NotFoundImg } from 'assets/img';
 import { PageContainer } from 'components/common/CommonComponents';
 import React from 'react';
 import styled from 'styled-components';
