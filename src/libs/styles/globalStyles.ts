@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { mediaMin } from './media';
 
 const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -11,6 +12,11 @@ html,
 body,
 #root {
   height: 100%;
+    /* 폰트 사이즈 정의 */
+    font-size: 8px;
+  ${mediaMin.large} {
+    font-size: 12px;
+  }
 }
 * {
   box-sizing: border-box;

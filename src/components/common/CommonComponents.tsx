@@ -48,8 +48,11 @@ export const PageContainer = styled.div`
   margin: 30px;
   text-align: center;
 `;
+export const PageLayout = styled.div`
+  margin: 20px;
+`;
 
-export const OrderPageWrapper = styled.div`
+export const OrderPageInner = styled.div`
   margin-top: 6px;
   border-top: 2px solid ${palette.mainColor};
 `;

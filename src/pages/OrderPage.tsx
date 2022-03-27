@@ -1,6 +1,6 @@
-import { ListHead, PageContainer } from 'components/common/CommonComponents';
+import { ListHead, PageLayout } from 'components/common/CommonComponents';
 import OrderInfo from 'components/order/OrderInfo';
-import OrderShippingInput from 'components/order/OrderShippingInput';
+import OrderShippingInfo from 'components/order/OrderShippingInfo';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,11 +10,11 @@ const OrderPageListHead = styled(ListHead)`
 
 function OrderPage() {
   return (
-    <>
+    <PageLayout>
       <OrderPageListHead>주문 정보</OrderPageListHead>
       <OrderInfo />
-      <OrderShippingInput />
-    </>
+      <OrderShippingInfo />
+    </PageLayout>
   );
 }
 

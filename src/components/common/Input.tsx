@@ -1,5 +1,5 @@
 import { palette } from 'libs/styles/palette';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
