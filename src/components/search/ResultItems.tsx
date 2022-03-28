@@ -15,10 +15,11 @@ const SearchListHead = styled(ListHead)`
   justify-content: space-between;
   .search-keyword {
     color: ${palette.mainColor};
+    text-transform: uppercase;
   }
 `;
 
-const SortMenu = styled.div`
+export const SortMenu = styled.div`
   padding: 0px 4px;
   border-right: 1px solid ${palette.temp};
   color: ${palette.temp};
@@ -31,13 +32,21 @@ const SortMenu = styled.div`
   }
 `;
 
-function SearchResultItem() {
+interface ResultItemsProps {
+  isSearch?: boolean;
+  keyword?: string;
+}
+function ResultItems({ isSearch, keyword }: ResultItemsProps) {
   return (
     <>
       <SearchListHead>
-        <FlexCenter>
-          <div className="search-keyword">데님</div>에 대한 검색 결과
-        </FlexCenter>
+        {isSearch ? (
+          <FlexCenter>
+            <div className="search-keyword">데님</div>에 대한 검색 결과
+          </FlexCenter>
+        ) : (
+          <div className="search-keyword">{keyword}</div>
+        )}
         <FlexCenter>
           <SortMenu>
             <Link to={Path.SearchResultPage}>인기순</Link>
@@ -59,4 +68,4 @@ function SearchResultItem() {
   );
 }
 
-export default SearchResultItem;
+export default ResultItems;

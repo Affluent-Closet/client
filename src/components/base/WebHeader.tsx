@@ -1,22 +1,26 @@
 import { TextLogo } from 'assets/img';
 import LeftHeaderBox from 'components/base/LeftHeaderBox';
-import { mediaMinQuery, mediaSize } from 'libs/styles/media';
+import { mediaMaxQuery, mediaSize } from 'libs/styles/media';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Path from 'routes/Path';
 import styled from 'styled-components';
 import RightHeaderBox from './RightHeaderBox';
 
-const WebHeaderBlock = styled.div`
-  display: none;
-  position: relative;
-  ${mediaMinQuery(mediaSize.large)} {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 15px;
-    color: black;
-    max-width: ${mediaSize.xlarge}px;
-    margin: 0 auto;
+const WebHeaderBlock = styled.header`
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+  color: black;
+  width: ${mediaSize.xlarge}px;
+  margin: 0 auto;
+  ${mediaMaxQuery(mediaSize.large)} {
+    display: none;
+    position: relative;
+  }
+  ${mediaMaxQuery(mediaSize.xlarge)} {
+    width: auto;
+    margin: unset;
   }
 `;
 

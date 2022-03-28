@@ -1,13 +1,13 @@
 import { PageContainer } from 'components/common/CommonComponents';
 import SearchField from 'components/search/SearchField';
-import SearchResultItem from 'components/search/SearchResultItem';
+import ResultItems from 'components/search/ResultItems';
 import React from 'react';
 
 function SearchResultPage() {
   return (
     <PageContainer>
       <SearchField />
-      <SearchResultItem />
+      <ResultItems isSearch keyword="데님" />
     </PageContainer>
   );
 }

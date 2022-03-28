@@ -4,8 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NotFoundWraper = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 30%;
 `;
 
 function NotFoundPage() {

@@ -8,22 +8,29 @@ import Footer from 'components/footer';
 import Routing from './routes/Routing';
 
 const ContentsLayout = styled.div`
-  /* background-color: aliceblue; */
+  width: 100%;
   max-width: ${mediaSize.xlarge}px;
   margin: 0 auto;
+  flex: 1 0 auto;
+`;
+
+const AppLayout = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 function App() {
   return (
-    <div className="App">
+    <AppLayout>
       <GlobalStyles />
       <MobileHeader />
       <WebHeader />
       <ContentsLayout>
         <Routing />
       </ContentsLayout>
-      {/* <Footer /> */}
-    </div>
+      <Footer />
+    </AppLayout>
   );
 }
 

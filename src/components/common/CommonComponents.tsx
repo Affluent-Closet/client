@@ -1,4 +1,4 @@
-import { mediaMin } from 'libs/styles/media';
+import { mediaMax, mediaMin } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
 
@@ -11,6 +11,12 @@ export const FlexCenter = styled.div`
 export const FlexBetween = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -47,6 +53,19 @@ export const ItemGrid = styled.div`
 export const PageContainer = styled.div`
   margin: 30px;
   text-align: center;
+  ${mediaMax.small} {
+    margin: 5px;
+  }
+  ${mediaMax.xsmall} {
+    margin: 0px;
+  }
+`;
+
+export const InputStyled = styled.input`
+  width: 300px;
+  border: 1px solid ${palette.backgroundHover};
+  border-radius: 5px;
+  padding: 10px 0 10px 24px;
 `;
 export const PageLayout = styled.div`
   margin: 20px;

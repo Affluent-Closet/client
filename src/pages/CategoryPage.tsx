@@ -1,6 +1,6 @@
 import { PageContainer } from 'components/common/CommonComponents';
 import { SearchTit } from 'components/search/SearchField';
-import SearchResultItem from 'components/search/SearchResultItem';
+import ResultItems from 'components/search/ResultItems';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -10,8 +10,8 @@ function CategoryPage() {
   console.log(params.categoryid);
   return (
     <PageContainer>
-      <SearchTit>Top</SearchTit>
-      <SearchResultItem />
+      <SearchTit>Category</SearchTit>
+      <ResultItems isSearch={false} keyword={params.categoryid} />
     </PageContainer>
   );
 }

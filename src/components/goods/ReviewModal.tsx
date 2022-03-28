@@ -106,10 +106,7 @@ function ReviewModal({ isModal, onToggle }: ReviewModalProps) {
         <SlideTemplete />
         <ReviewDetail>
           <ReviewGoodsInfo />
-          <div>
-            글 들어갈 자리입니다.하나 더 사고싶은 의향 있어요! 레이어드로 입기
-            길이가 딱 좋아서 무조건 추천합니다
-          </div>
+          <div>글 들어갈 자리입니다.</div>
         </ReviewDetail>
       </ModalInner>
       <Background onClick={onToggle} />
