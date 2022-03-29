@@ -80,5 +80,5 @@ export const InputStyled = styled.input`
   width: 300px;
   border: 1px solid ${palette.backgroundHover};
   border-radius: 5px;
-  padding: 10px 0 10px 24px;
+  padding: 10px 0 10px 14px;
 `;
