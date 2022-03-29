@@ -1,4 +1,4 @@
-import { mediaMax, mediaMin } from 'libs/styles/media';
+import { mediaMax, mediaMin, mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
 
@@ -29,6 +29,11 @@ export const ListHead = styled.h2`
   font-weight: 600;
 `;
 
+export const FlexAlignCenter = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const ItemGrid = styled.div`
   text-align: left;
   display: grid;
@@ -52,7 +57,17 @@ export const ItemGrid = styled.div`
 
 export const PageContainer = styled.div`
   margin: 30px;
-  text-align: center;
+  ${mediaMax.small} {
+    margin: 5px;
+  }
+  ${mediaMax.xsmall} {
+    margin: 0px;
+  }
+`;
+
+export const LargePageContainer = styled.div`
+  margin: 0 auto;
+  max-width: ${mediaSize.large}px;
   ${mediaMax.small} {
     margin: 5px;
   }
