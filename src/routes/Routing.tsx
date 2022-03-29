@@ -10,6 +10,7 @@ import NotFoundPage from 'pages/NotFoundPage';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
 import ProfilePage from 'pages/ProfilePage';
+import PostGoodsPage from 'pages/PostGoodsPage';
 import Path from './Path';
 
 function Routing() {
@@ -25,6 +26,7 @@ function Routing() {
       <Route path={Path.LoginPage} element={<LoginPage />} />
       <Route path={Path.RegisterPage} element={<RegisterPage />} />
       <Route path={Path.ProfilePage} element={<ProfilePage />} />
+      <Route path={Path.PostGoodsPage} element={<PostGoodsPage />} />
     </Routes>
   );
 }
