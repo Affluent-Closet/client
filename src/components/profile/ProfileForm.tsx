@@ -55,7 +55,7 @@ const EndServiceBtn = styled.div`
   font-size: 14px;
   button {
     color: ${palette.temp};
-    :hover {
+    &:hover {
       color: black;
     }
   }
@@ -96,13 +96,13 @@ function ProfileForm() {
         <RowStyled>
           <div className="info-tit">새 비밀번호</div>
           <ContentStyled>
-            <input type="text" className="info-ans" />
+            <input type="password" className="info-ans" />
           </ContentStyled>
         </RowStyled>
         <RowStyled>
           <div className="info-tit">비밀번호 확인</div>
           <ContentStyled>
-            <input type="text" className="info-ans" />
+            <input type="password" className="info-ans" />
             <OkayBtn>변경하기</OkayBtn>
           </ContentStyled>
         </RowStyled>
