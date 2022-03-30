@@ -9,6 +9,7 @@ enum Path {
   RegisterPage = '/register',
   ProfilePage = '/profile',
   PostGoodsPage = '/postgoods',
+  PostReviewPage = '/postreview',
 }
 
 export default Path;
