@@ -63,11 +63,41 @@ const ImgBox = styled.div`
   background-color: antiquewhite;
   margin: 10px;
 `;
+
+const InputFileStyled = styled.input`
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+  width: 78%;
+  color: #999999;
+`;
+
+const InputFileLabel = styled.label`
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+`;
+const ResetInput = styled.div``;
+
 function PostGoodsBox() {
   return (
     <>
       <PostInputBox>
-        <PostQue>썸네일</PostQue>
+        <div>
+          <PostQue>썸네일</PostQue>
+          <ResetInput>
+            <InputFileStyled type="file" />
+            <InputFileLabel>사진 올리기</InputFileLabel>
+          </ResetInput>
+        </div>
+
         <ImgBox />
       </PostInputBox>
       <PostInputBox>
