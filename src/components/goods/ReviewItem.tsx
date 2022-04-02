@@ -8,7 +8,7 @@ const ReviewItemContainer = styled.div`
   margin-top: 20px;
   cursor: pointer;
 `;
-const ReviewImg = styled.img`
+export const ReviewImg = styled.img`
   width: 160px;
   height: 196px;
   border-radius: 10px;
