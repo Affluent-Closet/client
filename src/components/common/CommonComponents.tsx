@@ -1,4 +1,4 @@
-import { mediaMax, mediaMin } from 'libs/styles/media';
+import { mediaMax, mediaMin, mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
 
@@ -66,4 +66,13 @@ export const InputStyled = styled.input`
   border: 1px solid ${palette.backgroundHover};
   border-radius: 5px;
   padding: 10px 0 10px 24px;
+`;
+export const PageLayout = styled.div`
+  max-width: ${mediaSize.large}px;
+  margin: 0 auto;
+`;
+
+export const OrderInner = styled.div`
+  margin-top: 6px;
+  border-top: 2px solid ${palette.mainColor};
 `;

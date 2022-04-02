@@ -7,7 +7,7 @@ import { CgMoreVertical } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import transitions from 'libs/styles/transitions';
 import useOutSideClick from 'hooks/common/useOutSideClick';
-import { profileMenus } from 'libs/Lists/NavItems';
+import { profileMenus } from 'libs/lists/NavItems';
 
 const PorfileWrapper = styled.div`
   background-color: ${palette.mainColor};

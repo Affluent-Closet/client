@@ -29,7 +29,7 @@ function App() {
       <ContentsLayout>
         <Routing />
       </ContentsLayout>
-      <Footer />
+      {/* <Footer /> */}
     </AppLayout>
   );
 }
