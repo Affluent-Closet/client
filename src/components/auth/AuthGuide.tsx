@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const AuthTitle = styled.div`
   font-size: 26px;
-  text-align: left;
   margin: 50px;
   ${mediaMax.small} {
     margin: 50px 15px;
@@ -15,7 +14,6 @@ const AuthTitle = styled.div`
 
 const GuideBox = styled.div`
   font-size: 16px;
-  text-align: left;
   margin: 4px 60px;
   ${mediaMax.small} {
     margin: 0 15px;

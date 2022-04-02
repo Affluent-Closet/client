@@ -6,6 +6,8 @@ import {
   ListHead,
 } from 'components/common/CommonComponents';
 import useAuth from 'hooks/auth/useAuth';
+import useDaumAdress from 'hooks/common/useDaumAddress';
+import useToggle from 'hooks/common/useToggle';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -55,7 +57,7 @@ const TermCB = styled.input`
 
 const ErrorBox = styled.div`
   font-size: 12px;
-  color: ${palette.mainLightColor};
+  color: ${palette.mainColor};
 `;
 
 function RegisterForm() {
@@ -63,6 +65,9 @@ function RegisterForm() {
     useAuth();
   const { email, password, passwordConfirm, phoneNum, address1, address2 } =
     userForm;
+
+  const [zonecode, address, onComplet] = useDaumAdress();
+  const [isDaum, onToggleDaum] = useToggle();
   return (
     <RegisterFormWrapper
       onSubmit={() => {

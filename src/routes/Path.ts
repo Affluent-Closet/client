@@ -7,7 +7,7 @@ enum Path {
   CategoryPage = '/category/:categoryid',
   LoginPage = '/login',
   RegisterPage = '/register',
-  MyPage = '/mypage',
+  ProfilePage = '/profile',
 }
 
 export default Path;
