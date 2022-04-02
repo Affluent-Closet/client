@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { FlexAlignCenter } from 'components/common/CommonComponents';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import { AiFillStar } from 'react-icons/ai';
 import { palette } from 'libs/styles/palette';
@@ -23,8 +23,12 @@ const PIndex = styled.p`
   margin: 0 5px;
 `;
 
-function RatingSection() {
-  const [ratingIndex, setRatingIndex] = useState(1);
+interface RatingSectionProps {
+  ratingIndex: number;
+  setRatingIndex: Dispatch<SetStateAction<number>>;
+}
+
+function RatingSection({ ratingIndex, setRatingIndex }: RatingSectionProps) {
   const ArrayIndexes = [1, 2, 3, 4, 5];
   return (
     <RatingContainer>
