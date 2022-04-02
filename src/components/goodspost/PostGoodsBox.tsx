@@ -65,13 +65,7 @@ const ImgBox = styled.div`
 `;
 
 const InputFileStyled = styled.input`
-  display: inline-block;
-  height: 40px;
-  padding: 0 10px;
-  vertical-align: middle;
-  border: 1px solid #dddddd;
-  width: 78%;
-  color: #999999;
+  display: none;
 `;
 
 const InputFileLabel = styled.label`
@@ -84,7 +78,6 @@ const InputFileLabel = styled.label`
   height: 40px;
   margin-left: 10px;
 `;
-const ResetInput = styled.div``;
 
 function PostGoodsBox() {
   return (
@@ -92,16 +85,22 @@ function PostGoodsBox() {
       <PostInputBox>
         <div>
           <PostQue>썸네일</PostQue>
-          <ResetInput>
+          <InputFileLabel>
             <InputFileStyled type="file" />
-            <InputFileLabel>사진 올리기</InputFileLabel>
-          </ResetInput>
+            사진 업로드
+          </InputFileLabel>
         </div>
 
         <ImgBox />
       </PostInputBox>
       <PostInputBox>
-        <PostQue>사진</PostQue>
+        <div>
+          <PostQue>사진</PostQue>
+          <InputFileLabel>
+            <InputFileStyled type="file" />
+            사진 업로드
+          </InputFileLabel>
+        </div>
         <ItemGrid>
           <ImgBox /> <ImgBox />
           <ImgBox /> <ImgBox />
