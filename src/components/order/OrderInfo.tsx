@@ -1,4 +1,4 @@
-import { OrderPageInner } from 'components/common/CommonComponents';
+import { OrderInner } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -37,7 +37,7 @@ function OrderInfo() {
   return (
     <OrderInfoSection>
       <h3>상품정보</h3>
-      <OrderPageInner>
+      <OrderInner>
         <OrderInfoColumnList>
           {/* map 쓸지 고민 */}
           <li>이미지</li>
@@ -49,7 +49,7 @@ function OrderInfo() {
         <OrderInfoGoods />
         <OrderInfoGoods />
         <OrderInfoCal />
-      </OrderPageInner>
+      </OrderInner>
     </OrderInfoSection>
   );
 }

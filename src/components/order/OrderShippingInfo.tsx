@@ -1,5 +1,5 @@
 import Button from 'components/common/Button';
-import { OrderPageInner } from 'components/common/CommonComponents';
+import { OrderInner } from 'components/common/CommonComponents';
 import Input from 'components/common/Input';
 import { mediaMin } from 'libs/styles/media';
 import React from 'react';
@@ -34,16 +34,16 @@ const SearchAddr = styled.div`
   align-items: baseline;
 `;
 const ShippingInfoAdrrssWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
 `;
 
 function OrderShippingInfo() {
   return (
     <ShippingInfoSection>
       <h3>배송 정보</h3>
-      <OrderPageInner>
+      <OrderInner>
         <ShippingInfoItem>
           <ShippingInfoCategory>
             <h4>수령인</h4>
@@ -77,7 +77,7 @@ function OrderShippingInfo() {
           </ShippingInfoCategory>
           <ItemInput width="100%" height="auto" />
         </ShippingInfoItem>
-      </OrderPageInner>
+      </OrderInner>
     </ShippingInfoSection>
   );
 }
