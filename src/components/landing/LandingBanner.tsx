@@ -1,18 +1,19 @@
+import { Banner } from 'assets/Img';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
-const LandingBannerContainer = styled.section`
+const LandingBannerContainer = styled.img`
   width: 100%;
-  height: 180px;
   background-color: ${palette.temp};
   max-width: ${mediaSize.xlarge}px;
   margin: 0 auto;
 `;
 
 function LandingBanner() {
-  return <LandingBannerContainer />;
+  // 베너 정식 사이즈는 1306x390px 입니다.
+  return <LandingBannerContainer src={Banner} />;
 }
 
 export default LandingBanner;
