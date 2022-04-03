@@ -2,7 +2,6 @@ import { ItemGrid } from 'components/common/CommonComponents';
 import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
-import { IGoodsResponse } from 'model/goods';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import GridGoodsItem from '../common/GridGoodsItem';
@@ -32,7 +31,8 @@ function LandingList({ children }: { children: ReactNode }) {
   return (
     <LandingListContainer>
       {isLoading ? (
-        <div>asd</div>
+        // eslint-disable-next-line jsx-a11y/alt-text
+        <img src="https://loadingapng.com/animation.php?image=5&fore_color=8E1FFF&back_color=FFFFFF&size=128x128&transparency=0&image_type=0&uncacher=46.124579074766395" />
       ) : (
         <LandingListInner>
           <LandingListCategory>
