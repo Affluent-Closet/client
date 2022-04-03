@@ -56,14 +56,7 @@ function ResultItems({ isSearch, keyword }: ResultItemsProps) {
           <SortMenu>판매량순</SortMenu>
         </FlexCenter>
       </SearchListHead>
-      <ItemGrid>
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-      </ItemGrid>
+      <ItemGrid>{/* <GridGoodsItem /> */}</ItemGrid>
     </>
   );
 }
