@@ -28,16 +28,6 @@ function GoodsPage() {
     2: useMoveScrool('상품 문의'),
     length: 3,
   };
-  // const [asd, setasd] = useState();
-  // useEffect(() => {
-  //   const data = async () => {
-  //     const response = await axios.get(
-  //       'https://affluent-closet.herokuapp.com/goods',
-  //     );
-  //     setasd(response.data);
-  //   };
-  //   data();
-  // }, []);
   return (
     <>
       <GoodsInfo />
