@@ -20,5 +20,5 @@ export interface IGoodsResponse {
   pageSize: number;
   totalCount: number;
   totalPage: number;
-  items: IGoodsItem;
+  items: Array<IGoodsItem>;
 }
