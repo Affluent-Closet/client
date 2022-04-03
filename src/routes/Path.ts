@@ -5,6 +5,7 @@ enum Path {
   SearchPage = '/search',
   SearchResultPage = '/search/result',
   CategoryPage = '/category/:categoryid',
+  CategoryPath = '/category',
   LoginPage = '/login',
   RegisterPage = '/register',
   ProfilePage = '/profile',
