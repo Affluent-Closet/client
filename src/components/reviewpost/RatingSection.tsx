@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { FlexAlignCenter } from 'components/common/CommonComponents';
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { AiFillStar } from 'react-icons/ai';
 import { palette } from 'libs/styles/palette';
@@ -25,7 +25,7 @@ const PIndex = styled.p`
 
 interface RatingSectionProps {
   ratingIndex: number;
-  setRatingIndex: Dispatch<SetStateAction<number>>;
+  setRatingIndex: (setNumber: number) => void;
 }
 
 function RatingSection({ ratingIndex, setRatingIndex }: RatingSectionProps) {

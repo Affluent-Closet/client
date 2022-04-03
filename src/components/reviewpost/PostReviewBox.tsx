@@ -48,6 +48,9 @@ const ReviewGoodsTit = styled.div`
 `;
 function PostReviewBox() {
   const [ratingIndex, setRatingIndex] = useState(1);
+  const onSetRatingIndex = (setNumber: number) => {
+    setRatingIndex(setNumber);
+  };
   return (
     <>
       <PostInputBox>
@@ -61,7 +64,7 @@ function PostReviewBox() {
         <PostQue>평점</PostQue>
         <RatingSection
           ratingIndex={ratingIndex}
-          setRatingIndex={setRatingIndex}
+          setRatingIndex={onSetRatingIndex}
         />
       </PostInputBox>
       <PostInputBox>
