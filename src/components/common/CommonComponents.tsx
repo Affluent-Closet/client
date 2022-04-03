@@ -68,8 +68,9 @@ export const InputStyled = styled.input`
   padding: 10px 0 10px 24px;
 `;
 export const PageLayout = styled.div`
-  max-width: ${mediaSize.large}px;
+  padding: 20px;
   margin: 0 auto;
+  max-width: ${mediaSize.large}px;
 `;
 
 export const OrderInner = styled.div`

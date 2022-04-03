@@ -25,6 +25,7 @@ function Routing() {
       <Route path={Path.LoginPage} element={<LoginPage />} />
       <Route path={Path.RegisterPage} element={<RegisterPage />} />
       <Route path={Path.ProfilePage} element={<ProfilePage />} />
+      {/* <Route path={Path.CartPage} element={<CartPage />} /> */}
     </Routes>
   );
 }
