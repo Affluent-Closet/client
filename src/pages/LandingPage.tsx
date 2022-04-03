@@ -5,11 +5,11 @@ import React from 'react';
 
 function LandingPage() {
   return (
-    <PageContainer>
+    <>
       <LandingBanner />
       <LandingList>BEST ITEM</LandingList>
       <LandingList>NEW ARRIVAL</LandingList>
-    </PageContainer>
+    </>
   );
 }
 

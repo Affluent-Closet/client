@@ -1,4 +1,4 @@
-import { shopMenus } from 'libs/Lists/NavItems';
+import { shopMenus } from 'libs/lists/NavItems';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import transitions from 'libs/styles/transitions';

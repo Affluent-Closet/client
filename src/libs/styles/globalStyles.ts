@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { mediaMin } from './media';
 
 const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -11,6 +12,7 @@ html,
 body,
 #root {
   height: 100%;
+
 }
 * {
   box-sizing: border-box;
@@ -138,6 +140,9 @@ body {
   font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 폰트 사이즈 정의 */
+  font-size: 14px;
+  font-weight:400;
 }
 ol,
 ul {
