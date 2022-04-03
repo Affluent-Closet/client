@@ -6,27 +6,27 @@ import Path from 'routes/Path';
 export const categoryMenus = [
   {
     name: 'Outer',
-    href: '/Shirt',
+    href: `${Path.CategoryPath}/outer`,
   },
   {
     name: 'Shirt',
-    href: '/Shirt',
+    href: `${Path.CategoryPath}/shirt`,
   },
   {
     name: 'Top',
-    href: '/Top',
+    href: `${Path.CategoryPath}/top`,
   },
   {
     name: 'Knit',
-    href: '/Knit',
+    href: `${Path.CategoryPath}/knit`,
   },
   {
     name: 'Bottom',
-    href: '/Bottom',
+    href: `${Path.CategoryPath}/bottom`,
   },
   {
     name: 'Acc',
-    href: '/Acc',
+    href: `${Path.CategoryPath}/acc`,
   },
 ];
 
@@ -37,7 +37,7 @@ export const communityMenus = [
   },
   {
     name: 'Review',
-    href: '/Review',
+    href: '/review',
   },
   {
     name: 'Order',
@@ -70,22 +70,22 @@ export const shopMenus = [
 
 export const profileMenus = [
   {
-    name: 'myPage',
-    href: `${Path.TestPage}`,
+    name: '프로필',
+    href: `${Path.ProfilePage}`,
     icon: <AiOutlineUser size="22" />,
   },
   {
-    name: 'cart',
+    name: '장바구니',
     href: `${Path.TestPage}`,
     icon: <FiShoppingCart size="22" />,
   },
   {
-    name: 'search',
-    href: `${Path.TestPage}`,
+    name: '검색',
+    href: `${Path.SearchPage}`,
     icon: <AiOutlineSearch size="22" />,
   },
   {
-    name: 'logout',
+    name: '로그아웃',
     href: `${Path.TestPage}`,
     icon: <FiLogOut size="22" />,
   },
