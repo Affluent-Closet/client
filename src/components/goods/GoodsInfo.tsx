@@ -9,7 +9,8 @@ import styled from 'styled-components';
 import GoodsCalculBox from './GoodsCalculBox';
 import GoodsPriceBox from './GoodsPriceBox';
 
-const GoodsInfoWrapper = styled(FlexCenter)`
+const GoodsInfoWrapper = styled.div`
+  display: flex;
   margin: 30px;
   text-align: left;
   ${mediaMax.large} {
