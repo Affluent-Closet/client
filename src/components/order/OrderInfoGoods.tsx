@@ -1,74 +1,129 @@
+import { mediaMin } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
-const OrderInfoGoodsContainer = styled.div`
+const Container = styled.div`
   display: flex;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-start;
+  padding: 20px;
+  margin-bottom: 20px;
   border-bottom: 1px solid ${palette.border};
-  height: 92px;
-
-  div:nth-child(1) {
-    flex-grow: 2;
-  }
-  div:nth-child(2) {
-    flex-grow: 2;
-  }
-  div:nth-child(3) {
-    flex-grow: 1;
-  }
-  div:nth-child(4) {
-    flex-grow: 1;
-  }
-  div:nth-child(5) {
-    flex-grow: 1;
+  ${mediaMin.large} {
+    flex-direction: row;
+    padding: 20px;
   }
 `;
-// const OrderInfoGoodsInner = styled.div``;
-const OrderInfoGoodsImg = styled.div``;
-const OrderInfoGoodsImgTemp = styled.div`
-  width: 56px;
-  height: 72px;
+const GoodsImg = styled.div`
+  width: 100px;
+  height: 130px;
   background-color: ${palette.temp};
-  margin: 0 auto;
-`;
-const OrderInfoGoodsDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  color: ${palette.grayDark};
-  line-height: 1.3;
 
-  span {
-    width: 80%;
-    margin: 0 auto;
+  > div {
+    cursor: pointer;
   }
 
-  span:nth-child(2) {
-    color: black;
-    font-weight: bold;
+  ${mediaMin.large} {
+    width: 130px;
+    height: 170px;
   }
 `;
-const OrderInfoGoodsPrice = styled.div``;
-const OrderInfoGoodsNum = styled.div``;
-const OrderInfoGoodsTotal = styled.div``;
+
+const GoodsDetail = styled.div`
+  padding-left: 20px;
+
+  ${mediaMin.large} {
+    display: flex;
+    width: 100%;
+  }
+  > div:nth-child(1) {
+    ${mediaMin.large} {
+      display: flex;
+      flex-grow: 2;
+      align-items: center;
+    }
+  }
+
+  > div:nth-child(2) {
+    margin-top: 10px;
+    ${mediaMin.large} {
+      display: flex;
+      align-items: center;
+      flex-grow: 2;
+      padding-left: 20px;
+    }
+  }
+  > div:nth-child(3) {
+    margin-top: 8px;
+    ${mediaMin.large} {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+    }
+  }
+`;
+
+const Name = styled.p`
+  letter-spacing: -0.5px;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 300;
+  word-break: break-word;
+
+  ${mediaMin.large} {
+    display: block;
+    line-height: 1.1;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  > span {
+    display: block;
+    color: ${palette.grayDarker};
+    font-size: 12px;
+    margin-bottom: 2px;
+    ${mediaMin.large} {
+      margin-bottom: 5px;
+      letter-spacing: -0.5px;
+    }
+  }
+`;
+
+const Option = styled.p`
+  font-size: 13px;
+  ${mediaMin.large} {
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 400;
+    padding-left: 30px;
+  }
+`;
+
+const Price = styled.p`
+  font-size: 16px;
+  font-family: 'Lato';
+  font-weight: 500;
+`;
 
 function OrderInfoGoods() {
   return (
-    <OrderInfoGoodsContainer>
-      <OrderInfoGoodsImg>
-        <OrderInfoGoodsImgTemp />
-      </OrderInfoGoodsImg>
-      <OrderInfoGoodsDetail>
-        <span>도프제이슨</span>
-        <span>프리미엄 가죽 자켓</span>
-        <span>옵션 : L</span>
-      </OrderInfoGoodsDetail>
-      <OrderInfoGoodsPrice>199000원</OrderInfoGoodsPrice>
-      <OrderInfoGoodsNum>1개</OrderInfoGoodsNum>
-      <OrderInfoGoodsTotal>199000원</OrderInfoGoodsTotal>
-    </OrderInfoGoodsContainer>
+    <Container>
+      <GoodsImg />
+      <GoodsDetail>
+        <div>
+          <Name>
+            <span>도프제이슨</span>
+            프리미엄 가죽 자켓
+          </Name>
+        </div>
+        <div>
+          <Option>옵션 : L</Option>
+        </div>
+        <div>
+          <Price>2,023,000원</Price>
+        </div>
+      </GoodsDetail>
+    </Container>
   );
 }
 
