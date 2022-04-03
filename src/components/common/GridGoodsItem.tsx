@@ -1,4 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
 import { palette } from 'libs/styles/palette';
+import { GoodsProps } from 'model/goods';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,28 +8,35 @@ const ItemContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
   font-size: 18px;
+  text-align: left;
 `;
-const ItemImage = styled.div`
+const ItemImage = styled.img`
   width: 160px;
   height: 200px;
-  background-color: ${palette.temp};
+  border-radius: 4px;
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.12);
+    transition: 0.4s;
+  }
 `;
-const ItemCategory = styled.span`
+const ItemCategory = styled.div`
   color: ${palette.ListItemCategory};
   font-size: 10px;
-  margin-top: 20px;
 `;
 const ItemEle = styled.div`
+  font-size: 16px;
   line-height: 1.5;
 `;
 
-function GridGoodsItem() {
+function GridGoodsItem(item: GoodsProps) {
+  const { category, name, price, thumbnail } = item.item;
   return (
     <ItemContainer>
-      <ItemImage />
-      <ItemCategory>Premium denim</ItemCategory>
-      <ItemEle>스트레이트핏 데님</ItemEle>
-      <div>98,000원</div>
+      <ItemImage src={thumbnail} />
+      <ItemCategory>{category}</ItemCategory>
+      <ItemEle>{name}</ItemEle>
+      <b>{price.toLocaleString('ko-KR')}</b>
     </ItemContainer>
   );
 }

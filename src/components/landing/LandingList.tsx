@@ -1,6 +1,8 @@
 import { ItemGrid } from 'components/common/CommonComponents';
+import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
+import { IGoodsResponse } from 'model/goods';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import GridGoodsItem from '../common/GridGoodsItem';
@@ -24,23 +26,26 @@ const LandingListCategory = styled.div`
 `;
 
 function LandingList({ children }: { children: ReactNode }) {
+  const { goodsQuery } = useGoodsEffect();
+  const { data: goods, isLoading } = goodsQuery;
+
   return (
     <LandingListContainer>
-      <LandingListInner>
-        <LandingListCategory>
-          <h2>{children}</h2>
-        </LandingListCategory>
-        <ItemGrid>
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-        </ItemGrid>
-      </LandingListInner>
+      {isLoading ? (
+        <div>asd</div>
+      ) : (
+        <LandingListInner>
+          <LandingListCategory>
+            <h2>{children}</h2>
+          </LandingListCategory>
+          <ItemGrid>
+            {goods &&
+              goods.items.map((good, index) => (
+                <GridGoodsItem key={`good_${index}`} item={good} />
+              ))}
+          </ItemGrid>
+        </LandingListInner>
+      )}
     </LandingListContainer>
   );
 }
