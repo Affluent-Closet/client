@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import { shopMenus } from 'libs/Lists/NavItems';
+import { shopMenus } from 'libs/lists/NavItems';
 import { palette } from 'libs/styles/palette';
 import transitions from 'libs/styles/transitions';
 import React from 'react';

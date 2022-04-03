@@ -1,4 +1,4 @@
-import { profileMenus } from 'libs/Lists/NavItems';
+import { profileMenus } from 'libs/lists/NavItems';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import { Link } from 'react-router-dom';

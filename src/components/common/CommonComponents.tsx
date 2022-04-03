@@ -82,3 +82,13 @@ export const InputStyled = styled.input`
   border-radius: 5px;
   padding: 10px 0 10px 14px;
 `;
+export const PageLayout = styled.div`
+  padding: 20px;
+  margin: 0 auto;
+  max-width: ${mediaSize.large}px;
+`;
+
+export const OrderInner = styled.div`
+  margin-top: 6px;
+  border-top: 2px solid ${palette.mainColor};
+`;
