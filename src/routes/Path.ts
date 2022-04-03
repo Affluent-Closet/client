@@ -10,7 +10,7 @@ enum Path {
   RegisterPage = '/register',
   ProfilePage = '/profile',
   MyPage = '/mypage',
-  // CartPage = '/cart',
+  CartPage = '/cart',
 }
 
 export default Path;
