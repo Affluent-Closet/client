@@ -5,6 +5,8 @@ import MobileHeader from 'components/base/MobileHeader';
 import WebHeader from 'components/base/WebHeader';
 import { mediaSize } from 'libs/styles/media';
 import Footer from 'components/footer';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import Routing from './routes/Routing';
 
 const ContentsLayout = styled.div`
@@ -21,16 +23,20 @@ const AppLayout = styled.div`
 `;
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <AppLayout>
-      <GlobalStyles />
-      <MobileHeader />
-      <WebHeader />
-      <ContentsLayout>
-        <Routing />
-      </ContentsLayout>
-      <Footer />
-    </AppLayout>
+    <QueryClientProvider client={queryClient}>
+      <AppLayout>
+        <GlobalStyles />
+        <MobileHeader />
+        <WebHeader />
+        <ContentsLayout>
+          <Routing />
+        </ContentsLayout>
+        <Footer />
+      </AppLayout>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
   );
 }
 
