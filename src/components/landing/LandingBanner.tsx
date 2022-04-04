@@ -1,4 +1,4 @@
-import { Banner } from 'assets/Img';
+import { Banner } from 'assets/img';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';

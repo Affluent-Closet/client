@@ -4,7 +4,7 @@ import {
   InputStyled,
   ItemGrid,
 } from 'components/common/CommonComponents';
-import { categoryMenus } from 'libs/Lists/NavItems';
+import { categoryMenus } from 'libs/lists/NavItems';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
