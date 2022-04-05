@@ -4,10 +4,9 @@ import {
   ItemGrid,
   ListHead,
 } from 'components/common/CommonComponents';
-import GridGoodsItem from 'components/common/GridGoodsItem';
+// import GridGoodsItem from 'components/common/GridGoodsItem';
 import { palette } from 'libs/styles/palette';
-import { Link } from 'react-router-dom';
-import Path from 'routes/Path';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SearchListHead = styled(ListHead)`
@@ -25,6 +24,7 @@ export const SortMenu = styled.div`
   color: ${palette.temp};
   font-weight: 400;
   font-size: 14px;
+  cursor: pointer;
   :hover {
     color: black;
     font-weight: 500;
@@ -37,23 +37,30 @@ interface ResultItemsProps {
   keyword?: string;
 }
 function ResultItems({ isSearch, keyword }: ResultItemsProps) {
+  const [searchParams] = useSearchParams();
   return (
     <>
       <SearchListHead>
         {isSearch ? (
           <FlexCenter>
-            <div className="search-keyword">데님</div>에 대한 검색 결과
+            <div className="search-keyword">{searchParams.get('name')}</div>에
+            대한 검색 결과
           </FlexCenter>
         ) : (
           <div className="search-keyword">{keyword}</div>
         )}
         <FlexCenter>
-          <SortMenu>
-            <Link to={Path.SearchResultPage}>인기순</Link>
+          <SortMenu
+          // onClick={onChangeGoodsQueryString}
+          >
+            인기순
           </SortMenu>
-          <SortMenu>최신순</SortMenu>
+          <SortMenu
+          // onClick={onChangeGoodsQueryString}
+          >
+            최신순
+          </SortMenu>
           <SortMenu>낮은 가격순</SortMenu>
-          <SortMenu>판매량순</SortMenu>
         </FlexCenter>
       </SearchListHead>
       <ItemGrid>{/* <GridGoodsItem /> */}</ItemGrid>
