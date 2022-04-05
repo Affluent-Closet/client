@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { FlexAlignCenter, ItemGrid } from 'components/common/CommonComponents';
+import { ItemGrid, PageContainer } from 'components/common/CommonComponents';
 import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
@@ -28,14 +28,14 @@ interface LandingListProps {
   isBest: boolean;
 }
 function LandingList({ isBest }: LandingListProps) {
-  const { goodsQuery } = useGoodsEffect(8);
-  const { data: goods, isLoading } = goodsQuery;
+  const { goodsData } = useGoodsEffect();
+  const { data: goods, isLoading } = goodsData;
   return (
     <LandingListContainer>
       {isLoading ? (
-        <FlexAlignCenter>
+        <PageContainer>
           <img src="https://loadingapng.com/animation.php?image=5&fore_color=8E1FFF&back_color=FFFFFF&size=128x128&transparency=0&image_type=0&uncacher=46.124579074766395" />
-        </FlexAlignCenter>
+        </PageContainer>
       ) : (
         <LandingListInner>
           <LandingListCategory>
