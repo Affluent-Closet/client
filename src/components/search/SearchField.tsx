@@ -1,3 +1,4 @@
+import useSearchForm from 'hooks/search/useSearchForm';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
@@ -39,10 +40,11 @@ export const SearchTit = styled.div`
 `;
 
 function SearchField() {
+  const { onChangeSearchIndex, onSearch } = useSearchForm();
+
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      // eslint-disable-next-line no-console
-      console.log('enter 눌렀다');
+      onSearch();
     }
   };
 
@@ -52,6 +54,7 @@ function SearchField() {
       <SearchFieldStyled
         type="text"
         placeholder="어떤 상품을 찾으시나요?"
+        onChange={onChangeSearchIndex}
         onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
           onEnter(e);
         }}
