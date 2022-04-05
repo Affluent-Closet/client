@@ -2,6 +2,8 @@
 import { palette } from 'libs/styles/palette';
 import { GoodsProps } from 'model/goods';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Path from 'routes/Path';
 import styled from 'styled-components';
 
 const ItemContainer = styled.div`
@@ -30,13 +32,15 @@ const ItemEle = styled.div`
 `;
 
 function GridGoodsItem(item: GoodsProps) {
-  const { category, name, price, thumbnail } = item.item;
+  const { id, category, name, price, thumbnail } = item.item;
   return (
     <ItemContainer>
-      <ItemImage src={thumbnail} />
-      <ItemCategory>{category}</ItemCategory>
-      <ItemEle>{name}</ItemEle>
-      <b>{price.toLocaleString('ko-KR')}</b>
+      <Link to={`${Path.GoodsPath}/${id}`}>
+        <ItemImage src={thumbnail} />
+        <ItemCategory>{category}</ItemCategory>
+        <ItemEle>{name}</ItemEle>
+        <b>{price.toLocaleString('ko-KR')}</b>
+      </Link>
     </ItemContainer>
   );
 }
