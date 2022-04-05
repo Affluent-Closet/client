@@ -1,19 +1,19 @@
+import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { getGoodsAPI } from 'libs/api/goodsAPI';
 import { IGoodsResponse } from 'model/goods';
-import { useState } from 'react';
 import { useQuery } from 'react-query';
 
-function useGoodsEffect(pageSize: number) {
-  const [pageNo, setPageNo] = useState(1);
-
-  const goodsQuery = useQuery<IGoodsResponse>(
+function useGoodsEffect() {
+  const { goodsQueryString, onChangeGoodsQueryString } = useGoodsQueryForm();
+  const { pageNo } = goodsQueryString;
+  const goodsData = useQuery<IGoodsResponse>(
     ['goods', pageNo],
-    () => getGoodsAPI(pageNo, pageSize),
+    () => getGoodsAPI(goodsQueryString),
     {
       keepPreviousData: true,
     },
   );
-  return { goodsQuery, setPageNo };
+  return { goodsData, onChangeGoodsQueryString };
 }
 
 export default useGoodsEffect;
