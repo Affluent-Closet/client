@@ -8,5 +8,5 @@ export default function useInput(initialValue: string | number) {
     setValue(e.target.value);
   };
 
-  return [value, onChange, setValue] as const;
+  return [value, onChange] as const;
 }
