@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { ItemGrid, PageContainer } from 'components/common/CommonComponents';
 import useGoodsEffect from 'hooks/goods/useGoodsEffect';
+import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
+import { SortMethod } from 'model/enums';
 import React from 'react';
 import styled from 'styled-components';
 import GridGoodsItem from '../common/GridGoodsItem';
@@ -28,7 +30,11 @@ interface LandingListProps {
   isBest: boolean;
 }
 function LandingList({ isBest }: LandingListProps) {
-  const { goodsData } = useGoodsEffect();
+  const { goodsQueryString } = useGoodsQueryForm(
+    isBest ? undefined : SortMethod.NEW,
+  );
+
+  const { goodsData } = useGoodsEffect(goodsQueryString);
   const { data: goods, isLoading } = goodsData;
   return (
     <LandingListContainer>
