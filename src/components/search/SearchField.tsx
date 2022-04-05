@@ -40,7 +40,7 @@ export const SearchTit = styled.div`
 `;
 
 function SearchField() {
-  const { onChangeSearchIndex, onSearch } = useSearchForm();
+  const { onChangeGoodsQueryString, onSearch } = useSearchForm();
 
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -54,7 +54,7 @@ function SearchField() {
       <SearchFieldStyled
         type="text"
         placeholder="어떤 상품을 찾으시나요?"
-        onChange={onChangeSearchIndex}
+        onChange={onChangeGoodsQueryString}
         onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
           onEnter(e);
         }}
