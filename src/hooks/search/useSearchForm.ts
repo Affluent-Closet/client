@@ -1,14 +1,19 @@
-import useInput from 'hooks/common/useInput';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import useGoodsQueryForm from './useGoodsQueryForm';
 
 export default function useSearchForm() {
-  const [searchParams] = useSearchParams();
+  const { goodsQueryString, onChangeGoodsQueryString } = useGoodsQueryForm();
+  const { pageNo, category, name, sortBy } = goodsQueryString;
   const navigate = useNavigate();
-  const [searhIndex, onChangeSearchIndex] = useInput('');
+
   const onSearch = () => {
     navigate(
-      `/search/result?pageNo=1&pageSize=20&name=${searhIndex}&category=&sortBy=`,
+      `/search/result?pageNo=${pageNo}&pageSize=20&name=${category}&category=${name}&sortBy=${sortBy}`,
     );
   };
-  return { onSearch, onChangeSearchIndex, searchParams };
+  return {
+    goodsQueryString,
+    onChangeGoodsQueryString,
+    onSearch,
+  };
 }
