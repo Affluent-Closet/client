@@ -22,3 +22,11 @@ export interface IGoodsResponse {
   totalPage: number;
   items: Array<IGoodsItem>;
 }
+
+export interface IGoodsQuery {
+  pageNo: number;
+  pageSize?: number;
+  name?: string;
+  category?: string;
+  sortBy?: SortMethod;
+}
