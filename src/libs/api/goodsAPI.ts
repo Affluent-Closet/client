@@ -8,7 +8,7 @@ export const getGoodsAPI = async (
   category?: string,
 ) => {
   const response = await client.get(
-    `/goods?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&name=${name}&category=${category}`,
+    `/goods?pageNo=${pageNo}&pageSize=${pageSize}&name=${name}&category=${category}&sortBy=${sortBy}`,
   );
   return response.data;
 };
