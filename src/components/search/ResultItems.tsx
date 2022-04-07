@@ -8,6 +8,8 @@ import {
 import { palette } from 'libs/styles/palette';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
+import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
+import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
@@ -38,6 +40,8 @@ interface ResultItemsProps {
 }
 function ResultItems({ isSearch, keyword }: ResultItemsProps) {
   const [searchParams] = useSearchParams();
+  const { goodsQueryString } = useGoodsQueryForm(searchParams.get('name'));
+  const { goodsData } = useGoodsEffect(goodsQueryString);
   return (
     <>
       <SearchListHead>
