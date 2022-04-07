@@ -2,34 +2,22 @@ import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
 import { ChangeEvent, MouseEventHandler, useState } from 'react';
 
-export default function useGoodsQueryForm() {
-  // const [pageNoIndex, onChangePageNoIndex] = useInput('');
-  // const [searhIndex, onChangeSearchIndex] = useInput('');
-  // const [categoryIndex, , onChangeCategoryIndex] = useInput('');
-  // const [sortByIndex, , onChangeSortByIndex] = useInput('');
-
-  // return {
-  //   pageNoIndex,
-  //   onChangePageNoIndex,
-  //   searhIndex,
-  //   onChangeSearchIndex,
-  //   categoryIndex,
-  //   onChangeCategoryIndex,
-  //   sortByIndex,
-  //   onChangeSortByIndex,
-  // };
-
+export default function useGoodsQueryForm(
+  q?: string | null,
+  sort?: SortMethod,
+) {
   const [goodsQueryString, setGoodsQueryString] = useState<IGoodsQuery>({
     pageNo: 1,
     pageSize: 10,
-    name: '',
+    name: q || '',
     category: '',
-    sortBy: SortMethod.BEST,
+    sortBy: sort || SortMethod.BEST,
   });
 
-  const onChangeGoodsQueryString = (
+  const onChangeGoodsQS = (
     e: any,
-    // e: ChangeEvent<HTMLInputElement> | MouseEventHandler<HTMLButtonElement>,
+    // e: ChangeEvent<HTMLInputElement>
+    // | MouseEventHandler<HTMLButtonElement>
   ) => {
     const { name, value } = e.target;
     setGoodsQueryString((prev) => ({
@@ -37,5 +25,13 @@ export default function useGoodsQueryForm() {
       [name]: value,
     }));
   };
-  return { goodsQueryString, onChangeGoodsQueryString };
+
+  const onChangeCustomQS = (name: string, value: string) => {
+    setGoodsQueryString((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  return { goodsQueryString, onChangeGoodsQS, onChangeCustomQS };
 }
