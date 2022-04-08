@@ -3,13 +3,11 @@ import useGoodsQueryForm from './useGoodsQueryForm';
 
 export default function useSearchForm() {
   const { goodsQueryString, onChangeGoodsQS } = useGoodsQueryForm();
-  const { pageNo, category, name, sortBy } = goodsQueryString;
+  const { pageNo, name } = goodsQueryString;
   const navigate = useNavigate();
 
   const onSearch = () => {
-    navigate(
-      `/search/result?pageNo=${pageNo}&pageSize=20&name=${name}&category=${category}&sortBy=${sortBy}`,
-    );
+    navigate(`/search/result?pageNo=${pageNo}&name=${name}`);
   };
 
   return {

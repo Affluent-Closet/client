@@ -50,7 +50,7 @@ function SearchField() {
 
   return (
     <>
-      <SearchTit>Search2</SearchTit>
+      <SearchTit>Search</SearchTit>
       <SearchFieldStyled
         type="text"
         placeholder="어떤 상품을 찾으시나요?"
