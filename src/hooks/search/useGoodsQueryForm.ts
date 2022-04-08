@@ -1,6 +1,6 @@
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
-import { ChangeEvent, MouseEventHandler, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 
 export default function useGoodsQueryForm(
   q?: string | null,
@@ -15,9 +15,7 @@ export default function useGoodsQueryForm(
   });
 
   const onChangeGoodsQS = (
-    e: any,
-    // e: ChangeEvent<HTMLInputElement>
-    // | MouseEventHandler<HTMLButtonElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setGoodsQueryString((prev) => ({
@@ -26,12 +24,13 @@ export default function useGoodsQueryForm(
     }));
   };
 
-  const onChangeCustomQS = (name: string, value: string) => {
+  const onChangeBtnQS = (e: MouseEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
     setGoodsQueryString((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  return { goodsQueryString, onChangeGoodsQS, onChangeCustomQS };
+  return { goodsQueryString, onChangeGoodsQS, onChangeBtnQS };
 }

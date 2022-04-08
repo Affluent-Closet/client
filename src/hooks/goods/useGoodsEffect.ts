@@ -10,7 +10,6 @@ function useGoodsEffect(goodsQueryString: IGoodsQuery) {
       keepPreviousData: true,
     },
   );
-
   return { goodsData };
 }
 
