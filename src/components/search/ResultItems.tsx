@@ -4,7 +4,6 @@ import {
   FlexCenter,
   ItemGrid,
   ListHead,
-  PageContainer,
 } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
@@ -12,6 +11,7 @@ import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import GridGoodsItem from 'components/common/GridGoodsItem';
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
+import LoadingBox from 'components/common/LoadingBox';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
@@ -78,9 +78,7 @@ function ResultItems({ isSearch, keyword, qs, onClickSort }: ResultItemsProps) {
         </FlexCenter>
       </SearchListHead>
       {isLoading ? (
-        <PageContainer>
-          <img src="https://loadingapng.com/animation.php?image=5&fore_color=8E1FFF&back_color=FFFFFF&size=128x128&transparency=0&image_type=0&uncacher=46.124579074766395" />
-        </PageContainer>
+        <LoadingBox />
       ) : (
         <ItemGrid>
           {goods &&

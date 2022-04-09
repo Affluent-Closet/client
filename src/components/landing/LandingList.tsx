@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { ItemGrid, PageContainer } from 'components/common/CommonComponents';
+import { ItemGrid } from 'components/common/CommonComponents';
+import LoadingBox from 'components/common/LoadingBox';
 import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { mediaSize } from 'libs/styles/media';
@@ -40,9 +41,7 @@ function LandingList({ isBest }: LandingListProps) {
   return (
     <LandingListContainer>
       {isLoading ? (
-        <PageContainer>
-          <img src="https://loadingapng.com/animation.php?image=5&fore_color=8E1FFF&back_color=FFFFFF&size=128x128&transparency=0&image_type=0&uncacher=46.124579074766395" />
-        </PageContainer>
+        <LoadingBox />
       ) : (
         <LandingListInner>
           <LandingListCategory>
