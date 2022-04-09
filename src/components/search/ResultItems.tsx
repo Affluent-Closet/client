@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import {
   FlexCenter,
   ItemGrid,
@@ -7,12 +7,11 @@ import {
   PageContainer,
 } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
-import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import GridGoodsItem from 'components/common/GridGoodsItem';
 import { SortMethod } from 'model/enums';
+import { IGoodsQuery } from 'model/goods';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
@@ -31,7 +30,7 @@ export const SortMenu = styled.input`
   font-size: 14px;
   background-color: inherit;
   cursor: pointer;
-  :hover {
+  &:hover {
     color: black;
     font-weight: 500;
     text-decoration: underline;
@@ -39,23 +38,20 @@ export const SortMenu = styled.input`
 `;
 
 interface ResultItemsProps {
-  isSearch?: boolean;
-  keyword?: string;
+  qs: IGoodsQuery;
+  isSearch: boolean;
+  keyword: string | null | undefined;
+  onClickSort: (e: MouseEvent<HTMLInputElement>) => void;
 }
-function ResultItems({ isSearch, keyword }: ResultItemsProps) {
-  const [searchParams] = useSearchParams();
-  const { goodsQueryString, onChangeBtnQS } = useGoodsQueryForm(
-    searchParams.get('name'),
-  );
-  const { goodsData } = useGoodsEffect(goodsQueryString);
+function ResultItems({ isSearch, keyword, qs, onClickSort }: ResultItemsProps) {
+  const { goodsData } = useGoodsEffect(qs);
   const { data: goods, isLoading } = goodsData;
   return (
     <>
       <SearchListHead>
         {isSearch ? (
           <FlexCenter>
-            <div className="search-keyword">{searchParams.get('name')}</div>에
-            대한 검색 결과
+            <div className="search-keyword">{keyword}</div>에 대한 검색 결과
           </FlexCenter>
         ) : (
           <div className="search-keyword">{keyword}</div>
@@ -63,20 +59,20 @@ function ResultItems({ isSearch, keyword }: ResultItemsProps) {
         <FlexCenter>
           <SortMenu
             type="button"
-            onClick={onChangeBtnQS}
+            onClick={onClickSort}
             name="sortBy"
             value={SortMethod.BEST}
           />
           <SortMenu
             type="button"
             name="sortBy"
-            onClick={onChangeBtnQS}
+            onClick={onClickSort}
             value={SortMethod.NEW}
           />
           <SortMenu
             type="button"
             name="sortBy"
-            onClick={onChangeBtnQS}
+            onClick={onClickSort}
             value={SortMethod.LOWPRICE}
           />
         </FlexCenter>
