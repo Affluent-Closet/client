@@ -13,7 +13,7 @@ function TestPage() {
       <input type="text" value={text} onChange={onChange} />
       <br />
       Echo: {text}
-      count : {count}
+      count : {count + 1}
     </div>
   );
 }

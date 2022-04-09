@@ -11,6 +11,8 @@ import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
 import ProfilePage from 'pages/ProfilePage';
 import CartPage from 'pages/CartPage';
+import PostGoodsPage from 'pages/PostGoodsPage';
+import PostReviewPage from 'pages/PostReviewPage';
 import Path from './Path';
 
 function Routing() {
@@ -27,6 +29,9 @@ function Routing() {
       <Route path={Path.RegisterPage} element={<RegisterPage />} />
       <Route path={Path.ProfilePage} element={<ProfilePage />} />
       <Route path={Path.CartPage} element={<CartPage />} />
+      <Route path={Path.PostGoodsPage} element={<PostGoodsPage />} />
+      <Route path={Path.PostReviewPage} element={<PostReviewPage />} />
+      {/* <Route path={Path.CartPage} element={<CartPage />} /> */}
     </Routes>
   );
 }
