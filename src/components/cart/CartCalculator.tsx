@@ -14,7 +14,7 @@ const TotalPayments = styled.dl`
     }
   }
   dd {
-    font-size: 25px;
+    font-size: 20px;
     font-family: Lato;
     font-weight: 600;
     padding-left: 143px;
