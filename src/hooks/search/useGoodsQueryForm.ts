@@ -24,7 +24,7 @@ export default function useGoodsQueryForm(
     }));
   };
 
-  const onChangeBtnQS = (e: MouseEvent<HTMLInputElement>) => {
+  const onClickGoodsQS = (e: MouseEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setGoodsQueryString((prev) => ({
       ...prev,
@@ -32,5 +32,5 @@ export default function useGoodsQueryForm(
     }));
   };
 
-  return { goodsQueryString, onChangeGoodsQS, onChangeBtnQS };
+  return { goodsQueryString, onChangeGoodsQS, onClickGoodsQS };
 }
