@@ -111,8 +111,8 @@ const Price = styled.p`
 `;
 
 const QuantityBtn = styled.button`
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border: 1px solid ${palette.grayLight};
   border-radius: 100px;
 `;

@@ -15,6 +15,7 @@ export const palette = {
   grayDarker: '#5B5B5B',
   grayDark: '#848484',
   kakaoColor: '#F7E600',
+  black: 'black',
   // grayLight: '#D4D2CF',
   // grayLightest: '#F3F2EF',
   // grayDarkest: '#323232',

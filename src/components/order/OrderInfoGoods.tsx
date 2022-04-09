@@ -101,7 +101,6 @@ const Option = styled.p`
 
 const Price = styled.p`
   font-size: 16px;
-  font-family: 'Lato';
   font-weight: 500;
 `;
 

@@ -1,4 +1,4 @@
-import { OrderInner } from 'components/common/CommonComponents';
+import { Inner } from 'components/common/CommonComponents';
 import React from 'react';
 import styled from 'styled-components';
 import CartInfoGoods from './CartInfoGoods';
@@ -8,15 +8,13 @@ const CartInfoSection = styled.section`
   margin-top: 20px;
 `;
 
-const CartInfoColumnList = styled.ol``;
-
 function CartInfo() {
   return (
     <CartInfoSection>
-      <OrderInner>
+      <Inner>
         <CartInfoGoods />
         <CartInfoGoods />
-      </OrderInner>
+      </Inner>
     </CartInfoSection>
   );
 }
