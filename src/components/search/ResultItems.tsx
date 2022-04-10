@@ -8,10 +8,10 @@ import {
 import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
 import useGoodsEffect from 'hooks/goods/useGoodsEffect';
-import GridGoodsItem from 'components/common/GridGoodsItem';
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
-import LoadingBox from 'components/common/LoadingBox';
+import { GridGoodsItem, LoadingBox } from 'components/common';
+import SearchTitle from './SearchTitle';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
@@ -40,53 +40,40 @@ export const SortMenu = styled.input`
 interface ResultItemsProps {
   qs: IGoodsQuery;
   isSearch: boolean;
-  keyword: string | null | undefined;
   onClickSort: (e: MouseEvent<HTMLInputElement>) => void;
 }
-function ResultItems({ isSearch, keyword, qs, onClickSort }: ResultItemsProps) {
+const sortMethods = [SortMethod.BEST, SortMethod.NEW, SortMethod.LOWPRICE];
+
+function ResultItems({ isSearch, qs, onClickSort }: ResultItemsProps) {
   const { goodsData } = useGoodsEffect(qs);
-  const { data: goods, isLoading } = goodsData;
+  const { data: goods, isFetching } = goodsData;
+  if (!goods) return null;
+  if (isFetching) return <LoadingBox />;
+
   return (
     <>
       <SearchListHead>
-        {isSearch ? (
-          <FlexCenter>
-            <div className="search-keyword">{keyword}</div>에 대한 검색 결과
-          </FlexCenter>
-        ) : (
-          <div className="search-keyword">{keyword}</div>
-        )}
+        <SearchTitle
+          isSearch={isSearch}
+          searchKeyword={isSearch ? qs.name : qs.category}
+        />
         <FlexCenter>
-          <SortMenu
-            type="button"
-            onClick={onClickSort}
-            name="sortBy"
-            value={SortMethod.BEST}
-          />
-          <SortMenu
-            type="button"
-            name="sortBy"
-            onClick={onClickSort}
-            value={SortMethod.NEW}
-          />
-          <SortMenu
-            type="button"
-            name="sortBy"
-            onClick={onClickSort}
-            value={SortMethod.LOWPRICE}
-          />
+          {sortMethods.map((method) => (
+            <SortMenu
+              key={method}
+              type="button"
+              name="sortBy"
+              onClick={onClickSort}
+              value={method}
+            />
+          ))}
         </FlexCenter>
       </SearchListHead>
-      {isLoading ? (
-        <LoadingBox />
-      ) : (
-        <ItemGrid>
-          {goods &&
-            goods.items.map((good, index) => (
-              <GridGoodsItem key={`good_${index}`} item={good} />
-            ))}
-        </ItemGrid>
-      )}
+      <ItemGrid>
+        {goods.items.map((good, index) => (
+          <GridGoodsItem key={`good_${index}`} item={good} />
+        ))}
+      </ItemGrid>
     </>
   );
 }
