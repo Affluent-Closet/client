@@ -86,9 +86,10 @@ export const PageLayout = styled.div`
   padding: 20px;
   margin: 0 auto;
   max-width: ${mediaSize.large}px;
+  padding-bottom: 100px;
 `;
 
-export const OrderInner = styled.div`
+export const Inner = styled.div`
   margin-top: 6px;
   border-top: 2px solid ${palette.mainColor};
 `;

@@ -1,6 +1,6 @@
 import { mediaMin } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -61,6 +61,12 @@ const GoodsDetail = styled.div`
       align-items: center;
     }
   }
+  > div:nth-child(4) {
+    margin-top: 10px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
 `;
 
 const Name = styled.p`
@@ -95,16 +101,41 @@ const Option = styled.p`
     font-size: 14px;
     margin-top: 5px;
     font-weight: 400;
-    padding-left: 30px;
   }
 `;
 
 const Price = styled.p`
   font-size: 16px;
+  font-family: 'Lato';
   font-weight: 500;
 `;
 
-function OrderInfoGoods() {
+const QuantityBtn = styled.button`
+  width: 24px;
+  height: 24px;
+  border: 1px solid ${palette.grayLight};
+  border-radius: 100px;
+`;
+
+const Quantity = styled.input`
+  width: 34px;
+  text-align: center;
+  border: 0;
+  font-size: 14px;
+  font-family: 'Lato';
+`;
+
+const CloseBtn = styled.button`
+  color: ${palette.grayLight};
+  margin-left: 8px;
+  ${mediaMin.large} {
+    margin-left: 80px;
+  }
+`;
+
+function CartInfoGoods() {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <Container>
       <GoodsImg />
@@ -121,9 +152,15 @@ function OrderInfoGoods() {
         <div>
           <Price>2,023,000원</Price>
         </div>
+        <div>
+          <QuantityBtn onClick={() => setQuantity(quantity - 1)}>-</QuantityBtn>
+          <Quantity disabled value={quantity} />
+          <QuantityBtn onClick={() => setQuantity(quantity + 1)}>+</QuantityBtn>
+          <CloseBtn>X</CloseBtn>
+        </div>
       </GoodsDetail>
     </Container>
   );
 }
 
-export default OrderInfoGoods;
+export default CartInfoGoods;
