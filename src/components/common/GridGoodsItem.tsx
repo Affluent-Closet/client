@@ -9,8 +9,16 @@ import styled from 'styled-components';
 const ItemContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
+  .won {
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 2px;
+  }
+  .don {
+    font-weight: 500;
+  }
 `;
 const ItemImage = styled.img`
   width: 160px;
@@ -27,8 +35,11 @@ const ItemCategory = styled.div`
   font-size: 10px;
 `;
 const ItemEle = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
+  margin: 1px 0;
+  font-weight: unset;
+  color: #2c2c2c;
 `;
 
 function GridGoodsItem(item: GoodsProps) {
@@ -39,7 +50,10 @@ function GridGoodsItem(item: GoodsProps) {
         <ItemImage src={thumbnail} />
         <ItemCategory>{category}</ItemCategory>
         <ItemEle>{name}</ItemEle>
-        <b>{price.toLocaleString('ko-KR')}</b>
+        <div className="don">
+          {price.toLocaleString('ko-KR')}
+          <span className="won">원</span>
+        </div>
       </Link>
     </ItemContainer>
   );
