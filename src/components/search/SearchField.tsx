@@ -1,7 +1,8 @@
-import useSearchForm from 'hooks/search/useSearchForm';
+import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SearchFieldStyled = styled.input`
@@ -40,11 +41,12 @@ export const SearchTit = styled.div`
 `;
 
 function SearchField() {
-  const { goodsQueryString, onChangeGoodsQS, onSearch } = useSearchForm();
-
+  const navigate = useNavigate();
+  const { goodsQueryString, onChangeGoodsQS } = useGoodsQueryForm();
+  const { pageNo, name } = goodsQueryString;
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      onSearch();
+      navigate(`/search/result?pageNo=${pageNo}&name=${name}`);
     }
   };
 
@@ -65,4 +67,4 @@ function SearchField() {
   );
 }
 
-export default SearchField;
+export default React.memo(SearchField);

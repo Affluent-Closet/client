@@ -11,7 +11,7 @@ import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
 import { GridGoodsItem, LoadingBox } from 'components/common';
-import SearchTitle from './SearchTitle';
+import SearchTitle from './SearchKeyword';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
