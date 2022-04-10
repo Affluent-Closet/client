@@ -1,9 +1,7 @@
-import {
-  FlexAlignCenter,
-  FlexCenter,
-} from 'components/common/CommonComponents';
+import { FlexAlignCenter } from 'components/common/CommonComponents';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
+import { IGoodsItem } from 'model/goods';
 import React from 'react';
 import styled from 'styled-components';
 import GoodsCalculBox from './GoodsCalculBox';
@@ -22,7 +20,6 @@ const GoodsInfoWrapper = styled.div`
 const GoodsThumbBox = styled.img`
   width: 100%;
   max-width: 650px;
-  max-height: 780px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
   ${mediaMax.large} {
@@ -69,11 +66,14 @@ export const RadioButton = styled.input`
     border: 2px solid black;
   }
 `;
-
-function GoodsInfo() {
+interface GoodsInfoProps {
+  item: IGoodsItem;
+}
+function GoodsInfo({ item }: GoodsInfoProps) {
+  const { thumbnail } = item;
   return (
     <GoodsInfoWrapper>
-      <GoodsThumbBox src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg" />
+      <GoodsThumbBox src={thumbnail} />
       <GoodsInfoBox>
         <GoodsPriceBox />
         <hr />
