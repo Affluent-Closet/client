@@ -1,6 +1,6 @@
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
-import React from 'react';
+import React, { Ref } from 'react';
 import styled from 'styled-components';
 
 const TabBoxWrapper = styled.div`
@@ -32,21 +32,21 @@ const TabStyled = styled.button`
 `;
 
 interface TabBoxProps {
-  goodsTabs: {
-    element: React.RefObject<HTMLDivElement>;
-    onMoveToElement: () => void;
-    name: string;
-  }[];
   th: number;
+  scrollList: {
+    name: string;
+    onClick: () => void;
+  }[];
 }
 
-function TabBox({ goodsTabs, th }: TabBoxProps) {
+function TabBox(props: TabBoxProps, forwardedRef: Ref<HTMLDivElement>) {
+  const { scrollList, th } = props;
   return (
-    <TabBoxWrapper ref={goodsTabs[th].element}>
-      {Array.from(goodsTabs).map(({ onMoveToElement, name }, index) => (
+    <TabBoxWrapper ref={forwardedRef}>
+      {scrollList.map(({ onClick, name }, index) => (
         <TabStyled
           type="button"
-          onClick={onMoveToElement}
+          onClick={onClick}
           key={`goodsTabs_${index}`}
           className={index === th ? 'active' : ''}
         >
@@ -57,4 +57,4 @@ function TabBox({ goodsTabs, th }: TabBoxProps) {
   );
 }
 
-export default TabBox;
+export default React.forwardRef(TabBox);
