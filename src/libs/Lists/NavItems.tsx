@@ -9,8 +9,8 @@ export const categoryMenus = [
     href: `${Path.CategoryPath}/outer`,
   },
   {
-    name: 'Shirt',
-    href: `${Path.CategoryPath}/shirt`,
+    name: 'Shirts',
+    href: `${Path.CategoryPath}/shirts`,
   },
   {
     name: 'Top',
