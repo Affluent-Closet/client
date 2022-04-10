@@ -1,5 +1,5 @@
 import Button from 'components/common/Button';
-import { OrderInner } from 'components/common/CommonComponents';
+import { Inner } from 'components/common/CommonComponents';
 import Input from 'components/common/Input';
 import { mediaMin } from 'libs/styles/media';
 import React from 'react';
@@ -43,7 +43,7 @@ function OrderShippingInfo() {
   return (
     <ShippingInfoSection>
       <h3>배송 정보</h3>
-      <OrderInner>
+      <Inner>
         <ShippingInfoItem>
           <ShippingInfoCategory>
             <h4>수령인</h4>
@@ -68,7 +68,6 @@ function OrderShippingInfo() {
               </Button>
             </SearchAddr>
             <ItemInput width="100%" height="auto" />
-            <ItemInput width="100%" height="auto" />
           </ShippingInfoAdrrssWrapper>
         </ShippingInfoItem>
         <ShippingInfoItem>
@@ -77,7 +76,7 @@ function OrderShippingInfo() {
           </ShippingInfoCategory>
           <ItemInput width="100%" height="auto" />
         </ShippingInfoItem>
-      </OrderInner>
+      </Inner>
     </ShippingInfoSection>
   );
 }
