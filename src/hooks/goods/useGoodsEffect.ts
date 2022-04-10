@@ -3,12 +3,13 @@ import { IGoodsQuery, IGoodsResponse } from 'model/goods';
 import { useQuery } from 'react-query';
 
 function useGoodsEffect(goodsQueryString: IGoodsQuery) {
-  const { pageNo, sortBy, category } = goodsQueryString;
+  const { pageNo, sortBy, category, name } = goodsQueryString;
   const goodsData = useQuery<IGoodsResponse>(
-    ['goods', pageNo, sortBy, category],
+    ['goods', pageNo, sortBy, category, name],
     () => getGoodsAPI(goodsQueryString),
     {
-      keepPreviousData: true,
+      cacheTime: 5 * 60 * 1000,
+      staleTime: 5 * 60 * 1000,
     },
   );
   // eslint-disable-next-line no-console

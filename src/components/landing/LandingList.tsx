@@ -31,11 +31,7 @@ interface LandingListProps {
   isBest: boolean;
 }
 function LandingList({ isBest }: LandingListProps) {
-  const { goodsQueryString } = useGoodsQueryForm(
-    '',
-    isBest ? undefined : SortMethod.NEW,
-  );
-
+  const { goodsQueryString } = useGoodsQueryForm();
   const { goodsData } = useGoodsEffect(goodsQueryString);
   const { data: goods, isLoading } = goodsData;
   return (

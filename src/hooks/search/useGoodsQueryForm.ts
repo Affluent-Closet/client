@@ -1,19 +1,24 @@
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { INITIALQUERYSTRING } from './constants';
 
-export default function useGoodsQueryForm(
-  q?: string | null,
-  sort?: SortMethod,
-  category?: string,
-) {
-  const [goodsQueryString, setGoodsQueryString] = useState<IGoodsQuery>({
-    pageNo: 1,
-    pageSize: 10,
-    name: q || '',
-    category: category || '',
-    sortBy: sort || SortMethod.BEST,
-  });
+export default function useGoodsQueryForm(sort?: SortMethod) {
+  const params = useParams();
+  const [searchParam] = useSearchParams();
+  const [goodsQueryString, setGoodsQueryString] =
+    useState<IGoodsQuery>(INITIALQUERYSTRING);
+
+  useEffect(() => {
+    setGoodsQueryString({
+      pageNo: 1,
+      pageSize: 10,
+      name: searchParam.get('name') || '',
+      category: params.categoryid?.toUpperCase() || '',
+      sortBy: sort || SortMethod.BEST,
+    });
+  }, [params]);
 
   const onChangeGoodsQS = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
