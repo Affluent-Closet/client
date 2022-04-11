@@ -10,37 +10,36 @@ const Container = styled.section`
   bottom: 0;
   width: 100%;
 `;
-const Wrapper = styled.ul`
+const BtnInner = styled.ul`
   display: table;
   width: 100%;
   text-align: left;
   color: white;
   height: 100%;
-
-  li {
-    display: table-cell;
-    vertical-align: middle;
-    :nth-of-type(1) {
-      padding-left: 25px;
-      width: 35%;
-      position: relative;
-      span {
-        color: #ff5400;
-        em {
-          display: block;
-          color: white;
-        }
-      }
+`;
+const InnerLi = styled.li`
+  display: table-cell;
+  vertical-align: middle;
+`;
+const RightLi = styled(InnerLi)`
+  padding-left: 25px;
+  width: 35%;
+  position: relative;
+  span {
+    color: #ff5400;
+    em {
+      display: block;
+      color: white;
     }
-    :nth-of-type(2) {
-      width: 65%;
-      text-align: center;
-      span {
-        font-size: 20px;
-        font-family: 'Lato';
-        font-weight: 600;
-      }
-    }
+  }
+`;
+const LeftInner = styled(InnerLi)`
+  width: 65%;
+  text-align: center;
+  span {
+    font-size: 20px;
+    font-family: 'Lato';
+    font-weight: 600;
   }
 `;
 const Text = styled.span`
@@ -52,17 +51,17 @@ function CartBottomBtn() {
   return (
     <Container>
       <Button width="100%" height="100%" buttonColor="black">
-        <Wrapper>
-          <li>
+        <BtnInner>
+          <RightLi>
             <Text>
               2,425,000원
               <em>(총 2개 상품)</em>
             </Text>
-          </li>
-          <li>
+          </RightLi>
+          <LeftInner>
             <Text>주문하기</Text>
-          </li>
-        </Wrapper>
+          </LeftInner>
+        </BtnInner>
       </Button>
     </Container>
   );
