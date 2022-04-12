@@ -16,7 +16,7 @@ const ItemContainer = styled.div`
     font-size: 14px;
     margin-left: 2px;
   }
-  .don {
+  .price {
     font-weight: 500;
   }
 `;
@@ -50,7 +50,7 @@ function GridGoodsItem(item: GoodsProps) {
         <ItemImage src={thumbnail} />
         <ItemCategory>{category}</ItemCategory>
         <ItemEle>{name}</ItemEle>
-        <div className="don">
+        <div className="price">
           {price.toLocaleString('ko-KR')}
           <span className="won">원</span>
         </div>
