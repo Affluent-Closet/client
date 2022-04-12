@@ -3,11 +3,9 @@ import { FlexCenter } from 'components/common/CommonComponents';
 import styled from 'styled-components';
 import { palette } from 'libs/styles/palette';
 
-const Container = styled.div`
-  .search-keyword {
-    color: ${palette.mainColor};
-    text-transform: uppercase;
-  }
+const SearchKeywordStyled = styled.div`
+  color: ${palette.mainColor};
+  text-transform: uppercase;
 `;
 
 interface Props {
@@ -15,18 +13,19 @@ interface Props {
   searchKeyword: string | undefined;
 }
 
-function SearchTitle({ isSearch, searchKeyword }: Props) {
+function SearchKeyword({ isSearch, searchKeyword }: Props) {
   return (
-    <Container>
+    <div>
       {isSearch ? (
         <FlexCenter>
-          <div className="search-keyword">{searchKeyword}</div>에 대한 검색 결과
+          <SearchKeywordStyled>{searchKeyword}</SearchKeywordStyled>에 대한 검색
+          결과
         </FlexCenter>
       ) : (
-        <div className="search-keyword">{searchKeyword}</div>
+        <SearchKeywordStyled>{searchKeyword}</SearchKeywordStyled>
       )}
-    </Container>
+    </div>
   );
 }
 
-export default React.memo(SearchTitle);
+export default React.memo(SearchKeyword);
