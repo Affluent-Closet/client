@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IAuthErrMsg } from 'type/auth';
+import { IAuthErrMsg } from 'model/auth';
 
 export default function useAuthValidation() {
   const [errorMessage, setErrorMessage] = useState<IAuthErrMsg>();

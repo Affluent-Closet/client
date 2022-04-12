@@ -10,7 +10,7 @@ import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
-const PostQue = styled(FlexAlignCenter)`
+export const PostQue = styled(FlexAlignCenter)`
   width: 120px;
   font-size: 17px;
   height: 50px;
@@ -25,7 +25,7 @@ const PostInputBox = styled(FlexAlignCenter)`
   border-bottom: 1px solid ${palette.border};
 `;
 
-const PostAns = styled(InputStyled)`
+export const PostAns = styled(InputStyled)`
   height: 25px;
   width: 50%;
   margin-right: 10px;
@@ -52,23 +52,23 @@ const SelectedStyled = styled.select`
     width: 100%;
   }
 `;
-const BtnBox = styled.div`
+export const BtnBox = styled.div`
   text-align: right;
   margin: 15px;
 `;
 
-const ImgBox = styled.div`
+export const ImgBox = styled.div`
   width: 100px;
   height: 100px;
   background-color: antiquewhite;
   margin: 10px;
 `;
 
-const InputFileStyled = styled.input`
+export const InputFileStyled = styled.input`
   display: none;
 `;
 
-const InputFileLabel = styled.label`
+export const InputFileLabel = styled.label`
   display: inline-block;
   padding: 10px 20px;
   color: #fff;

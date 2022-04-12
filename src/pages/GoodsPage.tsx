@@ -1,12 +1,12 @@
-import axios from 'axios';
 import GoodsInfo from 'components/goods/GoodsInfo';
 import GoodsInquiry from 'components/goods/GoodsInquiry';
 import GoodsReview from 'components/goods/GoodsReview';
 import GoodsReviewSummery from 'components/goods/GoodsReviewSummery';
 import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
+import useOneGoodsEffect from 'hooks/goods/useOneGoodsEffect';
 import { mediaSize } from 'libs/styles/media';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const GoodsDetailWrapper = styled.div`
@@ -22,37 +22,45 @@ const GoodsImg = styled.img`
 `;
 
 function GoodsPage() {
-  const goodsTabs = {
-    0: useMoveScrool('상품 상세'),
-    1: useMoveScrool('리뷰'),
-    2: useMoveScrool('상품 문의'),
-    length: 3,
-  };
-  // const [asd, setasd] = useState();
-  // useEffect(() => {
-  //   const data = async () => {
-  //     const response = await axios.get(
-  //       'https://affluent-closet.herokuapp.com/goods',
-  //     );
-  //     setasd(response.data);
-  //   };
-  //   data();
-  // }, []);
+  const { goods } = useOneGoodsEffect();
+
+  const [ref1, onMoveToElement1] = useMoveScrool();
+  const [ref2, onMoveToElement2] = useMoveScrool();
+  const [ref3, onMoveToElement3] = useMoveScrool();
+
+  const scrollList = [
+    {
+      name: '상품 상세',
+      onClick: onMoveToElement1,
+    },
+    {
+      name: '리뷰',
+      onClick: onMoveToElement2,
+    },
+    {
+      name: '상품 문의',
+      onClick: onMoveToElement3,
+    },
+  ];
+
   return (
     <>
-      <GoodsInfo />
-      <TabBox goodsTabs={Array.from(goodsTabs)} th={0} />
+      <GoodsInfo item={goods} />
+      <TabBox ref={ref1} scrollList={scrollList} th={0} />
 
       <GoodsDetailWrapper>
+        {/* {goods.datail.map((dtil, index) => (
+          <GoodsImg key={`detail_${index}`} src={dtil} alt="의상 이미지" />
+        ))} */}
         <GoodsImg
           src="https://intempomood.cafe24.com/2022/2022SS/Full Zip-up Cardigan_Black_01.jpg"
           alt="의상 이미지"
         />
       </GoodsDetailWrapper>
-      <TabBox goodsTabs={Array.from(goodsTabs)} th={1} />
+      <TabBox ref={ref2} scrollList={scrollList} th={1} />
       <GoodsReviewSummery />
       <GoodsReview />
-      <TabBox goodsTabs={Array.from(goodsTabs)} th={2} />
+      <TabBox ref={ref3} scrollList={scrollList} th={2} />
       <GoodsInquiry />
     </>
   );

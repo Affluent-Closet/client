@@ -3,13 +3,16 @@ import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
 
-const PostGoodsHeader = styled(ListHead)`
+const PostHeader = styled(ListHead)`
   color: ${palette.mainColor};
   font-weight: 500;
 `;
-
-function PostGoodsHead() {
-  return <PostGoodsHeader>등록하기</PostGoodsHeader>;
+interface PostHeadProps {
+  titleName: string;
 }
 
-export default PostGoodsHead;
+function PostHead({ titleName }: PostHeadProps) {
+  return <PostHeader>{titleName}</PostHeader>;
+}
+
+export default PostHead;

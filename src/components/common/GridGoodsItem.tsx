@@ -1,33 +1,60 @@
+/* eslint-disable react/destructuring-assignment */
 import { palette } from 'libs/styles/palette';
+import { GoodsProps } from 'model/goods';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Path from 'routes/Path';
 import styled from 'styled-components';
 
 const ItemContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 16px;
+  text-align: left;
+  .won {
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 2px;
+  }
+  .price {
+    font-weight: 500;
+  }
 `;
-const ItemImage = styled.div`
+const ItemImage = styled.img`
   width: 160px;
   height: 200px;
-  background-color: ${palette.temp};
+  border-radius: 4px;
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.12);
+    transition: 0.4s;
+  }
 `;
-const ItemCategory = styled.span`
+const ItemCategory = styled.div`
   color: ${palette.ListItemCategory};
   font-size: 10px;
-  margin-top: 20px;
 `;
 const ItemEle = styled.div`
+  font-size: 14px;
   line-height: 1.5;
+  margin: 1px 0;
+  font-weight: unset;
+  color: #2c2c2c;
 `;
 
-function GridGoodsItem() {
+function GridGoodsItem(item: GoodsProps) {
+  const { id, category, name, price, thumbnail } = item.item;
   return (
     <ItemContainer>
-      <ItemImage />
-      <ItemCategory>Premium denim</ItemCategory>
-      <ItemEle>스트레이트핏 데님</ItemEle>
-      <div>98,000원</div>
+      <Link to={`${Path.GoodsPath}/${id}`}>
+        <ItemImage src={thumbnail} />
+        <ItemCategory>{category}</ItemCategory>
+        <ItemEle>{name}</ItemEle>
+        <div className="price">
+          {price.toLocaleString('ko-KR')}
+          <span className="won">원</span>
+        </div>
+      </Link>
     </ItemContainer>
   );
 }

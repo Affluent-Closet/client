@@ -1,7 +1,12 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { ItemGrid } from 'components/common/CommonComponents';
+import LoadingBox from 'components/common/LoadingBox';
+import useGoodsEffect from 'hooks/goods/useGoodsEffect';
+import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
-import React, { ReactNode } from 'react';
+import { SortMethod } from 'model/enums';
+import React from 'react';
 import styled from 'styled-components';
 import GridGoodsItem from '../common/GridGoodsItem';
 
@@ -22,25 +27,32 @@ const LandingListCategory = styled.div`
   border-bottom: 1px solid ${palette.border};
   line-height: 3;
 `;
-
-function LandingList({ children }: { children: ReactNode }) {
+interface LandingListProps {
+  isBest: boolean;
+}
+function LandingList({ isBest }: LandingListProps) {
+  const { goodsQueryString } = useGoodsQueryForm(
+    isBest ? SortMethod.BEST : SortMethod.NEW,
+  );
+  const { goodsData } = useGoodsEffect(goodsQueryString);
+  const { data: goods, isLoading } = goodsData;
   return (
     <LandingListContainer>
-      <LandingListInner>
-        <LandingListCategory>
-          <h2>{children}</h2>
-        </LandingListCategory>
-        <ItemGrid>
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-          <GridGoodsItem />
-        </ItemGrid>
-      </LandingListInner>
+      {isLoading ? (
+        <LoadingBox />
+      ) : (
+        <LandingListInner>
+          <LandingListCategory>
+            <h2>{isBest ? 'BEST ITEM' : 'NEW ARRIVAL'}</h2>
+          </LandingListCategory>
+          <ItemGrid>
+            {goods &&
+              goods.items.map((good, index) => (
+                <GridGoodsItem key={`good_${index}`} item={good} />
+              ))}
+          </ItemGrid>
+        </LandingListInner>
+      )}
     </LandingListContainer>
   );
 }

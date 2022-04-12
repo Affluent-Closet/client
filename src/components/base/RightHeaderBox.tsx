@@ -9,13 +9,12 @@ const WebHeaderRightBox = styled.div`
   align-items: center;
   width: 400px;
   justify-content: right;
-`;
-
-const EleStyled = styled.div`
   font-size: 16px;
-  padding: 0px 8px;
-  &:hover {
-    color: ${palette.mainColor};
+  a {
+    padding: 0px 8px;
+    &:hover {
+      color: ${palette.mainColor};
+    }
   }
 `;
 
@@ -24,7 +23,7 @@ function RightHeaderBox() {
     <WebHeaderRightBox>
       {profileMenus.map(({ icon, href }, index) => (
         <Link to={href} key={`profile_menu_${index}`}>
-          <EleStyled className="ele-styled ">{icon}</EleStyled>
+          {icon}
         </Link>
       ))}
     </WebHeaderRightBox>

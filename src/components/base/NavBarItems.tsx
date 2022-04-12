@@ -63,7 +63,7 @@ function NavBarItems({ onToggleNav }: NavBarProfileProps) {
       {menuList.map(({ href, name, subMenus, isOpen }, index) => (
         <div key={`MenuList_${index}`}>
           {href && (
-            <NavLink to={href}>
+            <NavLink to={href} onClick={() => onToggleNav()}>
               <NavBarMiddleItems className="name">{name}</NavBarMiddleItems>
             </NavLink>
           )}

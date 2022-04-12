@@ -7,11 +7,11 @@ import React from 'react';
 function LandingPage() {
   useChannelPluginEffect();
   return (
-    <>
+    <PageContainer>
       <LandingBanner />
-      <LandingList>BEST ITEM</LandingList>
-      <LandingList>NEW ARRIVAL</LandingList>
-    </>
+      <LandingList isBest />
+      <LandingList isBest={false} />
+    </PageContainer>
   );
 }
 

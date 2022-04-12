@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { IRegisterRequest } from 'type/auth';
+import { IRegisterRequest } from 'model/auth';
 import useAuthValidation from './useAuthValidation';
 
 export default function useAuth() {

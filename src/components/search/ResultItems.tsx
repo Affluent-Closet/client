@@ -1,14 +1,17 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+import React, { MouseEvent } from 'react';
 import {
   FlexCenter,
   ItemGrid,
   ListHead,
 } from 'components/common/CommonComponents';
-import GridGoodsItem from 'components/common/GridGoodsItem';
 import { palette } from 'libs/styles/palette';
-import { Link } from 'react-router-dom';
-import Path from 'routes/Path';
 import styled from 'styled-components';
+import useGoodsEffect from 'hooks/goods/useGoodsEffect';
+import { SortMethod } from 'model/enums';
+import { IGoodsQuery } from 'model/goods';
+import { GridGoodsItem, LoadingBox } from 'components/common';
+import SearchTitle from './SearchKeyword';
 
 const SearchListHead = styled(ListHead)`
   display: flex;
@@ -19,13 +22,15 @@ const SearchListHead = styled(ListHead)`
   }
 `;
 
-export const SortMenu = styled.div`
+export const SortMenu = styled.input`
   padding: 0px 4px;
   border-right: 1px solid ${palette.temp};
   color: ${palette.temp};
   font-weight: 400;
   font-size: 14px;
-  :hover {
+  background-color: inherit;
+  cursor: pointer;
+  &:hover {
     color: black;
     font-weight: 500;
     text-decoration: underline;
@@ -33,36 +38,41 @@ export const SortMenu = styled.div`
 `;
 
 interface ResultItemsProps {
-  isSearch?: boolean;
-  keyword?: string;
+  qs: IGoodsQuery;
+  isSearch: boolean;
+  onClickSort: (e: MouseEvent<HTMLInputElement>) => void;
 }
-function ResultItems({ isSearch, keyword }: ResultItemsProps) {
+const sortMethods = [SortMethod.BEST, SortMethod.NEW, SortMethod.LOWPRICE];
+
+function ResultItems({ isSearch, qs, onClickSort }: ResultItemsProps) {
+  const { goodsData } = useGoodsEffect(qs);
+  const { data: goods, isFetching } = goodsData;
+  if (!goods) return null;
+  if (isFetching) return <LoadingBox />;
+
   return (
     <>
       <SearchListHead>
-        {isSearch ? (
-          <FlexCenter>
-            <div className="search-keyword">데님</div>에 대한 검색 결과
-          </FlexCenter>
-        ) : (
-          <div className="search-keyword">{keyword}</div>
-        )}
+        <SearchTitle
+          isSearch={isSearch}
+          searchKeyword={isSearch ? qs.name : qs.category}
+        />
         <FlexCenter>
-          <SortMenu>
-            <Link to={Path.SearchResultPage}>인기순</Link>
-          </SortMenu>
-          <SortMenu>최신순</SortMenu>
-          <SortMenu>낮은 가격순</SortMenu>
-          <SortMenu>판매량순</SortMenu>
+          {sortMethods.map((method) => (
+            <SortMenu
+              key={method}
+              type="button"
+              name="sortBy"
+              onClick={onClickSort}
+              value={method}
+            />
+          ))}
         </FlexCenter>
       </SearchListHead>
       <ItemGrid>
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
-        <GridGoodsItem />
+        {goods.items.map((good, index) => (
+          <GridGoodsItem key={`good_${index}`} item={good} />
+        ))}
       </ItemGrid>
     </>
   );
