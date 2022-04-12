@@ -32,10 +32,10 @@ function RatingSection({ ratingIndex, setRatingIndex }: RatingSectionProps) {
   const ArrayIndexes = [1, 2, 3, 4, 5];
   return (
     <RatingContainer>
-      {ArrayIndexes.map((arrayindex, index) => (
+      {ArrayIndexes.map((arrayindex) => (
         <RatingStar
           size={35}
-          key={`rating_${index}`}
+          key={`rating_${arrayindex}`}
           className={arrayindex <= ratingIndex ? 'active' : 'inactive'}
           onClick={() => setRatingIndex(arrayindex)}
         />
