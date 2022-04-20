@@ -24,7 +24,7 @@ const SearchListHead = styled(ListHead)`
 
 export const SortMenu = styled.input`
   padding: 0px 4px;
-  border-right: 1px solid ${palette.temp};
+  border-right: 1px solid ${palette.grayLight};
   color: ${palette.temp};
   font-weight: 400;
   font-size: 14px;

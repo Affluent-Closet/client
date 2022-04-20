@@ -15,7 +15,7 @@ const LoginBox = styled(FlexColumn)`
 const FindInfo = styled(SortMenu)`
   border: none;
   padding-top: 5px;
-  width: auto;
+  width: 120px;
 `;
 
 function LoginForm() {
@@ -36,11 +36,11 @@ function LoginForm() {
         회원 로그인
       </Button>
       <FlexCenter>
-        <FindInfo>아이디찾기</FindInfo>
-        <FindInfo>비밀번호 찾기</FindInfo>
+        <FindInfo value="아이디 찾기" />
+        <FindInfo value="비밀번호 찾기" />
       </FlexCenter>
       <FlexCenter>
-        <FindInfo>이메일로 가입하기</FindInfo>
+        <FindInfo value="이메일로 가입하기" />
       </FlexCenter>
     </>
   );

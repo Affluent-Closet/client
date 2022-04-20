@@ -1,7 +1,7 @@
 import GoodsInfo from 'components/goods/GoodsInfo';
 import GoodsInquiry from 'components/goods/GoodsInquiry';
 import GoodsReview from 'components/goods/GoodsReview';
-import GoodsReviewSummery from 'components/goods/GoodsReviewSummery';
+import GoodsReviewSummary from 'components/goods/GoodsReviewSummary';
 import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
 import useOneGoodsEffect from 'hooks/goods/useOneGoodsEffect';
@@ -58,7 +58,7 @@ function GoodsPage() {
         />
       </GoodsDetailWrapper>
       <TabBox ref={ref2} scrollList={scrollList} th={1} />
-      <GoodsReviewSummery />
+      <GoodsReviewSummary />
       <GoodsReview />
       <TabBox ref={ref3} scrollList={scrollList} th={2} />
       <GoodsInquiry />

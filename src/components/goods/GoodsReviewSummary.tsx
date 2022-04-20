@@ -20,7 +20,7 @@ const SummaryBox = styled(FlexBetween)`
   padding: 32px 0px;
 `;
 
-const RatingSummeryBox = styled.div`
+const RatingSummaryBox = styled.div`
   border-right: 1px solid ${palette.border};
   width: 400px;
   text-align: center;
@@ -30,24 +30,24 @@ const Rating = styled.div`
   font-size: 48px;
 `;
 
-const SummeryEle = styled(FlexCenter)`
+const SummaryEle = styled(FlexCenter)`
   margin: 13px 0px;
   font-size: 14px;
   line-height: 24px;
   text-align: center;
   color: #14161a;
 `;
-function GoodsReviewSummery() {
+function GoodsReviewSummary() {
   return (
     <ReviewWrapper>
       <ListHead>Review</ListHead>
       <SummaryBox>
-        <RatingSummeryBox>
+        <RatingSummaryBox>
           구매 만족도
-          <SummeryEle>
+          <SummaryEle>
             <BsStarFill color="coral" size="42" />
             <Rating>4.9</Rating>
-          </SummeryEle>
+          </SummaryEle>
           <Button
             width="160px"
             height="50px"
@@ -58,7 +58,7 @@ function GoodsReviewSummery() {
           >
             상품 리뷰 작성하기
           </Button>
-        </RatingSummeryBox>
+        </RatingSummaryBox>
         <div className="full-width">
           <ReviewScoreBox
             tit="아주 좋아요"
@@ -75,4 +75,4 @@ function GoodsReviewSummery() {
   );
 }
 
-export default GoodsReviewSummery;
+export default GoodsReviewSummary;
