@@ -15,6 +15,8 @@ enum Path {
   CartPage = '/cart',
   PostGoodsPage = '/postgoods',
   PostReviewPage = '/postreview',
+  NewPage = '/new',
+  BestPage = '/best',
 }
 
 export default Path;
