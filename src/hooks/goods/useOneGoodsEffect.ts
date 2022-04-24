@@ -17,7 +17,7 @@ function useOneGoodsEffect() {
     price: 0,
     discount: 0,
     stock: 0,
-    datail: [],
+    detail: [],
     thumbnail: '',
     sellnum: 0,
     createAt: new Date(),
@@ -32,7 +32,6 @@ function useOneGoodsEffect() {
     getData();
   }, [goodsid]);
 
-  console.log(goods);
   return { goods };
 }
 export default useOneGoodsEffect;

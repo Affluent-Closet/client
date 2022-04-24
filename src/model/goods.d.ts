@@ -5,7 +5,7 @@ export interface IGoodsItem {
   price: number;
   discount: number;
   stock: number;
-  datail: string[];
+  detail: string[];
   thumbnail: string;
   sellnum: number;
   createAt: Date;
