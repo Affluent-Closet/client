@@ -26,14 +26,26 @@ const GoodsTitleStyled = styled.div`
   margin-bottom: 20px;
 `;
 
-function GoodsPriceBox() {
+interface GoodsPriceProps {
+  price: number;
+  discount: number;
+}
+function GoodsPriceBox({ price, discount }: GoodsPriceProps) {
   return (
     <>
       <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
       <GoodsPriceStyled>
-        <div className="discount-price">104,000</div>
-        <div className="original-price">130,000</div>
-        <div className="discount-rate">20%</div>
+        <div className="discount-price">
+          {(price * ((100 - discount) / 100)).toLocaleString('ko-KR')}
+        </div>
+        {discount && (
+          <>
+            <div className="original-price">
+              {price.toLocaleString('ko-KR')}
+            </div>
+            <div className="discount-rate">{discount}%</div>
+          </>
+        )}
       </GoodsPriceStyled>
     </>
   );
