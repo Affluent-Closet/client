@@ -19,6 +19,7 @@ const GoodsImg = styled.img`
   display: block;
   margin: 0 auto;
   width: 100%;
+  max-width: 900px;
 `;
 
 function GoodsPage() {

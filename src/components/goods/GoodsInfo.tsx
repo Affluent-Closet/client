@@ -9,7 +9,7 @@ import GoodsPriceBox from './GoodsPriceBox';
 
 const GoodsInfoWrapper = styled.div`
   display: flex;
-  margin: 30px;
+  justify-content: center;
   text-align: left;
   ${mediaMax.large} {
     display: block;
@@ -19,7 +19,7 @@ const GoodsInfoWrapper = styled.div`
 
 const GoodsThumbBox = styled.img`
   width: 100%;
-  max-width: 650px;
+  max-width: 450px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
   ${mediaMax.large} {
@@ -70,12 +70,12 @@ interface GoodsInfoProps {
   item: IGoodsItem;
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
-  const { thumbnail } = item;
+  const { thumbnail, price, discount } = item;
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src={thumbnail} />
       <GoodsInfoBox>
-        <GoodsPriceBox />
+        <GoodsPriceBox price={price} discount={discount} />
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Color :</GoodsInfoTitStyled>
