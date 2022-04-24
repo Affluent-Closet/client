@@ -43,20 +43,16 @@ function GoodsPage() {
       onClick: onMoveToElement3,
     },
   ];
-
+  console.log(goods.detail);
   return (
     <>
       <GoodsInfo item={goods} />
       <TabBox ref={ref1} scrollList={scrollList} th={0} />
 
       <GoodsDetailWrapper>
-        {/* {goods.datail.map((dtil, index) => (
+        {goods.detail.map((dtil, index) => (
           <GoodsImg key={`detail_${index}`} src={dtil} alt="의상 이미지" />
-        ))} */}
-        <GoodsImg
-          src="https://intempomood.cafe24.com/2022/2022SS/Full Zip-up Cardigan_Black_01.jpg"
-          alt="의상 이미지"
-        />
+        ))}
       </GoodsDetailWrapper>
       <TabBox ref={ref2} scrollList={scrollList} th={1} />
       <GoodsReviewSummary />
