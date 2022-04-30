@@ -1,3 +1,4 @@
+import useDiscountCal from 'hooks/goods/useDiscountCal';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -31,13 +32,12 @@ interface GoodsPriceProps {
   discount: number;
 }
 function GoodsPriceBox({ price, discount }: GoodsPriceProps) {
+  const { discountPriceString } = useDiscountCal(price, discount);
   return (
     <>
       <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
       <GoodsPriceStyled>
-        <div className="discount-price">
-          {(price * ((100 - discount) / 100)).toLocaleString('ko-KR')}
-        </div>
+        <div className="discount-price">{discountPriceString}</div>
         {discount && (
           <>
             <div className="original-price">
