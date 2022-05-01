@@ -38,7 +38,7 @@ function GoodsPriceBox({ price, discount }: GoodsPriceProps) {
       <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
       <GoodsPriceStyled>
         <div className="discount-price">{discountPriceString}</div>
-        {discount && (
+        {discount !== 0 && (
           <>
             <div className="original-price">
               {price.toLocaleString('ko-KR')}

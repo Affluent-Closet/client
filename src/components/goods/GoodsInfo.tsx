@@ -99,7 +99,7 @@ function GoodsInfo({ item }: GoodsInfoProps) {
           <RadioLabel htmlFor="s3">L</RadioLabel>
         </GoodsInfoSection>
         <hr />
-        <GoodsCalculBox />
+        <GoodsCalculBox item={item} />
       </GoodsInfoBox>
     </GoodsInfoWrapper>
   );
