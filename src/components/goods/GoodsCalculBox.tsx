@@ -3,6 +3,9 @@ import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import { palette } from 'libs/styles/palette';
+import { IGoodsItem } from 'model/goods';
+import useDiscountCal from 'hooks/goods/useDiscountCal';
+import useTotalPrice from 'hooks/goods/useTotalPrice';
 
 const SelectedOptionBox = styled.div`
   margin: 10px 0px;
@@ -57,8 +60,19 @@ const BuyButton = styled(Button)`
   max-width: 240px;
 `;
 
-function GoodsCalculBox() {
+interface GoodsCalculProps {
+  item: IGoodsItem;
+}
+
+function GoodsCalculBox({ item }: GoodsCalculProps) {
+  const { price, discount } = item;
   const [quantity, setQuantity] = useState(0);
+  const { discountPrice, discountPriceString } = useDiscountCal(
+    price,
+    discount,
+  );
+  const { totalPriceString } = useTotalPrice(quantity, price);
+
   return (
     <>
       <SelectedOptionBox>
@@ -80,13 +94,13 @@ function GoodsCalculBox() {
             </QuantityCtrlStlyed>
           </FlexBox>
           <FlexBox>
-            <div> 85,900원</div>
+            <div> {discountPriceString}원</div>
             <DeletOptBtn />
           </FlexBox>
         </SelectedOptionStyled>
         <SelectedOptionStyled>
           <div>총 상품 금액</div>
-          <div>257,000원</div>
+          <div>{totalPriceString}원</div>
         </SelectedOptionStyled>
       </SelectedOptionBox>
       <BtnGroup>
