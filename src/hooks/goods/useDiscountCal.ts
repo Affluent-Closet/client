@@ -5,7 +5,7 @@ function useDiscountCal(originalPrice: number, discountRate: number) {
   const [discountPrice, setDiscountPrice] = useState<number>(0);
   useEffect(() => {
     setDiscountPrice(originalPrice * ((100 - discountRate) / 100));
-  }, []);
+  }, [originalPrice]);
   const discountPriceString = discountPrice.toLocaleString('ko-KR');
   return { discountPrice, discountPriceString };
 }
