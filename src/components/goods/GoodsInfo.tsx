@@ -1,4 +1,5 @@
 import { FlexAlignCenter } from 'components/common/CommonComponents';
+import useSelectGoods from 'hooks/goods/useSelectGoods';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import { IGoodsItem } from 'model/goods';
@@ -71,6 +72,7 @@ interface GoodsInfoProps {
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
   const { thumbnail, price, discount } = item;
+  const { onChangeList, selectedList } = useSelectGoods();
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src={thumbnail} />
@@ -79,27 +81,62 @@ function GoodsInfo({ item }: GoodsInfoProps) {
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Color :</GoodsInfoTitStyled>
-          <RadioButton type="radio" id="c1" name="color" />
+          <RadioButton
+            type="radio"
+            id="c1"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c1" color="pink" />
-          <RadioButton type="radio" id="c2" name="color" />
+          <RadioButton
+            type="radio"
+            id="c2"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c2" color="blue" />
-          <RadioButton type="radio" id="c3" name="color" />
+          <RadioButton
+            type="radio"
+            id="c3"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c3" color="green" />
-          <RadioButton type="radio" id="c4" name="color" />
+          <RadioButton
+            type="radio"
+            id="c4"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c4" color="red" />
         </GoodsInfoSection>
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Size :</GoodsInfoTitStyled>
-          <RadioButton type="radio" id="s1" name="size" />
+          <RadioButton
+            type="radio"
+            id="s1"
+            name="size"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="s1">S</RadioLabel>
-          <RadioButton type="radio" id="s2" name="size" />
+          <RadioButton
+            type="radio"
+            id="s2"
+            name="size"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="s2">M</RadioLabel>
-          <RadioButton type="radio" id="s3" name="size" />
+          <RadioButton
+            type="radio"
+            id="s3"
+            name="size"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="s3">L</RadioLabel>
         </GoodsInfoSection>
         <hr />
-        <GoodsCalculBox item={item} />
+        <GoodsCalculBox item={item} selectedItem={selectedList} />
       </GoodsInfoBox>
     </GoodsInfoWrapper>
   );
