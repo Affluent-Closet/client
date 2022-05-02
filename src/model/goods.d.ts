@@ -30,3 +30,8 @@ export interface IGoodsQuery {
   category?: string;
   sortBy?: SortMethod;
 }
+
+export interface IOrderItem {
+  color: string;
+  size: string;
+}
