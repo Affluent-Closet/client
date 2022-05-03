@@ -3,7 +3,7 @@ import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import { palette } from 'libs/styles/palette';
-import { IGoodsItem } from 'model/goods';
+import { IGoodsItem, IOrderItem } from 'model/goods';
 import useDiscountCal from 'hooks/goods/useDiscountCal';
 import useTotalPrice from 'hooks/goods/useTotalPrice';
 
@@ -62,47 +62,53 @@ const BuyButton = styled(Button)`
 
 interface GoodsCalculProps {
   item: IGoodsItem;
+  selectedItems: IOrderItem[];
 }
 
-function GoodsCalculBox({ item }: GoodsCalculProps) {
+function GoodsCalculBox({ item, selectedItems }: GoodsCalculProps) {
   const { price, discount } = item;
   const [quantity, setQuantity] = useState(0);
-  const { discountPrice, discountPriceString } = useDiscountCal(
-    price,
-    discount,
-  );
+  const { discountPriceString } = useDiscountCal(price, discount);
   const { totalPriceString } = useTotalPrice(quantity, price);
-
   return (
     <>
-      <SelectedOptionBox>
-        <SelectedOptionStyled>
-          <div>L</div>
-          <FlexBox>
-            <QuantityCtrlStlyed>
-              <AiOutlineMinus
-                size={18}
-                onClick={() => setQuantity(quantity - 1)}
-              />
-            </QuantityCtrlStlyed>
-            <QuantityStyled>{quantity}</QuantityStyled>
-            <QuantityCtrlStlyed>
-              <AiOutlinePlus
-                size={18}
-                onClick={() => setQuantity(quantity + 1)}
-              />
-            </QuantityCtrlStlyed>
-          </FlexBox>
-          <FlexBox>
-            <div> {discountPriceString}원</div>
-            <DeletOptBtn />
-          </FlexBox>
-        </SelectedOptionStyled>
-        <SelectedOptionStyled>
-          <div>총 상품 금액</div>
-          <div>{totalPriceString}원</div>
-        </SelectedOptionStyled>
-      </SelectedOptionBox>
+      {selectedItems.length !== 0 &&
+        selectedItems.map(({ color, size }, index) => (
+          <SelectedOptionBox key={`${color}${size}_${index}`}>
+            <SelectedOptionStyled>
+              <div>
+                {size},{color}
+              </div>
+              <FlexBox>
+                <QuantityCtrlStlyed>
+                  <AiOutlineMinus
+                    size={18}
+                    onClick={() => setQuantity(quantity - 1)}
+                  />
+                </QuantityCtrlStlyed>
+                <QuantityStyled>{quantity}</QuantityStyled>
+                <QuantityCtrlStlyed>
+                  <AiOutlinePlus
+                    size={18}
+                    onClick={() => setQuantity(quantity + 1)}
+                  />
+                </QuantityCtrlStlyed>
+              </FlexBox>
+              <FlexBox>
+                <div> {discountPriceString}원</div>
+                <DeletOptBtn
+                  onClick={() => {
+                    selectedItems.splice(index);
+                  }}
+                />
+              </FlexBox>
+            </SelectedOptionStyled>
+            <SelectedOptionStyled>
+              <div>총 상품 금액</div>
+              <div>{totalPriceString}원</div>
+            </SelectedOptionStyled>
+          </SelectedOptionBox>
+        ))}
       <BtnGroup>
         <BuyButton
           height="40px"
