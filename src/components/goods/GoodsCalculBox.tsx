@@ -6,6 +6,7 @@ import { palette } from 'libs/styles/palette';
 import { IGoodsItem, IOrderItem } from 'model/goods';
 import useDiscountCal from 'hooks/goods/useDiscountCal';
 import useTotalPrice from 'hooks/goods/useTotalPrice';
+import { IconType } from 'react-icons';
 
 const SelectedOptionBox = styled.div`
   margin: 10px 0px;
@@ -35,7 +36,9 @@ const QuantityStyled = styled(FlexBox)`
   height: 26px;
 `;
 
-const QuantityCtrlStlyed = styled(QuantityStyled)`
+const QuantityCtrlStlyed = styled.button`
+  width: 26px;
+  height: 26px;
   background-color: #eee;
   cursor: pointer;
 `;
@@ -53,7 +56,6 @@ const BtnGroup = styled.div`
   display: flex;
   justify-content: space-around;
 `;
-
 const BuyButton = styled(Button)`
   margin: 0px 2px;
   width: 100%;
@@ -63,35 +65,46 @@ const BuyButton = styled(Button)`
 interface GoodsCalculProps {
   item: IGoodsItem;
   selectedItems: IOrderItem[];
+  onChangeQuantity: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    index: number,
+  ) => void;
 }
 
-function GoodsCalculBox({ item, selectedItems }: GoodsCalculProps) {
+function GoodsCalculBox({
+  item,
+  selectedItems,
+  onChangeQuantity,
+}: GoodsCalculProps) {
   const { price, discount } = item;
-  const [quantity, setQuantity] = useState(0);
   const { discountPriceString } = useDiscountCal(price, discount);
-  const { totalPriceString } = useTotalPrice(quantity, price);
+  // const { totalPriceString } = useTotalPrice(, price);
   return (
     <>
       {selectedItems.length !== 0 &&
-        selectedItems.map(({ color, size }, index) => (
+        selectedItems.map(({ color, size, quantity }, index) => (
           <SelectedOptionBox key={`${color}${size}_${index}`}>
             <SelectedOptionStyled>
               <div>
                 {size},{color}
               </div>
               <FlexBox>
-                <QuantityCtrlStlyed>
-                  <AiOutlineMinus
-                    size={18}
-                    onClick={() => setQuantity(quantity - 1)}
-                  />
+                <QuantityCtrlStlyed
+                  value={-1}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    onChangeQuantity(e, index);
+                  }}
+                >
+                  <AiOutlineMinus size={18} />
                 </QuantityCtrlStlyed>
                 <QuantityStyled>{quantity}</QuantityStyled>
-                <QuantityCtrlStlyed>
-                  <AiOutlinePlus
-                    size={18}
-                    onClick={() => setQuantity(quantity + 1)}
-                  />
+                <QuantityCtrlStlyed
+                  value={1}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    onChangeQuantity(e, index);
+                  }}
+                >
+                  <AiOutlinePlus size={18} />
                 </QuantityCtrlStlyed>
               </FlexBox>
               <FlexBox>
@@ -105,7 +118,8 @@ function GoodsCalculBox({ item, selectedItems }: GoodsCalculProps) {
             </SelectedOptionStyled>
             <SelectedOptionStyled>
               <div>총 상품 금액</div>
-              <div>{totalPriceString}원</div>
+              <div>10000원</div>
+              {/* {totalPriceString} */}
             </SelectedOptionStyled>
           </SelectedOptionBox>
         ))}
