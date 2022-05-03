@@ -34,4 +34,5 @@ export interface IGoodsQuery {
 export interface IOrderItem {
   color: string;
   size: string;
+  quantity: number;
 }
