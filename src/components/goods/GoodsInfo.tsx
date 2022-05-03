@@ -21,6 +21,7 @@ const GoodsInfoWrapper = styled.div`
 const GoodsThumbBox = styled.img`
   width: 100%;
   max-width: 450px;
+  max-height: 560px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
   ${mediaMax.large} {
@@ -33,6 +34,7 @@ const GoodsInfoBox = styled.div`
   width: 100%;
   max-width: 450px;
   min-width: 220px;
+  margin-bottom: 30px;
   ${mediaMax.large} {
     padding: 40px 10px;
     margin: 0 auto;
@@ -72,7 +74,7 @@ interface GoodsInfoProps {
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
   const { thumbnail, price, discount } = item;
-  const { onChangeList, selectedList } = useSelectGoods();
+  const { onChangeList, selectedList, onChangeQuantity } = useSelectGoods();
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src={thumbnail} />
@@ -136,7 +138,11 @@ function GoodsInfo({ item }: GoodsInfoProps) {
           <RadioLabel htmlFor="s3">L</RadioLabel>
         </GoodsInfoSection>
         <hr />
-        <GoodsCalculBox item={item} selectedItem={selectedList} />
+        <GoodsCalculBox
+          item={item}
+          selectedItems={selectedList}
+          onChangeQuantity={onChangeQuantity}
+        />
       </GoodsInfoBox>
     </GoodsInfoWrapper>
   );
