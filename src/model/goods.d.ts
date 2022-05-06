@@ -1,3 +1,8 @@
+export interface IGoodsSize {
+  stock: number;
+  size: string;
+}
+
 export interface IGoodsItem {
   id: string;
   category: string;
@@ -10,6 +15,7 @@ export interface IGoodsItem {
   sellnum: number;
   createAt: Date;
   status: string;
+  size: Array<IGoodsSize>;
 }
 
 export interface GoodsProps {
