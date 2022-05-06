@@ -1,4 +1,5 @@
 import useDiscountCal from 'hooks/goods/useDiscountCal';
+import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
@@ -25,17 +26,21 @@ const GoodsTitleStyled = styled.div`
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
+  ${mediaMax.large} {
+    text-align: left;
+  }
 `;
 
 interface GoodsPriceProps {
   price: number;
   discount: number;
+  goodsName: string;
 }
-function GoodsPriceBox({ price, discount }: GoodsPriceProps) {
+function GoodsPriceBox({ price, discount, goodsName }: GoodsPriceProps) {
   const { discountPriceString } = useDiscountCal(price, discount);
   return (
     <>
-      <GoodsTitleStyled>데이브레이크 운동화</GoodsTitleStyled>
+      <GoodsTitleStyled>{goodsName}</GoodsTitleStyled>
       <GoodsPriceStyled>
         <div className="discount-price">{discountPriceString}</div>
         {discount !== 0 && (

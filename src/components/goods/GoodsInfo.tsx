@@ -73,13 +73,14 @@ interface GoodsInfoProps {
   item: IGoodsItem;
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
-  const { thumbnail, price, discount } = item;
+  const { thumbnail, price, discount, size, name } = item;
+  console.log(item);
   const { onChangeList, selectedList, onChangeQuantity } = useSelectGoods();
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src={thumbnail} />
       <GoodsInfoBox>
-        <GoodsPriceBox price={price} discount={discount} />
+        <GoodsPriceBox goodsName={name} price={price} discount={discount} />
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Color :</GoodsInfoTitStyled>
@@ -115,27 +116,17 @@ function GoodsInfo({ item }: GoodsInfoProps) {
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Size :</GoodsInfoTitStyled>
-          <RadioButton
-            type="radio"
-            id="s1"
-            name="size"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="s1">S</RadioLabel>
-          <RadioButton
-            type="radio"
-            id="s2"
-            name="size"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="s2">M</RadioLabel>
-          <RadioButton
-            type="radio"
-            id="s3"
-            name="size"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="s3">L</RadioLabel>
+          {/* {size.map((sizeInfo, index) => (
+            <div key={`sizeInfo_${index}`}>
+              <RadioButton
+                type="radio"
+                id={sizeInfo.size}
+                name="size"
+                onChange={onChangeList}
+              />
+              <RadioLabel htmlFor="s1">S</RadioLabel>
+            </div>
+          ))} */}
         </GoodsInfoSection>
         <hr />
         <GoodsCalculBox
