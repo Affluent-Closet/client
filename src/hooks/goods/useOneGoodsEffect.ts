@@ -22,7 +22,7 @@ function useOneGoodsEffect() {
     sellnum: 0,
     createAt: new Date(),
     status: '',
-    size: [{ size: '', stock: 0 }],
+    sizeInfo: [{ size: '', stock: 0 }],
   });
   useEffect(() => {
     if (!goodsid) return;

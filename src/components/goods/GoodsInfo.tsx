@@ -73,7 +73,7 @@ interface GoodsInfoProps {
   item: IGoodsItem;
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
-  const { thumbnail, price, discount, size, name } = item;
+  const { thumbnail, price, discount, sizeInfo, name } = item;
   console.log(item);
   const { onChangeList, selectedList, onChangeQuantity } = useSelectGoods();
   return (
@@ -116,17 +116,17 @@ function GoodsInfo({ item }: GoodsInfoProps) {
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Size :</GoodsInfoTitStyled>
-          {/* {size.map((sizeInfo, index) => (
+          {sizeInfo.map(({ size }, index) => (
             <div key={`sizeInfo_${index}`}>
               <RadioButton
                 type="radio"
-                id={sizeInfo.size}
+                id={size}
                 name="size"
                 onChange={onChangeList}
               />
-              <RadioLabel htmlFor="s1">S</RadioLabel>
+              <RadioLabel htmlFor={size}>{size}</RadioLabel>
             </div>
-          ))} */}
+          ))}
         </GoodsInfoSection>
         <hr />
         <GoodsCalculBox
