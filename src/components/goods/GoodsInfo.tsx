@@ -75,9 +75,10 @@ interface GoodsInfoProps {
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
   const { thumbnail, price, discount, sizeInfo, name } = item;
-  const { onChangeList, selectedList, onChangeQuantity, onDeleteList } =
-    useSelectGoods(item.price);
   const discountPriceIndex = useDiscountCal(price, discount);
+  const { onChangeList, selectedList, onChangeQuantity, onDeleteList } =
+    useSelectGoods(discountPriceIndex.discountPrice);
+
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src={thumbnail} />
@@ -137,11 +138,9 @@ function GoodsInfo({ item }: GoodsInfoProps) {
         </GoodsInfoSection>
         <hr />
         <GoodsCalculBox
-          item={item}
           selectedItems={selectedList}
           onChangeQuantity={onChangeQuantity}
           onDeleteList={onDeleteList}
-          discountPriceIndex={discountPriceIndex}
         />
       </GoodsInfoBox>
     </GoodsInfoWrapper>

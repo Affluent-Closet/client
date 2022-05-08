@@ -41,4 +41,10 @@ export interface IOrderItem {
   color: string;
   size: string;
   quantity: number;
+  total: number;
+}
+
+export interface IdiscountPrice {
+  discountPrice: number;
+  discountPriceString: string;
 }

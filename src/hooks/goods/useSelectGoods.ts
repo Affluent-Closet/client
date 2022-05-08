@@ -1,12 +1,13 @@
 import { IOrderItem } from 'model/goods';
 import { useEffect, useState } from 'react';
 
-function useSelectGoods() {
+function useSelectGoods(price: number) {
   const [selectedList, setSelectedList] = useState<IOrderItem[]>([]);
   const [list, setList] = useState<IOrderItem>({
     color: '',
     size: '',
     quantity: 1,
+    total: 0,
   });
 
   const onChangeList = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +25,7 @@ function useSelectGoods() {
     const value = Number(e.currentTarget.value);
     const newList = [...selectedList];
     newList[index].quantity += value;
+    newList[index].total = newList[index].quantity * price;
     setSelectedList(newList);
   };
 
@@ -36,7 +38,7 @@ function useSelectGoods() {
   useEffect(() => {
     if (list.color !== '' && list.size !== '') {
       setSelectedList((prev) => [...prev, list]);
-      setList({ size: '', color: '', quantity: 1 });
+      setList({ size: '', color: '', quantity: 1, total: 0 });
     }
     // 일단 주석처리중
     // return () => {
