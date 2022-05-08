@@ -27,6 +27,12 @@ function useSelectGoods() {
     setSelectedList(newList);
   };
 
+  const onDeleteList = (index: number) => {
+    const newList = [...selectedList];
+    newList.splice(index, 1);
+    setSelectedList(newList);
+  };
+
   useEffect(() => {
     if (list.color !== '' && list.size !== '') {
       setSelectedList((prev) => [...prev, list]);
@@ -37,7 +43,7 @@ function useSelectGoods() {
     //   setList({ size: '', color: '' });
     // };
   }, [list]);
-  return { selectedList, list, onChangeList, onChangeQuantity };
+  return { selectedList, list, onChangeList, onChangeQuantity, onDeleteList };
 }
 
 export default useSelectGoods;
