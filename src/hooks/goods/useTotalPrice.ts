@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 
-function useTotalPrice(quantity: number, price: number) {
+export function useTotalPrice(quantity: number, price: number) {
   const [totalPrice, setTotalPrice] = useState(0);
+  console.log(quantity, price);
   useEffect(() => {
     setTotalPrice(quantity * price);
   }, [quantity]);
-
-  const totalPriceString = totalPrice.toLocaleString('ko-KR');
-  return { totalPrice, totalPriceString };
+  console.log(totalPrice);
+  // const totalPriceString = totalPrice.toLocaleString('ko-KR');
+  return totalPrice;
 }
-
-export default useTotalPrice;

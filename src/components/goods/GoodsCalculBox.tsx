@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import { palette } from 'libs/styles/palette';
-import { IGoodsItem, IOrderItem } from 'model/goods';
+import { IdiscountPrice, IGoodsItem, IOrderItem } from 'model/goods';
 import useDiscountCal from 'hooks/goods/useDiscountCal';
-import useTotalPrice from 'hooks/goods/useTotalPrice';
-import { IconType } from 'react-icons';
+import { useTotalPrice } from 'hooks/goods/useTotalPrice';
 
 const SelectedOptionBox = styled.div`
   margin: 10px 0px;
@@ -63,28 +62,30 @@ const BuyButton = styled(Button)`
 `;
 
 interface GoodsCalculProps {
-  item: IGoodsItem;
+  item?: IGoodsItem;
   selectedItems: IOrderItem[];
   onChangeQuantity: (
     e: React.MouseEvent<HTMLButtonElement>,
     index: number,
   ) => void;
+  onDeleteList: (index: number) => void;
+  discountPriceIndex: IdiscountPrice;
 }
 
 function GoodsCalculBox({
   item,
   selectedItems,
   onChangeQuantity,
+  onDeleteList,
+  discountPriceIndex,
 }: GoodsCalculProps) {
-  const { price, discount } = item;
-  const { discountPriceString } = useDiscountCal(price, discount);
-  // const { totalPriceString } = useTotalPrice(, price);
+  console.log(selectedItems);
   return (
     <>
-      {selectedItems.length !== 0 &&
-        selectedItems.map(({ color, size, quantity }, index) => (
-          <SelectedOptionBox key={`${color}${size}_${index}`}>
-            <SelectedOptionStyled>
+      <SelectedOptionBox>
+        {selectedItems.length !== 0 &&
+          selectedItems.map(({ color, size, quantity }, index) => (
+            <SelectedOptionStyled key={`${color}${size}_${index}`}>
               <div>
                 {size},{color}
               </div>
@@ -108,21 +109,21 @@ function GoodsCalculBox({
                 </QuantityCtrlStlyed>
               </FlexBox>
               <FlexBox>
-                <div> {discountPriceString}원</div>
+                <div>{discountPriceIndex.discountPrice * quantity}원</div>
                 <DeletOptBtn
                   onClick={() => {
-                    selectedItems.splice(index);
+                    onDeleteList(index);
                   }}
                 />
               </FlexBox>
             </SelectedOptionStyled>
-            <SelectedOptionStyled>
-              <div>총 상품 금액</div>
-              <div>10000원</div>
-              {/* {totalPriceString} */}
-            </SelectedOptionStyled>
-          </SelectedOptionBox>
-        ))}
+          ))}
+        <SelectedOptionStyled>
+          <div>총 상품 금액</div>
+          <div>10000원</div>
+        </SelectedOptionStyled>
+      </SelectedOptionBox>
+
       <BtnGroup>
         <BuyButton
           height="40px"
