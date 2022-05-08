@@ -6,11 +6,11 @@ import {
   ListHead,
 } from 'components/common/CommonComponents';
 import useAuth from 'hooks/auth/useAuth';
-import useDaumAdress from 'hooks/common/useDaumAddress';
 import useToggle from 'hooks/common/useToggle';
 import { palette } from 'libs/styles/palette';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import AddressModal from './AddressModal';
 
 const RegisterFormWrapper = styled.form`
   sup {
@@ -66,8 +66,9 @@ function RegisterForm() {
   const { email, password, passwordConfirm, phoneNum, address1, address2 } =
     userForm;
 
-  const [zonecode, address, onComplet] = useDaumAdress();
-  const [isDaum, onToggleDaum] = useToggle();
+  const [isAddressModal, onToggleAddressModal] = useToggle();
+
+  const [address, setAddress] = useState('');
   return (
     <RegisterFormWrapper
       onSubmit={() => {
@@ -99,7 +100,6 @@ function RegisterForm() {
           value={password}
           onChange={onChangeForm}
         />
-
         <RegisterInput
           placeholder="비밀번호 확인"
           type="password"
@@ -127,11 +127,19 @@ function RegisterForm() {
           주소 <sup>*</sup>
         </RegisterQue>
         <FlexBetween>
-          <RegisterInput placeholder="주소" />
-          <FindAddressBtn width="3rem" height="40px" type="button">
+          <RegisterInput placeholder="주소" value={address} disabled />
+          <FindAddressBtn
+            width="3rem"
+            height="40px"
+            type="button"
+            onClick={onToggleAddressModal}
+          >
             찾기
           </FindAddressBtn>
         </FlexBetween>
+        {isAddressModal && (
+          <AddressModal onToggleModal={onToggleAddressModal} />
+        )}
         <RegisterInput placeholder="상세주소" />
       </div>
       <hr />
