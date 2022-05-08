@@ -3,9 +3,7 @@ import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import { palette } from 'libs/styles/palette';
-import { IdiscountPrice, IGoodsItem, IOrderItem } from 'model/goods';
-import useDiscountCal from 'hooks/goods/useDiscountCal';
-import { useTotalPrice } from 'hooks/goods/useTotalPrice';
+import { IOrderItem } from 'model/goods';
 
 const SelectedOptionBox = styled.div`
   margin: 10px 0px;
@@ -62,29 +60,27 @@ const BuyButton = styled(Button)`
 `;
 
 interface GoodsCalculProps {
-  item?: IGoodsItem;
   selectedItems: IOrderItem[];
   onChangeQuantity: (
     e: React.MouseEvent<HTMLButtonElement>,
     index: number,
   ) => void;
   onDeleteList: (index: number) => void;
-  discountPriceIndex: IdiscountPrice;
 }
 
 function GoodsCalculBox({
-  item,
   selectedItems,
   onChangeQuantity,
   onDeleteList,
-  discountPriceIndex,
 }: GoodsCalculProps) {
-  console.log(selectedItems);
+  const sumAll = selectedItems
+    .map((item) => item.total)
+    .reduce((prev, curr) => prev + curr, 0);
   return (
     <>
       <SelectedOptionBox>
         {selectedItems.length !== 0 &&
-          selectedItems.map(({ color, size, quantity }, index) => (
+          selectedItems.map(({ color, size, quantity, total }, index) => (
             <SelectedOptionStyled key={`${color}${size}_${index}`}>
               <div>
                 {size},{color}
@@ -109,7 +105,7 @@ function GoodsCalculBox({
                 </QuantityCtrlStlyed>
               </FlexBox>
               <FlexBox>
-                <div>{discountPriceIndex.discountPrice * quantity}원</div>
+                <div>{total.toLocaleString('ko-KR')}원</div>
                 <DeletOptBtn
                   onClick={() => {
                     onDeleteList(index);
@@ -120,7 +116,7 @@ function GoodsCalculBox({
           ))}
         <SelectedOptionStyled>
           <div>총 상품 금액</div>
-          <div>10000원</div>
+          <div>{sumAll.toLocaleString('ko-KR')}원</div>
         </SelectedOptionStyled>
       </SelectedOptionBox>
 
