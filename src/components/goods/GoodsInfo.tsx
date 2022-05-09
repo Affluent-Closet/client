@@ -1,4 +1,6 @@
 import { FlexAlignCenter } from 'components/common/CommonComponents';
+import useDiscountCal from 'hooks/goods/useDiscountCal';
+import useSelectGoods from 'hooks/goods/useSelectGoods';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import { IGoodsItem } from 'model/goods';
@@ -9,7 +11,7 @@ import GoodsPriceBox from './GoodsPriceBox';
 
 const GoodsInfoWrapper = styled.div`
   display: flex;
-  margin: 30px;
+  justify-content: center;
   text-align: left;
   ${mediaMax.large} {
     display: block;
@@ -19,7 +21,8 @@ const GoodsInfoWrapper = styled.div`
 
 const GoodsThumbBox = styled.img`
   width: 100%;
-  max-width: 650px;
+  max-width: 450px;
+  max-height: 560px;
   border: 1px solid ${palette.border};
   margin-right: 15px;
   ${mediaMax.large} {
@@ -32,6 +35,7 @@ const GoodsInfoBox = styled.div`
   width: 100%;
   max-width: 450px;
   min-width: 220px;
+  margin-bottom: 30px;
   ${mediaMax.large} {
     padding: 40px 10px;
     margin: 0 auto;
@@ -70,36 +74,74 @@ interface GoodsInfoProps {
   item: IGoodsItem;
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
-  const { thumbnail } = item;
+  const { thumbnail, price, discount, sizeInfo, name } = item;
+  const discountPriceIndex = useDiscountCal(price, discount);
+  const { onChangeList, selectedList, onChangeQuantity, onDeleteList } =
+    useSelectGoods(discountPriceIndex.discountPrice);
+
   return (
     <GoodsInfoWrapper>
       <GoodsThumbBox src={thumbnail} />
       <GoodsInfoBox>
-        <GoodsPriceBox />
+        <GoodsPriceBox
+          goodsName={name}
+          price={price}
+          discount={discount}
+          discountPriceIndex={discountPriceIndex}
+        />
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Color :</GoodsInfoTitStyled>
-          <RadioButton type="radio" id="c1" name="color" />
+          <RadioButton
+            type="radio"
+            id="c1"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c1" color="pink" />
-          <RadioButton type="radio" id="c2" name="color" />
+          <RadioButton
+            type="radio"
+            id="c2"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c2" color="blue" />
-          <RadioButton type="radio" id="c3" name="color" />
+          <RadioButton
+            type="radio"
+            id="c3"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c3" color="green" />
-          <RadioButton type="radio" id="c4" name="color" />
+          <RadioButton
+            type="radio"
+            id="c4"
+            name="color"
+            onChange={onChangeList}
+          />
           <RadioLabel htmlFor="c4" color="red" />
         </GoodsInfoSection>
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Size :</GoodsInfoTitStyled>
-          <RadioButton type="radio" id="s1" name="size" />
-          <RadioLabel htmlFor="s1">S</RadioLabel>
-          <RadioButton type="radio" id="s2" name="size" />
-          <RadioLabel htmlFor="s2">M</RadioLabel>
-          <RadioButton type="radio" id="s3" name="size" />
-          <RadioLabel htmlFor="s3">L</RadioLabel>
+          {sizeInfo.map(({ size }, index) => (
+            <div key={`sizeInfo_${index}`}>
+              <RadioButton
+                type="radio"
+                id={size}
+                name="size"
+                onChange={onChangeList}
+              />
+              <RadioLabel htmlFor={size}>{size}</RadioLabel>
+            </div>
+          ))}
         </GoodsInfoSection>
         <hr />
-        <GoodsCalculBox />
+        <GoodsCalculBox
+          selectedItems={selectedList}
+          onChangeQuantity={onChangeQuantity}
+          onDeleteList={onDeleteList}
+        />
       </GoodsInfoBox>
     </GoodsInfoWrapper>
   );
