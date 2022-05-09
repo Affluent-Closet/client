@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import Button from 'components/common/Button';
+import CheckBox from 'components/common/CheckBox';
 import {
   FlexBetween,
   InputStyled,
@@ -49,10 +50,10 @@ const TermBox = styled.div`
   margin: 20px 0;
 `;
 
-const TermCB = styled.input`
-  width: 15px;
-  height: 15px;
-  margin: 5px;
+const CheckBoxLabel = styled.label`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const ErrorBox = styled.div`
@@ -144,29 +145,28 @@ function RegisterForm() {
       </div>
       <hr />
       <TermAllBox>
-        <TermCB type="checkbox" id="cb1" />
-        <label htmlFor="cb1" className="all">
+        <CheckBoxLabel>
+          <CheckBox width="15px" height="15px" />
           약관 모두 동의
-        </label>
+        </CheckBoxLabel>
       </TermAllBox>
       <TermBox>
         <TermStyled>
-          <TermCB type="checkbox" id="cb1" />
-          <label htmlFor="cb1">
-            만 14세 이상입니다 <sup>*</sup>
-          </label>
+          <CheckBoxLabel>
+            <CheckBox />만 14세 이상입니다 <sup>*</sup>
+          </CheckBoxLabel>
         </TermStyled>
         <TermStyled>
-          <TermCB type="checkbox" id="cb1" />
-          <label htmlFor="cb1">
+          <CheckBoxLabel>
+            <CheckBox />
             Afflunt Closet 약관 동의 <sup>*</sup>
-          </label>
+          </CheckBoxLabel>
         </TermStyled>
         <TermStyled>
-          <TermCB type="checkbox" id="cb1" />
-          <label htmlFor="cb1">
+          <CheckBoxLabel>
+            <CheckBox />
             개인정보수집 및 이용에 대한 안내 <sup>*</sup>
-          </label>
+          </CheckBoxLabel>
         </TermStyled>
       </TermBox>
       <Button
