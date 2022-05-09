@@ -4,6 +4,7 @@ import {
   InputStyled,
   ItemGrid,
 } from 'components/common/CommonComponents';
+import useImageUpload from 'hooks/imgs/useImageUpload';
 import { categoryMenus } from 'libs/lists/NavItems';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
@@ -57,10 +58,9 @@ export const BtnBox = styled.div`
   margin: 15px;
 `;
 
-export const ImgBox = styled.div`
+export const ImgBox = styled.img`
   width: 100px;
   height: 100px;
-  background-color: antiquewhite;
   margin: 10px;
 `;
 
@@ -80,18 +80,19 @@ export const InputFileLabel = styled.label`
 `;
 
 function PostGoodsBox() {
+  const { imgURL, imgUpload } = useImageUpload();
   return (
     <>
       <PostInputBox>
         <div>
           <PostQue>썸네일</PostQue>
           <InputFileLabel>
-            <InputFileStyled type="file" />
+            <InputFileStyled type="file" name="thumb" onChange={imgUpload} />
             사진 업로드
           </InputFileLabel>
         </div>
 
-        <ImgBox />
+        <ImgBox src={imgURL} alt="제품 썸네일" />
       </PostInputBox>
       <PostInputBox>
         <div>
@@ -102,10 +103,8 @@ function PostGoodsBox() {
           </InputFileLabel>
         </div>
         <ItemGrid>
-          <ImgBox /> <ImgBox />
-          <ImgBox /> <ImgBox />
-          <ImgBox /> <ImgBox />
-          <ImgBox /> <ImgBox />
+          <ImgBox />
+          {/* <ImgBox /> <ImgBox /> <ImgBox /> */}
         </ItemGrid>
       </PostInputBox>
       <PostInputBox>
