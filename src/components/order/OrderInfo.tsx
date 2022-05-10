@@ -8,8 +8,6 @@ const OrderInfoSection = styled.section`
   margin-top: 20px;
 `;
 
-const OrderInfoColumnList = styled.ul``;
-
 function OrderInfo() {
   return (
     <OrderInfoSection>

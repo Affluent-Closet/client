@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Button from 'components/common/Button';
 import CheckBox from 'components/common/CheckBox';
 import {
@@ -7,6 +8,7 @@ import {
   ListHead,
 } from 'components/common/CommonComponents';
 import useAuth from 'hooks/auth/useAuth';
+import useDaumAdress from 'hooks/common/useDaumAddress';
 import useToggle from 'hooks/common/useToggle';
 import { palette } from 'libs/styles/palette';
 import React, { useState } from 'react';
@@ -68,8 +70,29 @@ function RegisterForm() {
     userForm;
 
   const [isAddressModal, onToggleAddressModal] = useToggle();
+  const [address, onCompletPost] = useDaumAdress();
 
-  const [address, setAddress] = useState('');
+  const [isTermModal, onToggleTermModal] = useToggle();
+
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+
+  // const objArr = [
+  //   {
+  //     isChecked: isChecked1,
+  //     setIsChecked: setIsChecked1,
+  //     text: '만 14세 이상입니다',
+  //   },
+  // ];
+
+  const onAllCheck = () => {
+    setIsChecked1(!isChecked1);
+    setIsChecked2(true);
+    setIsChecked3(true);
+    setIsChecked4(true);
+  };
   return (
     <RegisterFormWrapper
       onSubmit={() => {
@@ -139,33 +162,59 @@ function RegisterForm() {
           </FindAddressBtn>
         </FlexBetween>
         {isAddressModal && (
-          <AddressModal onToggleModal={onToggleAddressModal} />
+          <AddressModal
+            onCompletPost={onCompletPost}
+            onToggleModal={onToggleAddressModal}
+          />
         )}
         <RegisterInput placeholder="상세주소" />
       </div>
       <hr />
       <TermAllBox>
         <CheckBoxLabel>
-          <CheckBox width="15px" height="15px" />
+          <CheckBox
+            variant="primary"
+            width="15px"
+            height="15px"
+            checked={isChecked1}
+            onChange={onAllCheck}
+          />
           약관 모두 동의
         </CheckBoxLabel>
       </TermAllBox>
       <TermBox>
         <TermStyled>
           <CheckBoxLabel>
-            <CheckBox />만 14세 이상입니다 <sup>*</sup>
+            <CheckBox
+              variant="primary"
+              checked={isChecked2}
+              onChange={() => setIsChecked2(!isChecked2)}
+            />
+            만 14세 이상입니다 <sup>*</sup>
           </CheckBoxLabel>
         </TermStyled>
         <TermStyled>
           <CheckBoxLabel>
-            <CheckBox />
-            Afflunt Closet 약관 동의 <sup>*</sup>
+            <CheckBox
+              variant="primary"
+              checked={isChecked3}
+              onChange={() => setIsChecked3(!isChecked3)}
+            />
+            <Button onClick={onToggleTermModal}>
+              Afflunt Closet 약관 동의 <sup>*</sup>
+            </Button>
           </CheckBoxLabel>
         </TermStyled>
         <TermStyled>
           <CheckBoxLabel>
-            <CheckBox />
-            개인정보수집 및 이용에 대한 안내 <sup>*</sup>
+            <CheckBox
+              variant="primary"
+              checked={isChecked4}
+              onChange={() => setIsChecked4(!isChecked4)}
+            />
+            <Button onClick={onToggleTermModal}>
+              개인정보수집 및 이용에 대한 안내 <sup>*</sup>
+            </Button>
           </CheckBoxLabel>
         </TermStyled>
       </TermBox>

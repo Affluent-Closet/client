@@ -1,22 +1,23 @@
 import ModalTemplate from 'components/common/ModalTemplat';
 import useDaumAdress from 'hooks/common/useDaumAddress';
 import React from 'react';
-import DaumPostcode from 'react-daum-postcode';
+import DaumPostcode, { Address } from 'react-daum-postcode';
 import styled from 'styled-components';
 
 interface Props {
   onToggleModal: () => void;
+  onCompletPost: (data: Address) => void;
 }
 
 const ModalInnerStyled = styled.div`
   padding: 10px;
 `;
 
-function AddressModal({ onToggleModal }: Props) {
+function AddressModal({ onCompletPost, onToggleModal }: Props) {
   const onClose = () => {
     onToggleModal();
   };
-  const [address, onCompletPost] = useDaumAdress();
+
   return (
     <ModalTemplate width={500} height={418} onToggleModal={onToggleModal}>
       <ModalInnerStyled>
