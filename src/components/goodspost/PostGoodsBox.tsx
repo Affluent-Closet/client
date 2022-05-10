@@ -1,10 +1,11 @@
+import { Empty } from 'assets/img';
 import Button from 'components/common/Button';
 import {
   FlexAlignCenter,
   InputStyled,
   ItemGrid,
 } from 'components/common/CommonComponents';
-import useImageUpload from 'hooks/imgs/useImageUpload';
+import useThumbUpload from 'hooks/imgs/useThumbUpload';
 import { categoryMenus } from 'libs/lists/NavItems';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
@@ -80,19 +81,23 @@ export const InputFileLabel = styled.label`
 `;
 
 function PostGoodsBox() {
-  const { imgURL, imgUpload } = useImageUpload();
+  const { thumbURL, onThumbUpload } = useThumbUpload();
   return (
     <>
       <PostInputBox>
         <div>
           <PostQue>썸네일</PostQue>
           <InputFileLabel>
-            <InputFileStyled type="file" name="thumb" onChange={imgUpload} />
+            <InputFileStyled
+              type="file"
+              name="thumb"
+              onChange={onThumbUpload}
+            />
             사진 업로드
           </InputFileLabel>
         </div>
 
-        <ImgBox src={imgURL} alt="제품 썸네일" />
+        <ImgBox src={thumbURL || Empty} alt="제품 썸네일" />
       </PostInputBox>
       <PostInputBox>
         <div>

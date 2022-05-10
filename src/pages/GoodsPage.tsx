@@ -43,7 +43,6 @@ function GoodsPage() {
       onClick: onMoveToElement3,
     },
   ];
-  console.log(goods.detail);
   return (
     <>
       <GoodsInfo item={goods} />

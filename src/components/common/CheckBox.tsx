@@ -1,5 +1,5 @@
-import React, { ReactElement, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ReactElement } from 'react';
+import styled from 'styled-components';
 
 interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant: 'primary' | 'secondary';

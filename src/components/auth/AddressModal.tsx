@@ -1,5 +1,4 @@
 import ModalTemplate from 'components/common/ModalTemplat';
-import useDaumAdress from 'hooks/common/useDaumAddress';
 import React from 'react';
 import DaumPostcode, { Address } from 'react-daum-postcode';
 import styled from 'styled-components';
