@@ -1,3 +1,8 @@
+export interface IGoodsSizeInfo {
+  stock: number;
+  size: string;
+}
+
 export interface IGoodsItem {
   id: string;
   category: string;
@@ -5,11 +10,12 @@ export interface IGoodsItem {
   price: number;
   discount: number;
   stock: number;
-  datail: string[];
+  detail: string[];
   thumbnail: string;
   sellnum: number;
   createAt: Date;
   status: string;
+  sizeInfo: Array<IGoodsSizeInfo>;
 }
 
 export interface GoodsProps {
@@ -29,4 +35,16 @@ export interface IGoodsQuery {
   name?: string;
   category?: string;
   sortBy?: SortMethod;
+}
+
+export interface IOrderItem {
+  color: string;
+  size: string;
+  quantity: number;
+  total: number;
+}
+
+export interface IdiscountPrice {
+  discountPrice: number;
+  discountPriceString: string;
 }

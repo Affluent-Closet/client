@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import { palette } from 'libs/styles/palette';
+import { IOrderItem } from 'model/goods';
 
 const SelectedOptionBox = styled.div`
   margin: 10px 0px;
@@ -32,7 +33,9 @@ const QuantityStyled = styled(FlexBox)`
   height: 26px;
 `;
 
-const QuantityCtrlStlyed = styled(QuantityStyled)`
+const QuantityCtrlStlyed = styled.button`
+  width: 26px;
+  height: 26px;
   background-color: #eee;
   cursor: pointer;
 `;
@@ -50,45 +53,73 @@ const BtnGroup = styled.div`
   display: flex;
   justify-content: space-around;
 `;
-
 const BuyButton = styled(Button)`
   margin: 0px 2px;
   width: 100%;
   max-width: 240px;
 `;
 
-function GoodsCalculBox() {
-  const [quantity, setQuantity] = useState(0);
+interface GoodsCalculProps {
+  selectedItems: IOrderItem[];
+  onChangeQuantity: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    index: number,
+  ) => void;
+  onDeleteList: (index: number) => void;
+}
+
+function GoodsCalculBox({
+  selectedItems,
+  onChangeQuantity,
+  onDeleteList,
+}: GoodsCalculProps) {
+  const sumAll = selectedItems
+    .map((item) => item.total)
+    .reduce((prev, curr) => prev + curr, 0);
   return (
     <>
       <SelectedOptionBox>
-        <SelectedOptionStyled>
-          <div>L</div>
-          <FlexBox>
-            <QuantityCtrlStlyed>
-              <AiOutlineMinus
-                size={18}
-                onClick={() => setQuantity(quantity - 1)}
-              />
-            </QuantityCtrlStlyed>
-            <QuantityStyled>{quantity}</QuantityStyled>
-            <QuantityCtrlStlyed>
-              <AiOutlinePlus
-                size={18}
-                onClick={() => setQuantity(quantity + 1)}
-              />
-            </QuantityCtrlStlyed>
-          </FlexBox>
-          <FlexBox>
-            <div> 85,900원</div>
-            <DeletOptBtn />
-          </FlexBox>
-        </SelectedOptionStyled>
+        {selectedItems.length !== 0 &&
+          selectedItems.map(({ color, size, quantity, total }, index) => (
+            <SelectedOptionStyled key={`${color}${size}_${index}`}>
+              <div>
+                {size},{color}
+              </div>
+              <FlexBox>
+                <QuantityCtrlStlyed
+                  value={-1}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    onChangeQuantity(e, index);
+                  }}
+                >
+                  <AiOutlineMinus size={18} />
+                </QuantityCtrlStlyed>
+                <QuantityStyled>{quantity}</QuantityStyled>
+                <QuantityCtrlStlyed
+                  value={1}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    onChangeQuantity(e, index);
+                  }}
+                >
+                  <AiOutlinePlus size={18} />
+                </QuantityCtrlStlyed>
+              </FlexBox>
+              <FlexBox>
+                <div>{total.toLocaleString('ko-KR')}원</div>
+                <DeletOptBtn
+                  onClick={() => {
+                    onDeleteList(index);
+                  }}
+                />
+              </FlexBox>
+            </SelectedOptionStyled>
+          ))}
         <SelectedOptionStyled>
           <div>총 상품 금액</div>
-          <div>257,000원</div>
+          <div>{sumAll.toLocaleString('ko-KR')}원</div>
         </SelectedOptionStyled>
       </SelectedOptionBox>
+
       <BtnGroup>
         <BuyButton
           height="40px"

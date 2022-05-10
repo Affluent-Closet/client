@@ -17,11 +17,12 @@ function useOneGoodsEffect() {
     price: 0,
     discount: 0,
     stock: 0,
-    datail: [],
+    detail: [],
     thumbnail: '',
     sellnum: 0,
     createAt: new Date(),
     status: '',
+    sizeInfo: [{ size: '', stock: 0 }],
   });
   useEffect(() => {
     if (!goodsid) return;
@@ -32,7 +33,6 @@ function useOneGoodsEffect() {
     getData();
   }, [goodsid]);
 
-  console.log(goods);
   return { goods };
 }
 export default useOneGoodsEffect;
