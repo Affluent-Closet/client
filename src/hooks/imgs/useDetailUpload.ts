@@ -1,8 +1,8 @@
 import { postImageAPI } from 'libs/api/imagesAPI';
 import { useState } from 'react';
 
-function useThumbUpload() {
-  const [thumbURL, setThumbURL] = useState('');
+function useDetailUpload() {
+  const [detailURLs, setDetailURLs] = useState<Array<string>>([]);
 
   const onThumbUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
@@ -10,7 +10,7 @@ function useThumbUpload() {
       formData.append('images', e.target.files[0]);
       try {
         const image = await postImageAPI(formData);
-        setThumbURL(image);
+        setDetailURLs(image);
       } catch (error) {
         // eslint-disable-next-line no-alert
         alert('이미지 업로드에 실패했습니다.');
@@ -20,7 +20,7 @@ function useThumbUpload() {
     }
   };
 
-  return { thumbURL, onThumbUpload };
+  return { detailURLs, onThumbUpload };
 }
 
-export default useThumbUpload;
+export default useDetailUpload;

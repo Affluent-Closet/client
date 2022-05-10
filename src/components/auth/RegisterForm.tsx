@@ -66,13 +66,12 @@ const ErrorBox = styled.div`
 function RegisterForm() {
   const { userForm, onChangeForm, errorMessage, onChangePasswordConfirm } =
     useAuth();
-  const { email, password, passwordConfirm, phoneNum, address1, address2 } =
-    userForm;
+  const { email, password, passwordConfirm, phoneNum } = userForm;
 
   const [isAddressModal, onToggleAddressModal] = useToggle();
   const [address, onCompletPost] = useDaumAdress();
 
-  const [isTermModal, onToggleTermModal] = useToggle();
+  const [, onToggleTermModal] = useToggle();
 
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
