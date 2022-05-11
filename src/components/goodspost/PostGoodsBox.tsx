@@ -5,6 +5,7 @@ import {
   InputStyled,
   ItemGrid,
 } from 'components/common/CommonComponents';
+import useDetailUpload from 'hooks/imgs/useDetailUpload';
 import useThumbUpload from 'hooks/imgs/useThumbUpload';
 import { categoryMenus } from 'libs/lists/NavItems';
 import { mediaMax } from 'libs/styles/media';
@@ -71,17 +72,15 @@ export const InputFileStyled = styled.input`
 
 export const InputFileLabel = styled.label`
   display: inline-block;
-  padding: 10px 20px;
+  padding: 14px 20px;
   color: #fff;
-  vertical-align: middle;
   background-color: #999999;
   cursor: pointer;
-  height: 40px;
-  margin-left: 10px;
 `;
 
 function PostGoodsBox() {
   const { thumbURL, onThumbUpload } = useThumbUpload();
+  const { detailURLs, onDetailUpload } = useDetailUpload();
   return (
     <>
       <PostInputBox>
@@ -103,13 +102,22 @@ function PostGoodsBox() {
         <div>
           <PostQue>사진</PostQue>
           <InputFileLabel>
-            <InputFileStyled type="file" />
+            <InputFileStyled
+              type="file"
+              name="detail"
+              onChange={onDetailUpload}
+            />
             사진 업로드
           </InputFileLabel>
         </div>
         <ItemGrid>
-          <ImgBox />
-          {/* <ImgBox /> <ImgBox /> <ImgBox /> */}
+          {detailURLs.map((detailURL) => (
+            <ImgBox
+              key={detailURL}
+              src={detailURL || Empty}
+              alt="제품 썸네일"
+            />
+          ))}
         </ItemGrid>
       </PostInputBox>
       <PostInputBox>
