@@ -1,3 +1,12 @@
+export interface IRequestGoods {
+  category: string;
+  name: string;
+  price: number;
+  discount: number;
+  detail: [];
+  thumbnail: string;
+}
+
 export interface IGoodsSizeInfo {
   stock: number;
   size: string;
