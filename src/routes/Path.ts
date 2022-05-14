@@ -14,6 +14,7 @@ enum Path {
   MyPage = '/mypage',
   CartPage = '/cart',
   PostGoodsPage = '/postgoods',
+  PostGoodsSizePage = '/postgoods/:goodsid',
   PostReviewPage = '/postreview',
   NewPage = '/new',
   BestPage = '/best',
