@@ -5,8 +5,7 @@ import {
   InputStyled,
   ItemGrid,
 } from 'components/common/CommonComponents';
-import useDetailUpload from 'hooks/imgs/useDetailUpload';
-import useThumbUpload from 'hooks/imgs/useThumbUpload';
+import usePostGoodsForm from 'hooks/post/usePostGoodsForm';
 import { categoryMenus } from 'libs/lists/NavItems';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
@@ -78,9 +77,19 @@ export const InputFileLabel = styled.label`
   cursor: pointer;
 `;
 
+export const PostButton = styled(Button)`
+  margin: 2px;
+`;
 function PostGoodsBox() {
-  const { thumbURL, onThumbUpload } = useThumbUpload();
-  const { detailURLs, onDetailUpload } = useDetailUpload();
+  const {
+    form,
+    onThumbUpload,
+    onDetailUpload,
+    onChangeForm,
+    onPostGoods,
+    onResetForm,
+  } = usePostGoodsForm();
+  const { thumbnail, detail, category, discount, name, price } = form;
   return (
     <>
       <PostInputBox>
@@ -96,7 +105,7 @@ function PostGoodsBox() {
           </InputFileLabel>
         </div>
 
-        <ImgBox src={thumbURL || Empty} alt="제품 썸네일" />
+        <ImgBox src={thumbnail || Empty} alt="제품 썸네일" />
       </PostInputBox>
       <PostInputBox>
         <div>
@@ -111,56 +120,96 @@ function PostGoodsBox() {
           </InputFileLabel>
         </div>
         <ItemGrid>
-          {detailURLs.map((detailURL) => (
-            <ImgBox
-              key={detailURL}
-              src={detailURL || Empty}
-              alt="제품 썸네일"
-            />
-          ))}
+          {detail.length !== 0 ? (
+            detail.map((detailURL) => (
+              <ImgBox key={detailURL} src={detailURL} alt="제품 썸네일" />
+            ))
+          ) : (
+            <>
+              <ImgBox src={Empty} alt="제품 썸네일" />
+              <ImgBox src={Empty} alt="제품 썸네일" />
+              <ImgBox src={Empty} alt="제품 썸네일" />
+              <ImgBox src={Empty} alt="제품 썸네일" />
+            </>
+          )}
         </ItemGrid>
       </PostInputBox>
       <PostInputBox>
         <PostQue>제목</PostQue>
-        <PostAns type="text" placeholder="제목" />
+        <PostAns
+          type="text"
+          placeholder="제목"
+          name="name"
+          value={name}
+          onChange={onChangeForm}
+        />
       </PostInputBox>
       <PostInputBox>
         <PostQue>카테고리</PostQue>
-        <SelectedStyled name="fruit">
-          {categoryMenus.map((category, index) => (
-            <option key={`category_${index}`} value={category.name}>
-              {category.name}
+        <SelectedStyled
+          name="category"
+          value={category}
+          onChange={onChangeForm}
+        >
+          {categoryMenus.map((categoryMenu, index) => (
+            <option key={`category_${index}`} value={categoryMenu.name}>
+              {categoryMenu.name}
             </option>
           ))}
         </SelectedStyled>
       </PostInputBox>
       <PostInputBox>
         <PostQue>가격</PostQue>
-        <PostAns type="text" placeholder="가격" />
+        <PostAns
+          type="text"
+          placeholder="가격"
+          name="price"
+          value={price}
+          onChange={onChangeForm}
+        />
         <p>원</p>
       </PostInputBox>
       <PostInputBox>
         <PostQue>할인률</PostQue>
-        <PostAns type="number" placeholder="할인률(%)" />
+        <PostAns
+          type="number"
+          placeholder="할인률(%)"
+          name="discount"
+          value={discount}
+          onChange={onChangeForm}
+        />
         <p>%</p>
       </PostInputBox>
-      <PostInputBox>
-        <PostQue>재고</PostQue>
-        <PostAns type="number" placeholder="갯수" />
-      </PostInputBox>
+
       <BtnBox>
-        <Button
+        <PostButton
+          width="100px"
+          height="30px"
+          buttonColor="grayDarkest"
+          fontColor="white"
+          hoverButtonColor="grayDark"
+          onClick={onResetForm}
+        >
+          초기화
+        </PostButton>
+        <PostButton
           width="100px"
           height="30px"
           buttonColor="mainColor"
           fontColor="white"
           hoverButtonColor="mainHoverColor"
+          onClick={onPostGoods}
         >
-          등록하기
-        </Button>
+          다음으로
+        </PostButton>
       </BtnBox>
     </>
   );
 }
 
 export default PostGoodsBox;
+
+/* <PostInputBox>
+<PostQue>재고</PostQue>
+<PostAns type="number" placeholder="갯수" />
+</PostInputBox> */
