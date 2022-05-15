@@ -3,6 +3,7 @@ export interface IRegisterRequest {
   password: string;
   passwordConfirm: string;
   phoneNum: string;
+  address: string;
   detailAddress: string;
 }
 

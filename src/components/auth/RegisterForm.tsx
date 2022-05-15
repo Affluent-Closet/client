@@ -86,7 +86,9 @@ function RegisterForm() {
     if (errorMessage?.emailError === '올바른 이메일 형식입니다.') {
       if (errorMessage?.passwordError === '비밀번호가 일치합니다.') {
         if (errorMessage?.phoneError === '올바른 전화번호 형식입니다.') {
-          setRegisterBtnToggle(false);
+          if (((isChecked2 === isChecked3) === isChecked4) === true) {
+            setRegisterBtnToggle(false);
+          }
         }
       }
     }

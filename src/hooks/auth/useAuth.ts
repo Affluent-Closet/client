@@ -9,6 +9,7 @@ export default function useAuth() {
     email: '',
     password: '',
     passwordConfirm: '',
+    address: '',
     detailAddress: '',
     phoneNum: '',
   });
