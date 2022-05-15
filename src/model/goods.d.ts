@@ -7,7 +7,13 @@ export interface IRequestGoods {
   thumbnail: string;
 }
 
-export interface IGoodsSizeInfo {
+export interface IRequestSizeInfo {
+  stock: number;
+  size: string;
+  goodsid: number;
+}
+
+export interface IResponseSizeInfo {
   stock: number;
   size: string;
 }
