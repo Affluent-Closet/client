@@ -14,6 +14,7 @@ import CartPage from 'pages/CartPage';
 import PostGoodsPage from 'pages/PostGoodsPage';
 import PostReviewPage from 'pages/PostReviewPage';
 import TestPage from 'pages/TestPage';
+import PostSizePage from 'pages/PostSizePage';
 import Path from './Path';
 
 function Routing() {
@@ -33,6 +34,7 @@ function Routing() {
       <Route path={Path.PostGoodsPage} element={<PostGoodsPage />} />
       <Route path={Path.PostReviewPage} element={<PostReviewPage />} />
       <Route path={Path.TestPage} element={<TestPage />} />
+      <Route path={Path.PostGoodsSizePage} element={<PostSizePage />} />
     </Routes>
   );
 }
