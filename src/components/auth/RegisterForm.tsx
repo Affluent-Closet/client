@@ -65,9 +65,14 @@ const ErrorBox = styled.div`
 `;
 
 function RegisterForm() {
-  const { userForm, onChangeForm, errorMessage, onChangePasswordConfirm } =
-    useAuth();
-  const { email, password, passwordConfirm, detailAddress, phoneNum } =
+  const {
+    userForm,
+    onChangeForm,
+    errorMessage,
+    onChangePasswordConfirm,
+    registerData,
+  } = useAuth();
+  const { email, password, passwordConfirm, detailAddress, phoneNumber } =
     userForm;
 
   const [isAddressModal, onToggleAddressModal] = useToggle();
@@ -84,12 +89,16 @@ function RegisterForm() {
 
   useEffect(() => {
     if (errorMessage?.emailError === '올바른 이메일 형식입니다.') {
+      console.log(1);
       if (errorMessage?.passwordError === '비밀번호가 일치합니다.') {
+        console.log(2);
         if (errorMessage?.phoneError === '올바른 전화번호 형식입니다.') {
-          if (((isChecked2 === isChecked3) === isChecked4) === true) {
-            setRegisterBtnToggle(false);
-          }
+          console.log(3);
+          // if (((isChecked2 === isChecked3) === isChecked4) === true) {
+
+          setRegisterBtnToggle(false);
         }
+        // }
       }
     }
   }, [errorMessage]);
@@ -108,10 +117,14 @@ function RegisterForm() {
     setIsChecked3(true);
     setIsChecked4(true);
   };
-  const registerData = { ...userForm, address };
 
   return (
-    <RegisterFormWrapper onSubmit={() => registerAPI(registerData)}>
+    <RegisterFormWrapper
+      onSubmit={(e) => {
+        registerAPI(registerData);
+        e.preventDefault();
+      }}
+    >
       <RegisterFormHead>회원가입</RegisterFormHead>
       <div>
         <RegisterQue>
@@ -153,8 +166,8 @@ function RegisterForm() {
         <RegisterInput
           placeholder="연락처"
           type="string"
-          name="phoneNum"
-          value={phoneNum}
+          name="phoneNumber"
+          value={phoneNumber}
           onChange={onChangeForm}
         />
         {errorMessage?.phoneError && (

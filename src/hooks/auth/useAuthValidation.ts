@@ -77,9 +77,9 @@ export default function useAuthValidation() {
   //   return true;
   // };
 
-  const onCheckPhoneNum = (phoneNum: string): boolean => {
-    const phoneNumRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
-    if (!phoneNumRegex.test(phoneNum)) {
+  const onCheckphoneNumber = (phoneNumber: string): boolean => {
+    const phoneNumberRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
+    if (!phoneNumberRegex.test(phoneNumber)) {
       setErrorMessage((prev) => ({
         ...prev,
         phoneError: '-를 제외한 휴대번호 11자리를 입력해 주세요',
@@ -101,8 +101,8 @@ export default function useAuthValidation() {
       case 'password':
         onCheckPassword(value);
         break;
-      case 'phoneNum':
-        onCheckPhoneNum(value);
+      case 'phoneNumber':
+        onCheckphoneNumber(value);
         break;
       // case 'passwordConfirm':
       //   onCheckPasswordComfirm(value, password);

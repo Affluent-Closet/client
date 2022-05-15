@@ -5,14 +5,11 @@ import {
   InputStyled,
 } from 'components/common/CommonComponents';
 import { SortMenu } from 'components/search/ResultItems';
-import client from 'libs/api';
+import { loginAPI } from 'libs/api/loginAPI';
+import { ILoginData } from 'model/auth';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-interface ILoginData {
-  email: string;
-  password: string;
-}
 const LoginBox = styled(FlexColumn)`
   margin: 20px;
 `;
@@ -22,21 +19,6 @@ const FindInfo = styled(SortMenu)`
   padding-top: 5px;
   width: 120px;
 `;
-
-const loginAPI = async (loginData: ILoginData) => {
-  try {
-    const response = await client.post(
-      'https://affluent-closet.herokuapp.com/user/login',
-      loginData,
-    );
-    console.log(response);
-    localStorage.setItem('token', response.data.jwt_token);
-  } catch (err) {
-    console.log(`login request fail: ${err}`);
-  } finally {
-    console.log('login request end');
-  }
-};
 
 function LoginForm() {
   const [loginData, setLoginData] = useState<ILoginData>({

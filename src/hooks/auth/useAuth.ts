@@ -11,13 +11,26 @@ export default function useAuth() {
     passwordConfirm: '',
     address: '',
     detailAddress: '',
-    phoneNum: '',
+    phoneNumber: '',
+  });
+  const [registerData, setRegisterData] = useState({
+    name: 'Leejaeha',
+    role: 'ADMIN',
+    password: '',
+    email: '',
+    phoneNumber: '',
+    profileImg:
+      'https://showppingmall-bucket.s3.ap-northeast-2.amazonaws.com/%09s%0Fs%05u%EF%BF%BD%09c%EF%BF%BD%202021-09-10%20%0Bi%12n%204.45.26.png',
   });
 
   // eslint-disable-next-line consistent-return
   const onChangeForm = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserForm((prev) => ({ ...prev, [name]: value }));
+    setRegisterData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
     onFormValidation(name, value);
   }, []);
 
@@ -41,5 +54,11 @@ export default function useAuth() {
     [],
   );
 
-  return { userForm, onChangeForm, errorMessage, onChangePasswordConfirm };
+  return {
+    userForm,
+    onChangeForm,
+    errorMessage,
+    onChangePasswordConfirm,
+    registerData,
+  };
 }
