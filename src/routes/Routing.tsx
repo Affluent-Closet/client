@@ -13,7 +13,8 @@ import ProfilePage from 'pages/ProfilePage';
 import CartPage from 'pages/CartPage';
 import PostGoodsPage from 'pages/PostGoodsPage';
 import PostReviewPage from 'pages/PostReviewPage';
-import TestPage from 'pages/TestPage';
+import LogoutPage from 'pages/LogoutPage';
+import PrivateRoute from './PrivateRoute';
 import Path from './Path';
 
 function Routing() {
@@ -32,7 +33,7 @@ function Routing() {
       <Route path={Path.CartPage} element={<CartPage />} />
       <Route path={Path.PostGoodsPage} element={<PostGoodsPage />} />
       <Route path={Path.PostReviewPage} element={<PostReviewPage />} />
-      <Route path={Path.TestPage} element={<TestPage />} />
+      <Route path={Path.LogoutPage} element={<LogoutPage />} />
     </Routes>
   );
 }

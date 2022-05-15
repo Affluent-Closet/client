@@ -8,7 +8,6 @@ export const loginAPI = async (loginData: ILoginData) => {
       loginData,
     );
     console.log(response);
-    localStorage.setItem('token', response.data.jwtString);
   } catch (err) {
     console.log(`login request fail: ${err}`);
   } finally {

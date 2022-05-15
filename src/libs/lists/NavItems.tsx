@@ -48,7 +48,7 @@ export const communityMenus = [
 export const shopMenus = [
   {
     name: 'Best',
-    href: `${Path.TestPage}`,
+    href: `${Path.BestPage}`,
     isOpen: false,
   },
   {
@@ -76,7 +76,7 @@ export const profileMenus = [
   },
   {
     name: '장바구니',
-    href: `${Path.TestPage}`,
+    href: `${Path.CartPage}`,
     icon: <FiShoppingCart size="22" />,
   },
   {
@@ -86,7 +86,7 @@ export const profileMenus = [
   },
   {
     name: '로그아웃',
-    href: `${Path.TestPage}`,
+    href: `${Path.LogoutPage}`,
     icon: <FiLogOut size="22" />,
   },
 ];
