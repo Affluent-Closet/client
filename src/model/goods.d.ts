@@ -10,7 +10,7 @@ export interface IRequestGoods {
 export interface IRequestSizeInfo {
   stock: number;
   size: string;
-  goodsid: number;
+  goodsId: number;
 }
 
 export interface IResponseSizeInfo {

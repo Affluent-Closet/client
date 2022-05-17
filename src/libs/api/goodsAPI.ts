@@ -1,4 +1,4 @@
-import { IGoodsQuery, IRequestGoods } from 'model/goods';
+import { IGoodsQuery, IRequestGoods, IRequestSizeInfo } from 'model/goods';
 
 import client from '.';
 
@@ -17,5 +17,10 @@ export const getGoodsByIdAPI = async (goodsId: string) => {
 
 export const postGoodsAPI = async (body: IRequestGoods) => {
   const response = await client.post(`/goods`, body);
+  return response.data;
+};
+
+export const postSizeInfoAPI = async (body: IRequestSizeInfo) => {
+  const response = await client.post(`/goods/size`, body);
   return response.data;
 };
