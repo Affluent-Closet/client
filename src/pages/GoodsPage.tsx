@@ -6,7 +6,7 @@ import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
 import useOneGoodsEffect from 'hooks/goods/useOneGoodsEffect';
 import { mediaSize } from 'libs/styles/media';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const GoodsDetailWrapper = styled.div`
@@ -23,6 +23,16 @@ const GoodsImg = styled.img`
 `;
 
 function GoodsPage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollIntoView({
+      behavior: 'auto',
+      block: 'start',
+      inline: 'nearest',
+    });
+  }, []);
+
   const { goods } = useOneGoodsEffect();
 
   const [ref1, onMoveToElement1] = useMoveScrool();
@@ -44,7 +54,7 @@ function GoodsPage() {
     },
   ];
   return (
-    <>
+    <div ref={scrollRef}>
       <GoodsInfo item={goods} />
       <TabBox ref={ref1} scrollList={scrollList} th={0} />
 
@@ -58,7 +68,7 @@ function GoodsPage() {
       <GoodsReview />
       <TabBox ref={ref3} scrollList={scrollList} th={2} />
       <GoodsInquiry />
-    </>
+    </div>
   );
 }
 
