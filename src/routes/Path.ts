@@ -18,6 +18,7 @@ enum Path {
   PostReviewPage = '/postreview',
   NewPage = '/new',
   BestPage = '/best',
+  PaymentPage = '/payment',
 }
 
 export default Path;

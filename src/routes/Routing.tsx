@@ -35,6 +35,7 @@ function Routing() {
       <Route path={Path.PostReviewPage} element={<PostReviewPage />} />
       <Route path={Path.TestPage} element={<TestPage />} />
       <Route path={Path.PostGoodsSizePage} element={<PostSizePage />} />
+      <Route path={Path.PaymentPage} element={<PostSizePage />} />
     </Routes>
   );
 }
