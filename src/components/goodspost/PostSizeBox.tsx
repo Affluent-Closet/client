@@ -3,6 +3,7 @@ import { FlexAlignCenter } from 'components/common/CommonComponents';
 import styled from 'styled-components';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { mediaMin } from 'libs/styles/media';
+import useSizeForm from 'hooks/post/useSizeForm';
 import { PostAns, PostButton, PostQue } from './PostGoodsBox';
 
 const PostInputBox = styled(FlexAlignCenter)`
@@ -11,7 +12,7 @@ const PostInputBox = styled(FlexAlignCenter)`
   }
 `;
 const AnsStyled = styled(PostAns)`
-  width: 100%;
+  width: 90%;
   margin: 2px;
 `;
 // const SizeInputBox = styled.div`
@@ -35,37 +36,37 @@ const InputGrid = styled.div`
   }
 `;
 function PostSizeBox() {
-  const datas = [
-    { size: 'S', stock: 100 },
-    { size: 'M', stock: 100 },
-    { size: 'L', stock: 100 },
-  ];
+  const { sizeDatas, onChangeSizeData, onAddData, onPostSize } = useSizeForm();
   return (
     <>
       <PostInputBox>
         <PostQue>사이즈/수량</PostQue>
         <InputGrid>
-          {datas.map(({ size, stock }, index) => (
+          {sizeDatas.map(({ size, stock }, index) => (
             <div key={`${size}_${index}`}>
               <AnsStyled
                 type="text"
                 placeholder="사이즈"
                 name="size"
                 value={size}
-                //   onChange={onChangeForm}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChangeSizeData(e, index)
+                }
               />
               <AnsStyled
-                type="text"
-                placeholder="수량"
+                type="number"
+                placeholder="갯수"
                 name="stock"
                 value={stock}
-                //   onChange={onChangeForm}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChangeSizeData(e, index)
+                }
               />
             </div>
           ))}
         </InputGrid>
         <p>
-          <AiFillPlusCircle size={25} />
+          <AiFillPlusCircle size={25} onClick={onAddData} />
         </p>
       </PostInputBox>
       <BtnBox>
@@ -85,6 +86,7 @@ function PostSizeBox() {
           buttonColor="mainColor"
           fontColor="white"
           hoverButtonColor="mainHoverColor"
+          onClick={onPostSize}
         >
           등록하기
         </PostButton>
