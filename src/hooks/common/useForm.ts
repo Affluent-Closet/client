@@ -5,7 +5,6 @@ export default function useForm<T>(initialValues: T): {
   onChangeForm: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => void;
-  onCustomChange: (name: string, value: string | string[]) => void;
   onResetForm: () => void;
 } {
   const [form, setForms] = useState(initialValues);
@@ -22,16 +21,9 @@ export default function useForm<T>(initialValues: T): {
     setForms(initialValues);
   }, [initialValues]);
 
-  const onCustomChange = useCallback(
-    (name: string, value: string | string[]) => {
-      setForms({ ...form, [name]: value });
-    },
-    [form],
-  );
   return {
     form,
     onChangeForm,
     onResetForm,
-    onCustomChange,
   };
 }

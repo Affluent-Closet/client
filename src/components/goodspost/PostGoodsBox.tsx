@@ -82,14 +82,14 @@ export const PostButton = styled(Button)`
 `;
 function PostGoodsBox() {
   const {
-    form,
+    goodsForm,
     onThumbUpload,
     onDetailUpload,
     onChangeForm,
     onPostGoods,
     onResetForm,
   } = usePostGoodsForm();
-  const { thumbnail, detail, category, discount, name, price } = form;
+  const { thumbnail, detail, category, discount, name, price } = goodsForm;
   return (
     <>
       <PostInputBox>
@@ -121,7 +121,7 @@ function PostGoodsBox() {
         </div>
         <ItemGrid>
           {detail.length !== 0 ? (
-            detail.map((detailURL) => (
+            detail.map((detailURL: string) => (
               <ImgBox key={detailURL} src={detailURL} alt="제품 썸네일" />
             ))
           ) : (
