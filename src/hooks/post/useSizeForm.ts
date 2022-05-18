@@ -3,9 +3,11 @@
 import { postSizeInfoAPI } from 'libs/api/goodsAPI';
 import { IRequestSizeInfo } from 'model/goods';
 import { useCallback, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Path from 'routes/Path';
 
 function useSizeForm() {
+  const navigate = useNavigate();
   const { goodsid } = useParams<'goodsid'>();
   const parseGoodsId = goodsid ? Number(goodsid) : 0;
   const [sizeDatas, setSizeDatas] = useState<IRequestSizeInfo[]>([
@@ -50,6 +52,7 @@ function useSizeForm() {
           await postSizeInfoAPI(sizeData);
         }),
       );
+      navigate(`${Path.GoodsPath}/${goodsid}`);
     } catch (error) {
       alert('sizeInfo 추가에 실패했습니다');
       console.log(error);

@@ -16,7 +16,6 @@ function usePostGoodsForm() {
     thumbnail: '',
   };
   const navigate = useNavigate();
-  const [nexpPageId, setNexpPageId] = useState<number>(0);
   const [goodsForm, setGoodsForm] = useState<IRequestGoods>(ITITIALFORM);
 
   const onChangeForm = useCallback(
@@ -69,14 +68,13 @@ function usePostGoodsForm() {
   const onPostGoods = async () => {
     try {
       const response = await postGoodsAPI(goodsForm);
-      setNexpPageId(response.id);
+      navigate(`${Path.PostGoodsPage}/${response.id}`);
     } catch (error) {
       // eslint-disable-next-line no-alert
       alert('공고 작성에 실패했습니다');
       // eslint-disable-next-line no-console
       console.log(error);
     }
-    if (nexpPageId !== 0) navigate(`${Path.PostGoodsPage}/${nexpPageId}`);
   };
   return {
     goodsForm,
