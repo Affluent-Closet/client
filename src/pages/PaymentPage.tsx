@@ -16,7 +16,7 @@ function PaymentPage() {
     orderId: 'brL9yXo4bVrpAHe7p5sgZd2',
     orderName: '토스 티셔츠 외 2건!',
     customerName: '박토스',
-    successUrl: 'http://localhost:3000/success',
+    successUrl: 'http://localhost:3000/payment',
     failUrl: 'http://localhost:3000/false',
   });
 
