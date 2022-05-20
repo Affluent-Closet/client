@@ -5,9 +5,8 @@ import {
   InputStyled,
 } from 'components/common/CommonComponents';
 import { SortMenu } from 'components/search/ResultItems';
-import { loginAPI } from 'libs/api/loginAPI';
-import { ILoginData } from 'model/auth';
-import React, { useState } from 'react';
+import useLogin from 'hooks/auth/useLoginForm';
+import React from 'react';
 import styled from 'styled-components';
 
 const LoginBox = styled(FlexColumn)`
@@ -21,17 +20,7 @@ const FindInfo = styled(SortMenu)`
 `;
 
 function LoginForm() {
-  const [loginData, setLoginData] = useState<ILoginData>({
-    email: '',
-    password: '',
-  });
-  const onChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setLoginData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const { loginData, onChangeForm, onLogin } = useLogin();
   const { email, password } = loginData;
   return (
     <>
@@ -58,7 +47,7 @@ function LoginForm() {
         hoverButtonColor="backgroundColor"
         fontColor="white"
         hoverFontColor="hoverDarkColor"
-        onClick={() => loginAPI(loginData)}
+        onClick={onLogin}
       >
         회원 로그인
       </Button>
