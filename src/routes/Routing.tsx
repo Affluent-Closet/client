@@ -13,8 +13,15 @@ import ProfilePage from 'pages/ProfilePage';
 import CartPage from 'pages/CartPage';
 import PostGoodsPage from 'pages/PostGoodsPage';
 import PostReviewPage from 'pages/PostReviewPage';
+<<<<<<< HEAD
 import LogoutPage from 'pages/LogoutPage';
 import PrivateRoute from './PrivateRoute';
+=======
+import TestPage from 'pages/TestPage';
+import PostSizePage from 'pages/PostSizePage';
+import PaymentPage from 'pages/PaymentPage';
+import SuccessPage from 'pages/SuccessPage';
+>>>>>>> 54c829deed5398c2fe50cb4c7b5a2272513b3053
 import Path from './Path';
 
 function Routing() {
@@ -33,7 +40,14 @@ function Routing() {
       <Route path={Path.CartPage} element={<CartPage />} />
       <Route path={Path.PostGoodsPage} element={<PostGoodsPage />} />
       <Route path={Path.PostReviewPage} element={<PostReviewPage />} />
+<<<<<<< HEAD
       <Route path={Path.LogoutPage} element={<LogoutPage />} />
+=======
+      <Route path={Path.TestPage} element={<TestPage />} />
+      <Route path={Path.PostGoodsSizePage} element={<PostSizePage />} />
+      <Route path={Path.PaymentPage} element={<PaymentPage />} />
+      <Route path={Path.SuccessPage} element={<SuccessPage />} />
+>>>>>>> 54c829deed5398c2fe50cb4c7b5a2272513b3053
     </Routes>
   );
 }
