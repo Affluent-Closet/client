@@ -18,22 +18,17 @@ export interface IUser {
   profileImg: string;
 }
 
-export interface IRegisterRequest {
+export interface IRequestRegister {
+  name: string;
+  role: string;
   email: string;
   password: string;
   passwordConfirm: string;
   phoneNumber: string;
-  address: string;
-  detailAddress: string;
+  address1: string;
+  address2: string;
+  profileImg: string;
 }
-
-export interface IAuthErrMsg {
-  emailError?: string | null;
-  passwordError?: string | null;
-  phoneError?: string | null;
-  addressError?: string | null;
-}
-
 export interface ILoginData {
   email: string;
   password: string;
@@ -41,4 +36,11 @@ export interface ILoginData {
 export interface IResponseLogin {
   user: IUser;
   jwtString: string;
+}
+
+export interface IAuthErrMsg {
+  emailError?: string | null;
+  passwordError?: string | null;
+  phoneError?: string | null;
+  addressError?: string | null;
 }

@@ -58,24 +58,23 @@ export default function useAuthValidation() {
     return true;
   };
 
-  // const onCheckPasswordComfirm = (
-  //   passwordConfirm: string,
-  //   password: string,
-  // ) => {
-  //   console.log('비번 : ', password, '비번확인 : ', passwordConfirm);
-  //   if (password !== passwordConfirm) {
-  //     setErrorMessage((prev) => ({
-  //       ...prev,
-  //       passwordError: '비밀번호가 일치하지 않습니다.',
-  //     }));
-  //     return false;
-  //   }
-  //   setErrorMessage((prev) => ({
-  //     ...prev,
-  //     passwordError: '비밀번호가 일치합니다.',
-  //   }));
-  //   return true;
-  // };
+  const onCheckPasswordComfirm = (
+    passwordConfirm: string,
+    password: string,
+  ) => {
+    if (password !== passwordConfirm) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        passwordError: '비밀번호가 일치하지 않습니다.',
+      }));
+      return false;
+    }
+    setErrorMessage((prev) => ({
+      ...prev,
+      passwordError: '비밀번호가 일치합니다.',
+    }));
+    return true;
+  };
 
   const onCheckphoneNumber = (phoneNumber: string): boolean => {
     const phoneNumberRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
@@ -93,7 +92,7 @@ export default function useAuthValidation() {
     return true;
   };
 
-  const onFormValidation = (name: string, value: string) => {
+  const onFormValidation = (name: string, value: string, password?: string) => {
     switch (name) {
       case 'email':
         onCheckEmail(value);
@@ -104,9 +103,9 @@ export default function useAuthValidation() {
       case 'phoneNumber':
         onCheckphoneNumber(value);
         break;
-      // case 'passwordConfirm':
-      //   onCheckPasswordComfirm(value, password);
-      //   break;
+      case 'passwordConfirm':
+        onCheckPasswordComfirm(value, password || '');
+        break;
       default:
         break;
     }

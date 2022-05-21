@@ -10,7 +10,6 @@ import {
 import useAuth from 'hooks/auth/useAuth';
 import useDaumAdress from 'hooks/common/useDaumAddress';
 import useToggle from 'hooks/common/useToggle';
-import { registerAPI } from 'libs/api/registerAPI';
 import { palette } from 'libs/styles/palette';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -65,14 +64,8 @@ const ErrorBox = styled.div`
 `;
 
 function RegisterForm() {
-  const {
-    userForm,
-    onChangeForm,
-    errorMessage,
-    onChangePasswordConfirm,
-    registerData,
-  } = useAuth();
-  const { email, password, passwordConfirm, detailAddress, phoneNumber } =
+  const { userForm, onChangeForm, onRegister, errorMessage } = useAuth();
+  const { email, password, passwordConfirm, address1, address2, phoneNumber } =
     userForm;
 
   const [isAddressModal, onToggleAddressModal] = useToggle();
@@ -89,11 +82,8 @@ function RegisterForm() {
 
   useEffect(() => {
     if (errorMessage?.emailError === '올바른 이메일 형식입니다.') {
-      console.log(1);
       if (errorMessage?.passwordError === '비밀번호가 일치합니다.') {
-        console.log(2);
         if (errorMessage?.phoneError === '올바른 전화번호 형식입니다.') {
-          console.log(3);
           // if (((isChecked2 === isChecked3) === isChecked4) === true) {
 
           setRegisterBtnToggle(false);
@@ -119,12 +109,7 @@ function RegisterForm() {
   };
 
   return (
-    <RegisterFormWrapper
-      onSubmit={(e) => {
-        registerAPI(registerData);
-        e.preventDefault();
-      }}
-    >
+    <RegisterFormWrapper onSubmit={onRegister}>
       <RegisterFormHead>회원가입</RegisterFormHead>
       <div>
         <RegisterQue>
@@ -155,7 +140,7 @@ function RegisterForm() {
           type="password"
           name="passwordConfirm"
           value={passwordConfirm}
-          onChange={(e) => onChangePasswordConfirm(e, password)}
+          onChange={(e) => onChangeForm(e, password)}
         />
         {errorMessage?.passwordError && (
           <ErrorBox>{errorMessage.passwordError}</ErrorBox>
@@ -177,7 +162,7 @@ function RegisterForm() {
           주소 <sup>*</sup>
         </RegisterQue>
         <FlexBetween>
-          <RegisterInput placeholder="주소" value={address} disabled />
+          <RegisterInput placeholder="주소" value={address1} disabled />
           <FindAddressBtn
             width="3rem"
             height="40px"
@@ -196,7 +181,7 @@ function RegisterForm() {
         <RegisterInput
           placeholder="상세주소"
           name="detailAddress"
-          value={detailAddress}
+          value={address2}
           onChange={onChangeForm}
         />
       </div>
