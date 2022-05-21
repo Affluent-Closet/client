@@ -11,6 +11,7 @@ html,
 body,
 #root {
   height: 100%;
+
 }
 * {
   box-sizing: border-box;
@@ -18,6 +19,18 @@ body,
 a {
   color: inherit;
   text-decoration: none;
+}
+
+html{
+  -webkit-tap-highlight-color: transparent; // @Note 모바일에서 클릭했을 때 파란 배경 없애 주는 코드
+}
+input:focus{
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 html,
 body,
@@ -126,9 +139,12 @@ section {
 body {
   line-height: 1;
   margin: 0;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 폰트 사이즈 정의 */
+  font-size: 14px;
+  font-weight:400;
 }
 ol,
 ul {
