@@ -2,7 +2,7 @@ import { getGoodsAPI } from 'libs/api/goodsAPI';
 import { IGoodsQuery, IGoodsResponse } from 'model/goods';
 import { useQuery } from 'react-query';
 
-function useGoodsEffect(goodsQueryString: IGoodsQuery) {
+function useGoodsLoad(goodsQueryString: IGoodsQuery) {
   const { pageNo, sortBy, category, name } = goodsQueryString;
   const goodsData = useQuery<IGoodsResponse>(
     ['goods', pageNo, sortBy, category, name],
@@ -17,4 +17,4 @@ function useGoodsEffect(goodsQueryString: IGoodsQuery) {
   return { goodsData };
 }
 
-export default useGoodsEffect;
+export default useGoodsLoad;

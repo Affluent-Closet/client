@@ -7,10 +7,10 @@ import {
 } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
 import styled from 'styled-components';
-import useGoodsEffect from 'hooks/goods/useGoodsEffect';
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
 import { GridGoodsItem, LoadingBox } from 'components/common';
+import useGoodsLoad from 'hooks/goods/useGoodsEffect';
 import SearchTitle from './SearchKeyword';
 
 const SearchListHead = styled(ListHead)`
@@ -45,7 +45,7 @@ interface ResultItemsProps {
 const sortMethods = [SortMethod.BEST, SortMethod.NEW, SortMethod.LOWPRICE];
 
 function ResultItems({ isSearch, qs, onClickSort }: ResultItemsProps) {
-  const { goodsData } = useGoodsEffect(qs);
+  const { goodsData } = useGoodsLoad(qs);
   const { data: goods, isFetching } = goodsData;
   if (!goods) return null;
   if (isFetching) return <LoadingBox />;
