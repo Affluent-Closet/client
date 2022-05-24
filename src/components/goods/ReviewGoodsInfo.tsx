@@ -1,5 +1,7 @@
 import { FlexBetween, FlexCenter } from 'components/common/CommonComponents';
 import { palette } from 'libs/styles/palette';
+import { Gender } from 'model/enums';
+import { IReviewItem } from 'model/review';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -40,7 +42,11 @@ const Rating = styled(EmptyRating)<{ ratingIndex: number }>`
   ${(props) => `clip: rect(0px ${props.ratingIndex}px 17px 0px)`}
 `;
 
-function ReviewGoodsInfo() {
+interface ReviewGoodsInfoProps {
+  contents: IReviewItem;
+}
+function ReviewGoodsInfo({ contents }: ReviewGoodsInfoProps) {
+  const { gender, height, weight } = contents;
   return (
     <GoodsInfoWrapper>
       <FlexCenter>
@@ -54,7 +60,9 @@ function ReviewGoodsInfo() {
         </Item>
       </FlexCenter>
       <Item>
-        <div className="purchase">남성, 180cm, 85kg</div>
+        <div className="purchase">
+          {gender === Gender.MAIL ? '남자' : '여자'}, {height}cm, {weight}kg
+        </div>
         <div>
           <EmptyRating
             src="https://static.msscdn.net/ui/build/pc/img/common/ic-star-off.svg?v=20220303172627"
