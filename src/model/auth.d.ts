@@ -3,8 +3,7 @@ export interface IRegisterRequest {
   password: string;
   passwordConfirm: string;
   phoneNum: string;
-  address1: string;
-  address2: string;
+  detailAddress: string;
 }
 
 export interface IAuthErrMsg {

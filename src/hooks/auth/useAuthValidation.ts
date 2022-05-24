@@ -4,7 +4,7 @@ import { IAuthErrMsg } from 'model/auth';
 export default function useAuthValidation() {
   const [errorMessage, setErrorMessage] = useState<IAuthErrMsg>();
 
-  const onCheckEmail = (email: string) => {
+  const onCheckEmail = (email: string): boolean => {
     const emailRegex =
       // eslint-disable-next-line no-useless-escape
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -33,7 +33,7 @@ export default function useAuthValidation() {
     return true;
   };
 
-  const onCheckPassword = (password: string) => {
+  const onCheckPassword = (password: string): boolean => {
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
     // 비밀번호 비었는지 검사
@@ -77,7 +77,7 @@ export default function useAuthValidation() {
   //   return true;
   // };
 
-  const onCheckPhoneNum = (phoneNum: string) => {
+  const onCheckPhoneNum = (phoneNum: string): boolean => {
     const phoneNumRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
     if (!phoneNumRegex.test(phoneNum)) {
       setErrorMessage((prev) => ({
@@ -111,5 +111,9 @@ export default function useAuthValidation() {
         break;
     }
   };
-  return { errorMessage, onFormValidation, setErrorMessage };
+  return {
+    errorMessage,
+    onFormValidation,
+    setErrorMessage,
+  };
 }

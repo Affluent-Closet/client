@@ -10,8 +10,9 @@ import {
 import useAuth from 'hooks/auth/useAuth';
 import useDaumAdress from 'hooks/common/useDaumAddress';
 import useToggle from 'hooks/common/useToggle';
+import { registerAPI } from 'libs/api/registerAPI';
 import { palette } from 'libs/styles/palette';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AddressModal from './AddressModal';
 
@@ -66,7 +67,8 @@ const ErrorBox = styled.div`
 function RegisterForm() {
   const { userForm, onChangeForm, errorMessage, onChangePasswordConfirm } =
     useAuth();
-  const { email, password, passwordConfirm, phoneNum } = userForm;
+  const { email, password, passwordConfirm, detailAddress, phoneNum } =
+    userForm;
 
   const [isAddressModal, onToggleAddressModal] = useToggle();
   const [address, onCompletPost] = useDaumAdress();
@@ -77,6 +79,18 @@ function RegisterForm() {
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
   const [isChecked4, setIsChecked4] = useState(false);
+
+  const [registerBtnToggle, setRegisterBtnToggle] = useState(true);
+
+  useEffect(() => {
+    if (errorMessage?.emailError === '올바른 이메일 형식입니다.') {
+      if (errorMessage?.passwordError === '비밀번호가 일치합니다.') {
+        if (errorMessage?.phoneError === '올바른 전화번호 형식입니다.') {
+          setRegisterBtnToggle(false);
+        }
+      }
+    }
+  }, [errorMessage]);
 
   // const objArr = [
   //   {
@@ -92,12 +106,10 @@ function RegisterForm() {
     setIsChecked3(true);
     setIsChecked4(true);
   };
+  const registerData = { ...userForm, address };
+
   return (
-    <RegisterFormWrapper
-      onSubmit={() => {
-        // eslint-disable-next-line no-console
-      }}
-    >
+    <RegisterFormWrapper onSubmit={() => registerAPI(registerData)}>
       <RegisterFormHead>회원가입</RegisterFormHead>
       <div>
         <RegisterQue>
@@ -166,7 +178,12 @@ function RegisterForm() {
             onToggleModal={onToggleAddressModal}
           />
         )}
-        <RegisterInput placeholder="상세주소" />
+        <RegisterInput
+          placeholder="상세주소"
+          name="detailAddress"
+          value={detailAddress}
+          onChange={onChangeForm}
+        />
       </div>
       <hr />
       <TermAllBox>
@@ -223,6 +240,7 @@ function RegisterForm() {
         buttonColor="mainColor"
         hoverButtonColor="mainHoverColor"
         fontColor="white"
+        disabled={registerBtnToggle}
         type="submit"
       >
         회원 로그인
