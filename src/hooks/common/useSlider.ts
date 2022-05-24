@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
-function useSlider() {
-  const TOTAL_SLIDES = 2;
+function useSlider(total: number) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const element = useRef<HTMLDivElement>(null);
   const nextSlide = () => {
-    if (currentSlide >= TOTAL_SLIDES) {
+    if (currentSlide >= total - 1) {
       // 더 이상 넘어갈 슬라이드가 없으면 슬라이드를 초기화합니다.
       setCurrentSlide(0);
     } else {
@@ -14,7 +13,7 @@ function useSlider() {
   };
   const prevSlide = () => {
     if (currentSlide === 0) {
-      setCurrentSlide(TOTAL_SLIDES);
+      setCurrentSlide(total - 1);
     } else {
       setCurrentSlide(currentSlide - 1);
     }
