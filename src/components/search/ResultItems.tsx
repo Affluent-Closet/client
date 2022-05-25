@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { SortMethod } from 'model/enums';
 import { IGoodsQuery } from 'model/goods';
 import { GridGoodsItem, LoadingBox } from 'components/common';
-import useGoodsLoad from 'hooks/goods/useGoodsEffect';
+import useGoodsLoad from 'hooks/goods/useGoodsLoad';
 import SearchTitle from './SearchKeyword';
 
 const SearchListHead = styled(ListHead)`

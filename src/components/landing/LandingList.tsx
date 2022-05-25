@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { ItemGrid } from 'components/common/CommonComponents';
 import LoadingBox from 'components/common/LoadingBox';
-import useGoodsLoad from 'hooks/goods/useGoodsEffect';
+import useGoodsLoad from 'hooks/goods/useGoodsLoad';
 import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { mediaSize } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
