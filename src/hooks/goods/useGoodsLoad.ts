@@ -12,8 +12,6 @@ function useGoodsLoad(goodsQueryString: IGoodsQuery) {
       staleTime: 5 * 60 * 1000,
     },
   );
-  // eslint-disable-next-line no-console
-  console.log(goodsQueryString, goodsData.data);
   return { goodsData };
 }
 
