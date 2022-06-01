@@ -28,4 +28,4 @@ function Input({ width, height, borderRadius = '4px', ...rest }: InputProps) {
   );
 }
 
-export default Input;
+export default React.memo(Input);

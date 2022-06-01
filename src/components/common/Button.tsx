@@ -64,4 +64,4 @@ function Button({ className, children, ...rest }: ButtonProps): ReactElement {
   );
 }
 
-export default Button;
+export default React.memo(Button);

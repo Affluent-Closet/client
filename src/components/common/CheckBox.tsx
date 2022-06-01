@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant: 'primary' | 'secondary';
+  isChecked?: boolean;
+  onClick?: () => void;
 }
 
 const CheckBoxStyled = styled.input<CheckBoxProps>`
@@ -13,6 +15,7 @@ const CheckBoxStyled = styled.input<CheckBoxProps>`
 `;
 
 function CheckBox({ ...rest }: CheckBoxProps): ReactElement {
+  console.log(rest);
   return <CheckBoxStyled type="checkbox" {...rest} />;
 }
 
