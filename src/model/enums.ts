@@ -3,3 +3,8 @@ export enum SortMethod {
   LOWPRICE = 'LOWPRICE',
   BEST = 'BEST',
 }
+
+export enum Gender {
+  MAIL = 'MAIL',
+  FEMAIL = 'FEMAIL',
+}

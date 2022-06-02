@@ -10,7 +10,7 @@ interface RequestPayMentsProps {
   failUrl: string;
 }
 const requestPayMents = async (body: RequestPayMentsProps) => {
-  const clientKey = 'test_ck_Wd46qopOB896xPAEJdL3ZmM75y0v';
+  const clientKey = 'test_ck_7XZYkKL4MrjjNY5Db1Er0zJwlEWR';
   const tossPayments = await loadTossPayments(clientKey);
   tossPayments
     .requestPayment('카드', {
