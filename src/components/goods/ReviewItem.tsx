@@ -1,4 +1,5 @@
 import useToggle from 'hooks/common/useToggle';
+import { IReviewItem } from 'model/review';
 import React from 'react';
 import styled from 'styled-components';
 import ReviewModal from './ReviewModal';
@@ -45,22 +46,30 @@ const NickName = styled.div`
   line-height: 35px;
   font-size: 14px;
 `;
-
-function ReviewItem() {
+interface ReviewItemProps {
+  contents: IReviewItem;
+}
+function ReviewItem({ contents }: ReviewItemProps) {
+  const { detail, img } = contents;
   const [isModal, onToggleModal] = useToggle();
   return (
     <>
       <ReviewItemContainer onClick={onToggleModal}>
-        <ReviewImg src="https://kream-phinf.pstatic.net/MjAyMjAzMDRfMjYw/MDAxNjQ2MzU4NDYyOTY3.BeT00qB6ij4ww2CsELmJTUaM0lDe4zk19-da3Q1elp0g.twGmg6RJEq6mZyXGXUl-PjwYHSyzsFg_g3PutPLLXc8g.JPEG/p_4d7c7817e3d04a7cb7be58557ac86c6f.jpg?type=m" />
+        <ReviewImg src={img[0]} />
         <div>
           <WriterBox>
+            {/* 이거는 리코일에서 받아올 예정 */}
             <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
             <NickName>jiho.lee</NickName>
           </WriterBox>
-          <ReviewText>글 들어갈 자리입니다</ReviewText>
+          <ReviewText>{detail}</ReviewText>
         </div>
       </ReviewItemContainer>
-      <ReviewModal isModal={isModal} onToggle={onToggleModal} />
+      <ReviewModal
+        isModal={isModal}
+        onToggle={onToggleModal}
+        contents={contents}
+      />
     </>
   );
 }

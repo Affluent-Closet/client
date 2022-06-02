@@ -49,37 +49,31 @@ const SliderDots = styled.ul`
   }
 `;
 
-function SlideTemplete() {
+interface ISlideTempleteProps {
+  img: Array<string>;
+}
+function SlideTemplete({ img }: ISlideTempleteProps) {
   const { currentSlide, element, nextSlide, prevSlide, setCurrentSlide } =
-    useSlider();
+    useSlider(img.length);
   return (
     <Container>
       <SliderContainer ref={element}>
-        <Slide img="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg" />
-        <Slide img="https://avatars.githubusercontent.com/u/64634992?v=4" />
-        <Slide img="https://image-comic.pstatic.net/webtoon/748105/156/20220223140726_caa0c1e44c7e8737a30f73f75755068d_IMAG01_1.jpg" />
+        {img.map((imgs) => (
+          <Slide img={imgs} />
+        ))}
       </SliderContainer>
       <BtnGroupBox>
         <Button onClick={prevSlide} hoverButtonColor="backgroundHover">
           <AiFillCaretLeft size={16} />
         </Button>
         <SliderDots>
-          {/* 나중에 map으로 돌릴 예정 */}
-          <li className={currentSlide === 0 ? 'slick-active' : ''}>
-            <button type="button" onClick={() => setCurrentSlide(0)}>
-              1
-            </button>
-          </li>
-          <li className={currentSlide === 1 ? 'slick-active' : ''}>
-            <button type="button" onClick={() => setCurrentSlide(1)}>
-              2
-            </button>
-          </li>
-          <li className={currentSlide === 2 ? 'slick-active' : ''}>
-            <button type="button" onClick={() => setCurrentSlide(2)}>
-              3
-            </button>
-          </li>
+          {img.map((_imgs, index) => (
+            <li className={currentSlide === index ? 'slick-active' : ''}>
+              <button type="button" onClick={() => setCurrentSlide(index)}>
+                {index}
+              </button>
+            </li>
+          ))}
         </SliderDots>
         <Button onClick={nextSlide} hoverButtonColor="backgroundHover">
           <AiFillCaretRight size={16} />

@@ -4,7 +4,7 @@ import GoodsReview from 'components/goods/GoodsReview';
 import GoodsReviewSummary from 'components/goods/GoodsReviewSummary';
 import TabBox from 'components/goods/TabBox';
 import useMoveScrool from 'hooks/common/useMoveScrool';
-import useOneGoodsEffect from 'hooks/goods/useOneGoodsEffect';
+import useOneGoodsEffect from 'hooks/goods/useOneGoodsLoad';
 import { mediaSize } from 'libs/styles/media';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';

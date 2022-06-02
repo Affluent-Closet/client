@@ -2,6 +2,7 @@ import SlideTemplete from 'components/common/SlideTemplete';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import transitions from 'libs/styles/transitions';
+import { IReviewItem } from 'model/review';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ReviewGoodsInfo from './ReviewGoodsInfo';
@@ -84,9 +85,11 @@ const ReviewDetail = styled.div`
 interface ReviewModalProps {
   isModal: boolean;
   onToggle: () => void;
+  contents: IReviewItem;
 }
 
-function ReviewModal({ isModal, onToggle }: ReviewModalProps) {
+function ReviewModal({ isModal, onToggle, contents }: ReviewModalProps) {
+  const { detail, img, createdAt } = contents;
   useEffect(() => {
     if (isModal) window.document.body.style.overflow = 'hidden';
     return () => {
@@ -97,16 +100,17 @@ function ReviewModal({ isModal, onToggle }: ReviewModalProps) {
     <ReviewModalBlock isModal={isModal}>
       <ModalInner>
         <WriterBox>
+          {/* 이거는 리코일에서 받아올 예정 */}
           <ProfileImg src="https://avatars.githubusercontent.com/u/64634992?v=4" />
           <Info>
             <div className="nickName">jiho.lee</div>
-            <div className="date">3월 3일</div>
+            <div className="date">{createdAt.substr(0, 10)}</div>
           </Info>
         </WriterBox>
-        <SlideTemplete />
+        <SlideTemplete img={img} />
         <ReviewDetail>
-          <ReviewGoodsInfo />
-          <div>글 들어갈 자리입니다.</div>
+          <ReviewGoodsInfo contents={contents} />
+          <div>{detail}</div>
         </ReviewDetail>
       </ModalInner>
       <Background onClick={onToggle} />

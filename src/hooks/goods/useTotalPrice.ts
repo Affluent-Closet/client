@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useEffect, useState } from 'react';
 
 export function useTotalPrice(quantity: number, price: number) {
