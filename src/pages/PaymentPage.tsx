@@ -13,7 +13,7 @@ const InputStyle = styled.input`
 function PaymentPage() {
   const { form, onChangeForm } = useForm({
     amount: 1,
-    orderId: 'brL9yXo4bVrpAHe7p5sgZd2',
+    orderId: 'brL9yXo4bVrpAHe7p5s1232',
     orderName: '토스 티셔츠 외 2건!',
     customerName: '박토스',
     successUrl: 'http://localhost:3000/success',
