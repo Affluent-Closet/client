@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { ItemGrid } from 'components/common/CommonComponents';
 import LoadingBox from 'components/common/LoadingBox';
+import useScrollFadeIn from 'hooks/common/useFadeIn';
 import useGoodsLoad from 'hooks/goods/useGoodsLoad';
 import useGoodsQueryForm from 'hooks/search/useGoodsQueryForm';
 import { mediaSize } from 'libs/styles/media';
@@ -28,33 +29,31 @@ const LandingListCategory = styled.div`
   line-height: 3;
 `;
 interface LandingListProps {
-  isBest: boolean;
+  isBest?: boolean;
 }
+
 function LandingList({ isBest }: LandingListProps) {
   const { goodsQueryString } = useGoodsQueryForm(
     isBest ? SortMethod.BEST : SortMethod.NEW,
   );
   const { goodsData } = useGoodsLoad(goodsQueryString);
   const { data: goods, isLoading } = goodsData;
+  const AnimatedItem = useScrollFadeIn(isLoading, 'left', 1, 0.3);
+
+  if (isLoading) return <LoadingBox />;
   return (
     <LandingListContainer>
-      {isLoading ? (
-        <LoadingBox />
-      ) : (
-        <LandingListInner>
-          <LandingListCategory>
-            <h2>{isBest ? 'BEST ITEM' : 'NEW ARRIVAL'}</h2>
-          </LandingListCategory>
-          <ItemGrid>
-            {goods &&
-              goods.items.map((good, index) => (
-                <GridGoodsItem key={`good_${index}`} item={good} />
-              ))}
-          </ItemGrid>
-        </LandingListInner>
-      )}
+      <LandingListInner>
+        <LandingListCategory>
+          <h2>{isBest ? 'BEST ITEM' : 'NEW ARRIVAL'}</h2>
+        </LandingListCategory>
+        <ItemGrid {...AnimatedItem}>
+          {goods?.items.map((good, index) => (
+            <GridGoodsItem key={`good_${index}`} item={good} />
+          ))}
+        </ItemGrid>
+      </LandingListInner>
     </LandingListContainer>
   );
 }
-
 export default LandingList;

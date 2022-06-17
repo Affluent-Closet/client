@@ -6,11 +6,12 @@ import React from 'react';
 
 function LandingPage() {
   useChannelPluginEffect();
+
   return (
     <PageContainer>
       <LandingBanner />
       <LandingList isBest />
-      <LandingList isBest={false} />
+      <LandingList />
     </PageContainer>
   );
 }
