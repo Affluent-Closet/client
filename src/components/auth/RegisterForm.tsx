@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Button from 'components/common/Button';
 import CheckBox from 'components/common/CheckBox';
 import {
@@ -69,7 +67,7 @@ function RegisterForm() {
     userForm;
 
   const [isAddressModal, onToggleAddressModal] = useToggle();
-  const [address, onCompletPost] = useDaumAdress();
+  const [, onCompletPost] = useDaumAdress();
 
   const [, onToggleTermModal] = useToggle();
 
@@ -174,7 +172,7 @@ function RegisterForm() {
         </FlexBetween>
         {isAddressModal && (
           <AddressModal
-            onCompletPost={onCompletPost}
+            onCompletePost={onCompletPost}
             onToggleModal={onToggleAddressModal}
           />
         )}

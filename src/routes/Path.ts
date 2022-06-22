@@ -20,6 +20,7 @@ enum Path {
   BestPage = '/best',
   PaymentPage = '/payment',
   SuccessPage = '/success',
+  MyOrderPage = '/myorder',
 }
 
 export default Path;
