@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useEffect, useCallback } from 'react';
 
-const useScrollFadeIn = (direction = 'up', duration = 1, delay = 0) => {
+const useScrollFadeIn = (
+  deps: boolean,
+  direction = 'up',
+  duration = 1,
+  delay = 0,
+) => {
   const element = useRef<HTMLDivElement>(null);
 
   const handleDirection = (name: string) => {
@@ -38,14 +43,16 @@ const useScrollFadeIn = (direction = 'up', duration = 1, delay = 0) => {
   useEffect(() => {
     let observer: IntersectionObserver;
     const { current } = element;
-
     if (current) {
-      observer = new IntersectionObserver(handleScroll, { threshold: 0.7 });
+      observer = new IntersectionObserver(handleScroll, {
+        threshold: 0.1,
+        rootMargin: '100px',
+      });
       observer.observe(current);
     }
 
     return () => observer && observer.disconnect();
-  }, [handleScroll]);
+  }, [handleScroll, element, deps]);
 
   return {
     ref: element,
