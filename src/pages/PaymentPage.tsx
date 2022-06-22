@@ -2,6 +2,7 @@ import Button from 'components/common/Button';
 import { PageContainer } from 'components/common/CommonComponents';
 import useForm from 'hooks/common/useForm';
 import requestPayMents from 'hooks/pay/requestPayMents';
+import { MAIN_URL } from 'libs/constants';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -13,11 +14,11 @@ const InputStyle = styled.input`
 function PaymentPage() {
   const { form, onChangeForm } = useForm({
     amount: 1,
-    orderId: 'brL9yXo4bVrpAHe7p5sgZd2',
+    orderId: 'brL9yXo4bVrpAHe7p5s1232',
     orderName: '토스 티셔츠 외 2건!',
     customerName: '박토스',
-    successUrl: 'http://localhost:3000/success',
-    failUrl: 'http://localhost:3000/false',
+    successUrl: `${MAIN_URL}/success`,
+    failUrl: `${MAIN_URL}/false`,
   });
 
   return (
