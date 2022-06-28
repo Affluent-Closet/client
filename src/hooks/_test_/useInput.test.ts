@@ -7,4 +7,8 @@ describe('useToggle', () => {
     const { result } = renderHook(() => useToggle(false));
     expect(result.current).toHaveLength(2);
   });
+  test('initialValue 값이 주어지지 않으면 초기값으로 false를 가진다', () => {
+    const { result } = renderHook(() => useToggle());
+    expect(result.current[0]).toBe(false);
+  });
 });
