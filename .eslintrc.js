@@ -13,6 +13,7 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'arrow-body-style': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
