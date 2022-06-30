@@ -1,5 +1,5 @@
 import { FlexAlignCenter } from 'components/common/CommonComponents';
-import useDiscountCal from 'hooks/goods/useDiscountCal';
+import getDiscountPirce from 'hooks/goods/getDiscountPirce';
 import useSelectGoods from 'hooks/goods/useSelectGoods';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
@@ -75,9 +75,9 @@ interface GoodsInfoProps {
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
   const { thumbnail, price, discount, sizeInfo, name } = item;
-  const discountPriceIndex = useDiscountCal(price, discount);
+  const discountPrice = getDiscountPirce(price, discount);
   const { onChangeList, selectedList, onChangeQuantity, onDeleteList } =
-    useSelectGoods(discountPriceIndex.discountPrice);
+    useSelectGoods(discountPrice);
 
   return (
     <GoodsInfoWrapper>
@@ -87,7 +87,7 @@ function GoodsInfo({ item }: GoodsInfoProps) {
           goodsName={name}
           price={price}
           discount={discount}
-          discountPriceIndex={discountPriceIndex}
+          discountPriceIndex={discountPrice}
         />
         <hr />
         <GoodsInfoSection>

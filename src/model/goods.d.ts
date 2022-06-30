@@ -58,8 +58,3 @@ export interface IOrderItem {
   quantity: number;
   total: number;
 }
-
-export interface IdiscountPrice {
-  discountPrice: number;
-  discountPriceString: string;
-}
