@@ -59,7 +59,7 @@ function SlideTemplete({ img }: ISlideTempleteProps) {
     <Container>
       <SliderContainer ref={element}>
         {img.map((imgs) => (
-          <Slide img={imgs} />
+          <Slide key={imgs} img={imgs} />
         ))}
       </SliderContainer>
       <BtnGroupBox>
@@ -68,7 +68,10 @@ function SlideTemplete({ img }: ISlideTempleteProps) {
         </Button>
         <SliderDots>
           {img.map((_imgs, index) => (
-            <li className={currentSlide === index ? 'slick-active' : ''}>
+            <li
+              key={_imgs}
+              className={currentSlide === index ? 'slick-active' : ''}
+            >
               <button type="button" onClick={() => setCurrentSlide(index)}>
                 {index}
               </button>
