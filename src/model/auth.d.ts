@@ -23,7 +23,7 @@ export interface IRequestRegister {
   role: string;
   email: string;
   password: string;
-  passwordConfirm: string;
+  passwordConfirm?: string;
   phoneNumber: string;
   address1: string;
   address2: string;
@@ -38,9 +38,16 @@ export interface IResponseLogin {
   jwtString: string;
 }
 
-export interface IAuthErrMsg {
-  emailError?: string | null;
-  passwordError?: string | null;
-  phoneError?: string | null;
-  addressError?: string | null;
+export interface IAgreementItem {
+  name: string;
+  text: string;
+  isChecked: boolean;
+  isModal: boolean;
+}
+
+export interface IAgreementFormTypes {
+  agreementList: IAgreementItem[];
+  isAllChecked: boolean;
+  onAllCheck: () => void;
+  onChangeCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

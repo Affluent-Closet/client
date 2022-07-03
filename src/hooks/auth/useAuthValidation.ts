@@ -1,5 +1,11 @@
 import { useCallback, useState } from 'react';
-import { IAuthErrMsg } from 'model/auth';
+
+interface IAuthErrMsg {
+  emailError?: string | null;
+  passwordError?: string | null;
+  phoneError?: string | null;
+  addressError?: string | null;
+}
 
 export default function useAuthValidation() {
   const [errorMessage, setErrorMessage] = useState<IAuthErrMsg>();
@@ -76,7 +82,7 @@ export default function useAuthValidation() {
     [],
   );
 
-  const onCheckphoneNumber = useCallback((phoneNumber: string): boolean => {
+  const onCheckPhoneNumber = useCallback((phoneNumber: string): boolean => {
     const phoneNumberRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
     if (!phoneNumberRegex.test(phoneNumber)) {
       setErrorMessage((prev) => ({
@@ -96,23 +102,20 @@ export default function useAuthValidation() {
     (name: string, value: string, password?: string) => {
       switch (name) {
         case 'email':
-          onCheckEmail(value);
-          break;
+          return onCheckEmail(value);
         case 'password':
-          onCheckPassword(value);
-          break;
+          return onCheckPassword(value);
         case 'phoneNumber':
-          onCheckphoneNumber(value);
-          break;
+          return onCheckPhoneNumber(value);
         case 'passwordConfirm':
-          onCheckPasswordComfirm(value, password || '');
-          break;
+          return onCheckPasswordComfirm(value, password || '');
         default:
-          break;
+          return false;
       }
     },
     [],
   );
+
   return {
     errorMessage,
     onFormValidation,

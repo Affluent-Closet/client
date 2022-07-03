@@ -1,61 +1,30 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Button from 'components/common/Button';
-import CheckBox from 'components/common/CheckBox';
-import {
-  FlexBetween,
-  InputStyled,
-  ListHead,
-} from 'components/common/CommonComponents';
+import { FlexBetween, ListHead } from 'components/common/CommonComponents';
+import Input from 'components/common/Input';
+import useAgreementForm from 'hooks/auth/useAgreementForm';
 import useAuth from 'hooks/auth/useAuth';
-import useDaumAdress from 'hooks/common/useDaumAddress';
 import useToggle from 'hooks/common/useToggle';
 import { palette } from 'libs/styles/palette';
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import AddressModal from './AddressModal';
+import AgreementForm from './AgreementForm';
+import RegisterFormLabel from './RegisterFormLabel';
 
 const RegisterFormWrapper = styled.form`
   sup {
     color: ${palette.mainColor};
   }
+  .findBtn {
+    margin: 5px;
+  }
+  .registerInput {
+    margin: 5px 0;
+  }
 `;
 
 const RegisterFormHead = styled(ListHead)`
   font-weight: 500;
-`;
-
-const RegisterInput = styled(InputStyled)`
-  width: 100%;
-  margin: 5px 0;
-`;
-
-const RegisterQue = styled.div`
-  margin: 15px 0px 10px 4px;
-`;
-
-const FindAddressBtn = styled(Button)`
-  margin: 5px;
-`;
-
-const TermAllBox = styled.div`
-  font-weight: 500;
-`;
-
-const TermStyled = styled.div`
-  margin: 10px;
-`;
-
-const TermBox = styled.div`
-  border: 1px solid ${palette.border};
-  padding: 5px;
-  margin: 20px 0;
-`;
-
-const CheckBoxLabel = styled.label`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 const ErrorBox = styled.div`
@@ -64,58 +33,36 @@ const ErrorBox = styled.div`
 `;
 
 function RegisterForm() {
-  const { userForm, onChangeForm, onRegister, errorMessage } = useAuth();
+  const {
+    userForm,
+    onChangeForm,
+    onRegister,
+    errorMessage,
+    onCompletePost,
+    onChangePasswordConfirm,
+    isValidationTest,
+  } = useAuth();
+  const { isAllChecked, ...useAgreement } = useAgreementForm();
   const { email, password, passwordConfirm, address1, address2, phoneNumber } =
     userForm;
-
   const [isAddressModal, onToggleAddressModal] = useToggle();
-  const [address, onCompletPost] = useDaumAdress();
 
-  const [, onToggleTermModal] = useToggle();
-
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  const [isChecked4, setIsChecked4] = useState(false);
-
-  const [registerBtnToggle, setRegisterBtnToggle] = useState(true);
-
-  useEffect(() => {
-    if (errorMessage?.emailError === '올바른 이메일 형식입니다.') {
-      if (errorMessage?.passwordError === '비밀번호가 일치합니다.') {
-        if (errorMessage?.phoneError === '올바른 전화번호 형식입니다.') {
-          // if (((isChecked2 === isChecked3) === isChecked4) === true) {
-
-          setRegisterBtnToggle(false);
-        }
-        // }
-      }
-    }
-  }, [errorMessage]);
-
-  // const objArr = [
-  //   {
-  //     isChecked: isChecked1,
-  //     setIsChecked: setIsChecked1,
-  //     text: '만 14세 이상입니다',
-  //   },
-  // ];
-
-  const onAllCheck = () => {
-    setIsChecked1(!isChecked1);
-    setIsChecked2(true);
-    setIsChecked3(true);
-    setIsChecked4(true);
-  };
+  const registerBtnToggle = useMemo(() => {
+    const validationTest = Object.values(isValidationTest).every(
+      (item) => item,
+    );
+    return !(validationTest && isAllChecked);
+  }, [isValidationTest, isAllChecked]);
 
   return (
     <RegisterFormWrapper onSubmit={onRegister}>
       <RegisterFormHead>회원가입</RegisterFormHead>
       <div>
-        <RegisterQue>
-          이메일 <sup>*</sup>
-        </RegisterQue>
-        <RegisterInput
+        <RegisterFormLabel label="이메일" />
+        <Input
+          className="registerInput"
+          width="100%"
+          height="40px"
           placeholder="이메일"
           type="email"
           name="email"
@@ -125,30 +72,35 @@ function RegisterForm() {
         {errorMessage?.emailError && (
           <ErrorBox>{errorMessage.emailError}</ErrorBox>
         )}
-        <RegisterQue>
-          비밀번호 <sup>*</sup>
-        </RegisterQue>
-        <RegisterInput
+        <RegisterFormLabel label="비밀번호" />
+        <Input
+          className="registerInput"
+          width="100%"
+          height="40px"
           placeholder="비밀번호"
           type="password"
           name="password"
           value={password}
           onChange={onChangeForm}
         />
-        <RegisterInput
+        <Input
+          className="registerInput"
+          width="100%"
+          height="40px"
           placeholder="비밀번호 확인"
           type="password"
           name="passwordConfirm"
           value={passwordConfirm}
-          onChange={(e) => onChangeForm(e, password)}
+          onChange={onChangePasswordConfirm}
         />
         {errorMessage?.passwordError && (
           <ErrorBox>{errorMessage.passwordError}</ErrorBox>
         )}
-        <RegisterQue>
-          연락처 <sup>*</sup>
-        </RegisterQue>
-        <RegisterInput
+        <RegisterFormLabel label="연락처" />
+        <Input
+          className="registerInput"
+          width="100%"
+          height="40px"
           placeholder="연락처"
           type="string"
           name="phoneNumber"
@@ -158,92 +110,56 @@ function RegisterForm() {
         {errorMessage?.phoneError && (
           <ErrorBox>{errorMessage.phoneError}</ErrorBox>
         )}
-        <RegisterQue>
-          주소 <sup>*</sup>
-        </RegisterQue>
+        <RegisterFormLabel label="주소" />
         <FlexBetween>
-          <RegisterInput placeholder="주소" value={address1} disabled />
-          <FindAddressBtn
+          <Input
+            className="registerInput"
+            width="100%"
+            height="40px"
+            placeholder="주소"
+            name="address1"
+            value={address1}
+            onChange={onChangeForm}
+            disabled
+          />
+          <Button
+            className="findBtn"
             width="3rem"
             height="40px"
-            type="button"
             onClick={onToggleAddressModal}
+            type="button"
           >
             찾기
-          </FindAddressBtn>
+          </Button>
         </FlexBetween>
         {isAddressModal && (
           <AddressModal
-            onCompletPost={onCompletPost}
+            onCompletePost={onCompletePost}
             onToggleModal={onToggleAddressModal}
           />
         )}
-        <RegisterInput
+        <Input
+          className="registerInput"
+          width="100%"
+          height="40px"
           placeholder="상세주소"
-          name="detailAddress"
+          name="address2"
           value={address2}
           onChange={onChangeForm}
         />
       </div>
       <hr />
-      <TermAllBox>
-        <CheckBoxLabel>
-          <CheckBox
-            variant="primary"
-            width="15px"
-            height="15px"
-            checked={isChecked1}
-            onChange={onAllCheck}
-          />
-          약관 모두 동의
-        </CheckBoxLabel>
-      </TermAllBox>
-      <TermBox>
-        <TermStyled>
-          <CheckBoxLabel>
-            <CheckBox
-              variant="primary"
-              checked={isChecked2}
-              onChange={() => setIsChecked2(!isChecked2)}
-            />
-            만 14세 이상입니다 <sup>*</sup>
-          </CheckBoxLabel>
-        </TermStyled>
-        <TermStyled>
-          <CheckBoxLabel>
-            <CheckBox
-              variant="primary"
-              checked={isChecked3}
-              onChange={() => setIsChecked3(!isChecked3)}
-            />
-            <Button onClick={onToggleTermModal}>
-              Afflunt Closet 약관 동의 <sup>*</sup>
-            </Button>
-          </CheckBoxLabel>
-        </TermStyled>
-        <TermStyled>
-          <CheckBoxLabel>
-            <CheckBox
-              variant="primary"
-              checked={isChecked4}
-              onChange={() => setIsChecked4(!isChecked4)}
-            />
-            <Button onClick={onToggleTermModal}>
-              개인정보수집 및 이용에 대한 안내 <sup>*</sup>
-            </Button>
-          </CheckBoxLabel>
-        </TermStyled>
-      </TermBox>
+      <AgreementForm useAgreement={{ isAllChecked, ...useAgreement }} />
       <Button
         width="100%"
         height="40px"
-        buttonColor="mainColor"
-        hoverButtonColor="mainHoverColor"
+        buttonColor={registerBtnToggle ? 'grayDark' : 'mainColor'}
         fontColor="white"
+        hoverButtonColor={registerBtnToggle ? 'grayDark' : 'mainColor'}
         disabled={registerBtnToggle}
         type="submit"
       >
-        회원 로그인
+        회원가입
       </Button>
     </RegisterFormWrapper>
   );
