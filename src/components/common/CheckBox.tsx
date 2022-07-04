@@ -1,18 +1,18 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
-interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  onClick?: () => void;
-}
-
-const CheckBoxStyled = styled.input<CheckBoxProps>`
+const CheckBoxStyled = styled.input<
+  React.InputHTMLAttributes<HTMLInputElement>
+>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   cursor: pointer;
   margin-right: 6px;
 `;
 
-function CheckBox({ ...rest }: CheckBoxProps): ReactElement {
+function CheckBox({
+  ...rest
+}: React.InputHTMLAttributes<HTMLInputElement>): ReactElement {
   return <CheckBoxStyled type="checkbox" {...rest} />;
 }
 
