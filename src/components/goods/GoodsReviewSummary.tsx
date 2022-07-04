@@ -8,6 +8,10 @@ import {
   ListHead,
 } from 'components/common/CommonComponents';
 import Button from 'components/common/Button';
+
+import { LoadingBox } from 'components/common';
+import useReviewRatingLoad from 'hooks/review/useReviewRatingLoad';
+import { indexSum } from 'libs/utils/indexSum';
 import ReviewScoreBox from './ReviewScoreBox';
 
 const ReviewWrapper = styled.div`
@@ -38,6 +42,10 @@ const SummaryEle = styled(FlexCenter)`
   color: #14161a;
 `;
 function GoodsReviewSummary() {
+  const { ratingData } = useReviewRatingLoad();
+  const { data, isLoading } = ratingData;
+  if (isLoading || !data) return <LoadingBox />;
+  const points = indexSum(Object.values(data?.countPoint));
   return (
     <ReviewWrapper>
       <ListHead>Review</ListHead>
@@ -46,7 +54,7 @@ function GoodsReviewSummary() {
           구매 만족도
           <SummaryEle>
             <BsStarFill color="coral" size="42" />
-            <Rating>4.9</Rating>
+            <Rating>{data?.averagePoint.toFixed(2)}</Rating>
           </SummaryEle>
           <Button
             width="160px"
@@ -62,13 +70,29 @@ function GoodsReviewSummary() {
         <div className="full-width">
           <ReviewScoreBox
             tit="아주 좋아요"
-            reviewScore={90}
-            reviewCount={363}
+            points={points}
+            reviewCount={data?.countPoint.fivePoint}
           />
-          <ReviewScoreBox tit="맘에 들어요" reviewScore={5} reviewCount={29} />
-          <ReviewScoreBox tit="보통이에요" reviewScore={1} reviewCount={2} />
-          <ReviewScoreBox tit="그냥 그래요" reviewScore={1} reviewCount={1} />
-          <ReviewScoreBox tit="별로에요" reviewScore={3} reviewCount={3} />
+          <ReviewScoreBox
+            tit="맘에 들어요"
+            points={points}
+            reviewCount={data?.countPoint.fourPoint}
+          />
+          <ReviewScoreBox
+            tit="보통이에요"
+            points={points}
+            reviewCount={data?.countPoint.threePoint}
+          />
+          <ReviewScoreBox
+            tit="그냥 그래요"
+            points={points}
+            reviewCount={data?.countPoint.twoPoint}
+          />
+          <ReviewScoreBox
+            tit="별로에요"
+            points={points}
+            reviewCount={data?.countPoint.onePoint}
+          />
         </div>
       </SummaryBox>
     </ReviewWrapper>
