@@ -2,13 +2,13 @@
 
 import useDaumAddress from 'hooks/common/useDaumAddress';
 import { registerAPI } from 'libs/api/registerAPI';
-import { IRequestRegister } from 'model/auth';
+import { IRegisterRequest } from 'model/auth';
 import { useCallback, useState } from 'react';
 import useAuthValidation from './useAuthValidation';
 
 export default function useAuth() {
   const { errorMessage, onFormValidation } = useAuthValidation();
-  const [userForm, setUserForm] = useState<IRequestRegister>({
+  const [userForm, setUserForm] = useState<IRegisterRequest>({
     name: '',
     role: 'USER',
     email: '',

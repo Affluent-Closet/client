@@ -5,7 +5,7 @@ export default function useAgreementForm(): IAgreementFormTypes {
   const [agreementList, setAgreementList] = useState([
     {
       name: 'over14year',
-      text: '만 14세 이b상입니다',
+      text: '만 14세 이상입니다',
       isChecked: false,
       isModal: false,
     },

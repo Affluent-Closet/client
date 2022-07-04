@@ -18,7 +18,7 @@ export interface IUser {
   profileImg: string;
 }
 
-export interface IRequestRegister {
+export interface IRegisterRequest {
   name: string;
   role: string;
   email: string;
@@ -29,11 +29,11 @@ export interface IRequestRegister {
   address2: string;
   profileImg: string;
 }
-export interface ILoginData {
+export interface ILoginRequest {
   email: string;
   password: string;
 }
-export interface IResponseLogin {
+export interface ILoginResponse {
   user: IUser;
   jwtString: string;
 }

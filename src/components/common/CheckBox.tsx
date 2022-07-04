@@ -1,9 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
-interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  onClick?: () => void;
-}
+type CheckBoxProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const CheckBoxStyled = styled.input<CheckBoxProps>`
   width: ${({ width }) => width};
