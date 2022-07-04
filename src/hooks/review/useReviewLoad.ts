@@ -12,8 +12,6 @@ function useReviewLoad(reviewQueryString: IReviewQuery) {
       staleTime: 5 * 60 * 1000,
     },
   );
-  // eslint-disable-next-line no-console
-  console.log(reviewQueryString, reviewData.data);
   return { reviewData };
 }
 

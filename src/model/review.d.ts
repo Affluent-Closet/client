@@ -22,3 +22,14 @@ export interface IReviewResponse {
   totalPage: number;
   items: Array<IReviewItem>;
 }
+export interface ICountPoint {
+  onePoint: number;
+  twoPoint: number;
+  threePoint: number;
+  fourPoint: number;
+  fivePoint: number;
+}
+export interface IRatingResponse {
+  countPoint: ICountPoint;
+  averagePoint: number;
+}
