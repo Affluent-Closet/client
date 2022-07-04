@@ -1,6 +1,6 @@
 enum Path {
   LandingPage = '/',
-  TestPage = '/test',
+  LogoutPage = '/logout',
   GoodsPage = '/goods/:goodsid',
   GoodsPath = '/goods',
   SearchPage = '/search',

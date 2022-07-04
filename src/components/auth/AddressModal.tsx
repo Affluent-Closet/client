@@ -5,22 +5,18 @@ import styled from 'styled-components';
 
 interface Props {
   onToggleModal: () => void;
-  onCompletPost: (data: Address) => void;
+  onCompletePost: (data: Address) => void;
 }
 
 const ModalInnerStyled = styled.div`
   padding: 10px;
 `;
 
-function AddressModal({ onCompletPost, onToggleModal }: Props) {
-  const onClose = () => {
-    onToggleModal();
-  };
-
+function AddressModal({ onCompletePost, onToggleModal }: Props) {
   return (
     <ModalTemplate width={500} height={418} onToggleModal={onToggleModal}>
       <ModalInnerStyled>
-        <DaumPostcode onComplete={onCompletPost} onClose={onClose} />
+        <DaumPostcode onComplete={onCompletePost} onClose={onToggleModal} />
       </ModalInnerStyled>
     </ModalTemplate>
   );

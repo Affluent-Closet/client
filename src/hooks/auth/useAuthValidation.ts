@@ -1,10 +1,16 @@
-import { useState } from 'react';
-import { IAuthErrMsg } from 'model/auth';
+import { useCallback, useState } from 'react';
+
+interface IAuthErrMsg {
+  emailError?: string | null;
+  passwordError?: string | null;
+  phoneError?: string | null;
+  addressError?: string | null;
+}
 
 export default function useAuthValidation() {
   const [errorMessage, setErrorMessage] = useState<IAuthErrMsg>();
 
-  const onCheckEmail = (email: string): boolean => {
+  const onCheckEmail = useCallback((email: string): boolean => {
     const emailRegex =
       // eslint-disable-next-line no-useless-escape
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -31,9 +37,9 @@ export default function useAuthValidation() {
       emailError: '올바른 이메일 형식입니다.',
     }));
     return true;
-  };
+  }, []);
 
-  const onCheckPassword = (password: string): boolean => {
+  const onCheckPassword = useCallback((password: string): boolean => {
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
     // 비밀번호 비었는지 검사
@@ -56,30 +62,29 @@ export default function useAuthValidation() {
       passwordError: '올바른 비밀번호 형식입니다.',
     }));
     return true;
-  };
+  }, []);
 
-  // const onCheckPasswordComfirm = (
-  //   passwordConfirm: string,
-  //   password: string,
-  // ) => {
-  //   console.log('비번 : ', password, '비번확인 : ', passwordConfirm);
-  //   if (password !== passwordConfirm) {
-  //     setErrorMessage((prev) => ({
-  //       ...prev,
-  //       passwordError: '비밀번호가 일치하지 않습니다.',
-  //     }));
-  //     return false;
-  //   }
-  //   setErrorMessage((prev) => ({
-  //     ...prev,
-  //     passwordError: '비밀번호가 일치합니다.',
-  //   }));
-  //   return true;
-  // };
+  const onCheckPasswordComfirm = useCallback(
+    (passwordConfirm: string, password: string) => {
+      if (password !== passwordConfirm) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          passwordError: '비밀번호가 일치하지 않습니다.',
+        }));
+        return false;
+      }
+      setErrorMessage((prev) => ({
+        ...prev,
+        passwordError: '비밀번호가 일치합니다.',
+      }));
+      return true;
+    },
+    [],
+  );
 
-  const onCheckPhoneNum = (phoneNum: string): boolean => {
-    const phoneNumRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
-    if (!phoneNumRegex.test(phoneNum)) {
+  const onCheckPhoneNumber = useCallback((phoneNumber: string): boolean => {
+    const phoneNumberRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
+    if (!phoneNumberRegex.test(phoneNumber)) {
       setErrorMessage((prev) => ({
         ...prev,
         phoneError: '-를 제외한 휴대번호 11자리를 입력해 주세요',
@@ -91,26 +96,26 @@ export default function useAuthValidation() {
       phoneError: '올바른 전화번호 형식입니다.',
     }));
     return true;
-  };
+  }, []);
 
-  const onFormValidation = (name: string, value: string) => {
-    switch (name) {
-      case 'email':
-        onCheckEmail(value);
-        break;
-      case 'password':
-        onCheckPassword(value);
-        break;
-      case 'phoneNum':
-        onCheckPhoneNum(value);
-        break;
-      // case 'passwordConfirm':
-      //   onCheckPasswordComfirm(value, password);
-      //   break;
-      default:
-        break;
-    }
-  };
+  const onFormValidation = useCallback(
+    (name: string, value: string, password?: string) => {
+      switch (name) {
+        case 'email':
+          return onCheckEmail(value);
+        case 'password':
+          return onCheckPassword(value);
+        case 'phoneNumber':
+          return onCheckPhoneNumber(value);
+        case 'passwordConfirm':
+          return onCheckPasswordComfirm(value, password || '');
+        default:
+          return false;
+      }
+    },
+    [],
+  );
+
   return {
     errorMessage,
     onFormValidation,

@@ -5,6 +5,7 @@ import {
   InputStyled,
 } from 'components/common/CommonComponents';
 import { SortMenu } from 'components/search/ResultItems';
+import useLogin from 'hooks/auth/useLoginForm';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -19,11 +20,25 @@ const FindInfo = styled(SortMenu)`
 `;
 
 function LoginForm() {
+  const { loginData, onChangeForm, onLogin } = useLogin();
+  const { email, password } = loginData;
   return (
     <>
       <LoginBox>
-        <InputStyled type="text" placeholder="아이디" />
-        <InputStyled type="password" placeholder="비밀번호" />
+        <InputStyled
+          type="text"
+          placeholder="이메일"
+          name="email"
+          value={email}
+          onChange={onChangeForm}
+        />
+        <InputStyled
+          type="password"
+          placeholder="비밀번호"
+          name="password"
+          value={password}
+          onChange={onChangeForm}
+        />
       </LoginBox>
       <Button
         width="300px"
@@ -32,6 +47,7 @@ function LoginForm() {
         hoverButtonColor="backgroundColor"
         fontColor="white"
         hoverFontColor="hoverDarkColor"
+        onClick={onLogin}
       >
         회원 로그인
       </Button>
