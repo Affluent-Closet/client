@@ -1,13 +1,17 @@
-import { useState } from 'react';
 import { Address } from 'react-daum-postcode';
 
-type UseDaumAdress = [string, (data: Address) => void];
+type UseDaumAdress = (data: Address) => void;
 
-export default function useDaumAdress(): UseDaumAdress {
+export default function useDaumAdress(
+  onChangeAddress: (address1: string, address2: string) => void,
+): UseDaumAdress {
   // const [zonecode, setZonecode] = useState(''); // 우편번호
-  const [address, setAddress] = useState(''); // 상세주소
+  // const { setUserForm } = useAuth();
 
-  const onCompletePost = (data: Address) => {
+  const onCompletePost = (
+    data: Address,
+    // , setForm: () => void
+  ) => {
     let fullAddr = data.address;
     let extraAddr = '';
 
@@ -21,9 +25,13 @@ export default function useDaumAdress(): UseDaumAdress {
       }
       fullAddr += extraAddr !== '' ? ` (${extraAddr})` : '';
     }
-
-    setAddress(fullAddr);
+    onChangeAddress(fullAddr, extraAddr);
+    // setUserForm((prev) => ({
+    //   ...prev,
+    //   address1: fullAddr,
+    //   address2: extraAddr,
+    // }));
   };
 
-  return [address, onCompletePost];
+  return onCompletePost;
 }
