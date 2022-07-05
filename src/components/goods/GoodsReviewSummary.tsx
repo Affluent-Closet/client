@@ -54,7 +54,7 @@ function GoodsReviewSummary() {
           구매 만족도
           <SummaryEle>
             <BsStarFill color="coral" size="42" />
-            <Rating>{data?.averagePoint.toFixed(2)}</Rating>
+            <Rating>{data?.averagePoint?.toFixed(2)}</Rating>
           </SummaryEle>
           <Button
             width="160px"
