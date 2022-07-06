@@ -64,11 +64,8 @@ const ItemPrice = styled.div`
 
 interface GoodsCalculProps {
   selectedItems: IOrderItem[];
-  onChangeQuantity: (
-    e: React.MouseEvent<HTMLButtonElement>,
-    index: number,
-  ) => void;
-  onDeleteList: (index: number) => void;
+  onChangeQuantity: (type: 'plus' | 'minus', size: string) => void;
+  onDeleteList: (size: string) => void;
 }
 
 function GoodsCalculBox({
@@ -88,18 +85,16 @@ function GoodsCalculBox({
               <div>{size}</div>
               <FlexBox>
                 <QuantityCtrlStlyed
-                  value={-1}
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                    onChangeQuantity(e, index);
+                  onClick={() => {
+                    onChangeQuantity('minus', size);
                   }}
                 >
                   <AiOutlineMinus size={18} />
                 </QuantityCtrlStlyed>
                 <QuantityStyled>{quantity}</QuantityStyled>
                 <QuantityCtrlStlyed
-                  value={1}
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                    onChangeQuantity(e, index);
+                  onClick={() => {
+                    onChangeQuantity('plus', size);
                   }}
                 >
                   <AiOutlinePlus size={18} />
@@ -109,7 +104,7 @@ function GoodsCalculBox({
                 <ItemPrice>{total.toLocaleString('ko-KR')}원</ItemPrice>
                 <DeletOptBtn
                   onClick={() => {
-                    onDeleteList(index);
+                    onDeleteList(size);
                   }}
                 />
               </FlexBox>

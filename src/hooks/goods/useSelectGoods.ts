@@ -1,48 +1,46 @@
 import { IOrderItem } from 'model/goods';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function useSelectGoods(price: number) {
   const [selectedList, setSelectedList] = useState<IOrderItem[]>([]);
-  const [list, setList] = useState<IOrderItem>({
-    size: '',
-    quantity: 1,
-    total: 0,
-  });
 
-  const onClickSize = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id } = e.target;
-    setList({
-      size: id,
-      quantity: 1,
-      total: price,
-    });
+  const onClickSize = (id: string) => {
+    const isExist = selectedList.some((item) => item.size === id);
+    if (isExist) return;
+
+    setSelectedList((prev) =>
+      prev.concat({
+        size: id,
+        quantity: 1,
+        total: price,
+      }),
+    );
   };
 
-  const onChangeQuantity = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    index: number,
-  ) => {
-    const value = Number(e.currentTarget.value);
-    const newList = [...selectedList];
-    newList[index].quantity += value;
-    // eslint-disable-next-line operator-assignment
-    newList[index].total = newList[index].total + price * value;
-    setSelectedList(newList);
+  const onChangeQuantity = (type: 'plus' | 'minus', size: string) => {
+    const value = type === 'plus' ? 1 : -1;
+
+    const isItem = selectedList.find((item) => item.size === size);
+    if (isItem && isItem.quantity + value === -1) return;
+
+    setSelectedList((prev) =>
+      prev.map((item) =>
+        item.size === size
+          ? {
+              ...item,
+              quantity: item.quantity + value,
+              total: item.total + price * value,
+            }
+          : item,
+      ),
+    );
   };
 
-  const onDeleteList = (index: number) => {
-    const newList = [...selectedList];
-    newList.splice(index, 1);
-    setSelectedList(newList);
+  const onDeleteList = (size: string) => {
+    setSelectedList((prev) => prev.filter((item) => item.size !== size));
   };
 
-  useEffect(() => {
-    if (list.size !== '') {
-      setSelectedList((prev) => [...prev, list]);
-      setList({ size: '', quantity: 1, total: 0 });
-    }
-  }, [list.size]);
-  return { selectedList, list, onClickSize, onChangeQuantity, onDeleteList };
+  return { selectedList, onClickSize, onChangeQuantity, onDeleteList };
 }
 
 export default useSelectGoods;

@@ -5,7 +5,7 @@ import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
 import { IGoodsItem } from 'model/goods';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import GoodsCalculBox from './GoodsCalculBox';
 import GoodsPriceBox from './GoodsPriceBox';
 
@@ -64,11 +64,22 @@ export const RadioLabel = styled.label`
   font-size: 10px;
 `;
 
-export const RadioButton = styled.input`
-  display: none;
-  &:checked + ${RadioLabel} {
-    border: 2px solid black;
-  }
+export const RadioButton = styled.button<{ isSelected: boolean }>`
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: ${(props) => props.color};
+  border: 2px solid ${palette.border};
+  margin-right: 4px;
+  text-align: center;
+  line-height: 23px;
+  font-size: 10px;
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      border: 2px solid black;
+    `}
 `;
 interface GoodsInfoProps {
   item: IGoodsItem;
@@ -95,12 +106,14 @@ function GoodsInfo({ item }: GoodsInfoProps) {
           {sizeInfo.map(({ size }, index) => (
             <div key={`sizeInfo_${index}`}>
               <RadioButton
-                type="radio"
-                id={size}
                 name="size"
-                onChange={onClickSize}
-              />
-              <RadioLabel htmlFor={size}>{size}</RadioLabel>
+                onClick={() => onClickSize(size)}
+                isSelected={selectedList.some(
+                  (selectedItem) => selectedItem.size === size,
+                )}
+              >
+                {size}
+              </RadioButton>
             </div>
           ))}
         </GoodsInfoSection>
