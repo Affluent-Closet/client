@@ -4,18 +4,18 @@ import { useEffect, useState } from 'react';
 function useSelectGoods(price: number) {
   const [selectedList, setSelectedList] = useState<IOrderItem[]>([]);
   const [list, setList] = useState<IOrderItem>({
-    color: '',
     size: '',
     quantity: 1,
     total: 0,
   });
 
-  const onChangeList = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, id } = e.target;
-    setList((prev) => ({
-      ...prev,
-      [name]: id,
-    }));
+  const onClickSize = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id } = e.target;
+    setList({
+      size: id,
+      quantity: 1,
+      total: price,
+    });
   };
 
   const onChangeQuantity = (
@@ -25,7 +25,8 @@ function useSelectGoods(price: number) {
     const value = Number(e.currentTarget.value);
     const newList = [...selectedList];
     newList[index].quantity += value;
-    newList[index].total = newList[index].quantity * price;
+    // eslint-disable-next-line operator-assignment
+    newList[index].total = newList[index].total + price * value;
     setSelectedList(newList);
   };
 
@@ -36,16 +37,12 @@ function useSelectGoods(price: number) {
   };
 
   useEffect(() => {
-    if (list.color !== '' && list.size !== '') {
+    if (list.size !== '') {
       setSelectedList((prev) => [...prev, list]);
-      setList({ size: '', color: '', quantity: 1, total: 0 });
+      setList({ size: '', quantity: 1, total: 0 });
     }
-    // 일단 주석처리중
-    // return () => {
-    //   setList({ size: '', color: '' });
-    // };
-  }, [list]);
-  return { selectedList, list, onChangeList, onChangeQuantity, onDeleteList };
+  }, [list.size]);
+  return { selectedList, list, onClickSize, onChangeQuantity, onDeleteList };
 }
 
 export default useSelectGoods;

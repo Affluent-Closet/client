@@ -33,15 +33,15 @@ const CountSection = styled.div`
 `;
 interface ReviewScoreBox {
   tit: string;
-  reviewScore: number;
+  points: number;
   reviewCount: number;
 }
 
-function ReviewScoreBox({ tit, reviewScore, reviewCount }: ReviewScoreBox) {
+function ReviewScoreBox({ tit, points, reviewCount }: ReviewScoreBox) {
   return (
     <ScoreSection>
       <ScoreTit>{tit}</ScoreTit>
-      <ScorePercentile score={reviewScore}>
+      <ScorePercentile score={(reviewCount / points) * 100}>
         <div className="occupy" />
       </ScorePercentile>
       <CountSection>{reviewCount}</CountSection>

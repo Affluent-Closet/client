@@ -18,6 +18,7 @@ import PostSizePage from 'pages/PostSizePage';
 import PaymentPage from 'pages/PaymentPage';
 import SuccessPage from 'pages/SuccessPage';
 import NewBestPage from 'pages/NewBestPage';
+import MyOrderPage from 'pages/MyOrderPage';
 import Path from './Path';
 
 function Routing() {
@@ -42,6 +43,7 @@ function Routing() {
       <Route path={Path.SuccessPage} element={<SuccessPage />} />
       <Route path={Path.NewPage} element={<NewBestPage />} />
       <Route path={Path.BestPage} element={<NewBestPage />} />
+      <Route path={Path.MyOrderPage} element={<MyOrderPage />} />
     </Routes>
   );
 }
