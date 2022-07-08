@@ -24,7 +24,7 @@ const ModalInner = styled.div`
   position: absolute;
   width: 100%;
   max-width: 720px;
-  height: 90vh;
+  height: 850px;
   background-color: ${palette.backgroundColor};
   top: 0;
   bottom: 0;

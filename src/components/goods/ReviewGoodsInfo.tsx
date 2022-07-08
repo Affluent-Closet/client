@@ -46,16 +46,13 @@ interface ReviewGoodsInfoProps {
   contents: IReviewItem;
 }
 function ReviewGoodsInfo({ contents }: ReviewGoodsInfoProps) {
-  const { gender, height, weight } = contents;
+  const { gender, height, weight, goods } = contents;
   return (
     <GoodsInfoWrapper>
       <FlexCenter>
-        <Image
-          src="https://image.msscdn.net/images/prd_img/20220121/2319884/detail_2319884_2_500.jpg"
-          alt="이미지"
-        />
+        <Image src={goods.thumbnail} alt="상품 이미지" />
         <Item>
-          <div>데이브레이크 운동화</div>
+          <div>{goods.name}</div>
           <div className="purchase">M 구매</div>
         </Item>
       </FlexCenter>

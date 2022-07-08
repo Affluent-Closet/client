@@ -1,4 +1,5 @@
 import { Gender } from './enums';
+import { IGoodsItem } from './goods';
 
 export interface IReviewQuery {
   goodsId: string;
@@ -15,6 +16,7 @@ export interface IReviewItem {
   weight: number;
   rating: number;
   gender: Gender;
+  goods: IGoodsItem;
 }
 export interface IReviewResponse {
   pageSize: number;
