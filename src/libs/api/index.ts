@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SERVER_URL } from 'libs/constants';
+import { SERVER_URL } from 'libs/utils/constants';
 
 const client = axios.create({
   withCredentials: false,

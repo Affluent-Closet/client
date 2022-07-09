@@ -1,7 +1,5 @@
-/* eslint-disable no-console */
-
 import useDaumAddress from 'hooks/common/useDaumAddress';
-import { registerAPI } from 'libs/api/registerAPI';
+import { registerAPI } from 'libs/api/authAPI';
 import { IRegisterRequest } from 'model/auth';
 import { useCallback, useState } from 'react';
 import useAuthValidation from './useAuthValidation';
@@ -9,7 +7,7 @@ import useAuthValidation from './useAuthValidation';
 export default function useAuth() {
   const { errorMessage, onFormValidation } = useAuthValidation();
   const [userForm, setUserForm] = useState<IRegisterRequest>({
-    name: '',
+    name: 'test',
     role: 'USER',
     email: '',
     password: '',
@@ -37,15 +35,14 @@ export default function useAuth() {
 
   const onCompletePost = useDaumAddress(onChangeAddress);
 
-  const onRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onRegister = async () => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { passwordConfirm, ...registerForm } = userForm;
       await registerAPI(registerForm);
       console.log('register request success');
     } catch (error) {
-      console.log(`register request fail: ${error}`);
+      console.log('error : ', error);
     } finally {
       console.log('register request end');
     }
@@ -85,6 +82,7 @@ export default function useAuth() {
         ...prev,
         [name]: value,
       }));
+      //  버튼 활성화를 위한 유효성 검사 확인
       if (onFormValidation(name, value, password)) {
         onErrorCheck(name);
       }
