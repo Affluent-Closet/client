@@ -1,10 +1,11 @@
 /* eslint-disable react/style-prop-object */
+import { logout } from 'libs/utils/auth';
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 
 function LogoutPage() {
-  localStorage.setItem('token', '');
-  return <Navigate to="/" />;
+  logout();
+  console.log('logout');
+  return <>logout</>;
 }
 
 export default LogoutPage;
