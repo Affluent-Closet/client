@@ -2,6 +2,7 @@ import useDaumAddress from 'hooks/common/useDaumAddress';
 import { registerAPI } from 'libs/api/authAPI';
 import { IRegisterRequest } from 'model/auth';
 import { useCallback, useState } from 'react';
+import Path from 'routes/Path';
 import useAuthValidation from './useAuthValidation';
 
 export default function useAuth() {
@@ -40,11 +41,14 @@ export default function useAuth() {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { passwordConfirm, ...registerForm } = userForm;
       await registerAPI(registerForm);
-      console.log('register request success');
-    } catch (error) {
-      console.log('error : ', error);
-    } finally {
-      console.log('register request end');
+      window.location.replace(Path.LoginPage);
+      // console.log('register request success');
+    } catch (error: unknown) {
+      // if (error instanceof Error) {
+      //   if (error.message === '다른 유저와 중복된 이메일입니다.') {
+      //     console.log('Network Error');
+      //   }
+      // }
     }
   };
 
