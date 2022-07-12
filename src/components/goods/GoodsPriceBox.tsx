@@ -1,6 +1,5 @@
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
-import { IdiscountPrice } from 'model/goods';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -35,7 +34,7 @@ interface GoodsPriceProps {
   price: number;
   discount: number;
   goodsName: string;
-  discountPriceIndex: IdiscountPrice;
+  discountPriceIndex: number;
 }
 function GoodsPriceBox({
   price,
@@ -47,9 +46,7 @@ function GoodsPriceBox({
     <>
       <GoodsTitleStyled>{goodsName}</GoodsTitleStyled>
       <GoodsPriceStyled>
-        <div className="discount-price">
-          {discountPriceIndex.discountPriceString}
-        </div>
+        <div className="discount-price">{discountPriceIndex}</div>
         {discount !== 0 && (
           <>
             <div className="original-price">

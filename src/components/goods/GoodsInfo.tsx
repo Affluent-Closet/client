@@ -1,5 +1,5 @@
 import { FlexAlignCenter } from 'components/common/CommonComponents';
-import useDiscountCal from 'hooks/goods/useDiscountCal';
+import getDiscountPirce from 'hooks/goods/getDiscountPirce';
 import useSelectGoods from 'hooks/goods/useSelectGoods';
 import { mediaMax } from 'libs/styles/media';
 import { palette } from 'libs/styles/palette';
@@ -75,9 +75,9 @@ interface GoodsInfoProps {
 }
 function GoodsInfo({ item }: GoodsInfoProps) {
   const { thumbnail, price, discount, sizeInfo, name } = item;
-  const discountPriceIndex = useDiscountCal(price, discount);
-  const { onChangeList, selectedList, onChangeQuantity, onDeleteList } =
-    useSelectGoods(discountPriceIndex.discountPrice);
+  const discountPrice = getDiscountPirce(price, discount);
+  const { onClickSize, selectedList, onChangeQuantity, onDeleteList } =
+    useSelectGoods(discountPrice);
 
   return (
     <GoodsInfoWrapper>
@@ -87,40 +87,8 @@ function GoodsInfo({ item }: GoodsInfoProps) {
           goodsName={name}
           price={price}
           discount={discount}
-          discountPriceIndex={discountPriceIndex}
+          discountPriceIndex={discountPrice}
         />
-        <hr />
-        <GoodsInfoSection>
-          <GoodsInfoTitStyled> Color :</GoodsInfoTitStyled>
-          <RadioButton
-            type="radio"
-            id="c1"
-            name="color"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="c1" color="pink" />
-          <RadioButton
-            type="radio"
-            id="c2"
-            name="color"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="c2" color="blue" />
-          <RadioButton
-            type="radio"
-            id="c3"
-            name="color"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="c3" color="green" />
-          <RadioButton
-            type="radio"
-            id="c4"
-            name="color"
-            onChange={onChangeList}
-          />
-          <RadioLabel htmlFor="c4" color="red" />
-        </GoodsInfoSection>
         <hr />
         <GoodsInfoSection>
           <GoodsInfoTitStyled> Size :</GoodsInfoTitStyled>
@@ -130,7 +98,7 @@ function GoodsInfo({ item }: GoodsInfoProps) {
                 type="radio"
                 id={size}
                 name="size"
-                onChange={onChangeList}
+                onChange={onClickSize}
               />
               <RadioLabel htmlFor={size}>{size}</RadioLabel>
             </div>

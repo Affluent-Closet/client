@@ -58,6 +58,9 @@ const BuyButton = styled(Button)`
   width: 100%;
   max-width: 240px;
 `;
+const ItemPrice = styled.div`
+  width: 60px;
+`;
 
 interface GoodsCalculProps {
   selectedItems: IOrderItem[];
@@ -80,11 +83,9 @@ function GoodsCalculBox({
     <>
       <SelectedOptionBox>
         {selectedItems.length !== 0 &&
-          selectedItems.map(({ color, size, quantity, total }, index) => (
-            <SelectedOptionStyled key={`${color}${size}_${index}`}>
-              <div>
-                {size},{color}
-              </div>
+          selectedItems.map(({ size, quantity, total }, index) => (
+            <SelectedOptionStyled key={`${size}_${index}`}>
+              <div>{size}</div>
               <FlexBox>
                 <QuantityCtrlStlyed
                   value={-1}
@@ -105,7 +106,7 @@ function GoodsCalculBox({
                 </QuantityCtrlStlyed>
               </FlexBox>
               <FlexBox>
-                <div>{total.toLocaleString('ko-KR')}원</div>
+                <ItemPrice>{total.toLocaleString('ko-KR')}원</ItemPrice>
                 <DeletOptBtn
                   onClick={() => {
                     onDeleteList(index);
