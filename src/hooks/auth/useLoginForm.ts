@@ -13,7 +13,7 @@ export default function useLoginForm() {
 
   const onLogin = async () => {
     try {
-      const { data } = await loginAPI(loginData);
+      const data = await loginAPI(loginData);
       userStorage.set(data);
       window.location.replace(Path.LandingPage);
     } catch (error) {

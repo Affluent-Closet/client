@@ -2,10 +2,12 @@ import useDaumAddress from 'hooks/common/useDaumAddress';
 import { registerAPI } from 'libs/api/authAPI';
 import { IRegisterRequest } from 'model/auth';
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Path from 'routes/Path';
 import useAuthValidation from './useAuthValidation';
 
 export default function useAuth() {
+  const navigate = useNavigate();
   const { errorMessage, onFormValidation } = useAuthValidation();
   const [userForm, setUserForm] = useState<IRegisterRequest>({
     name: 'test',
@@ -41,8 +43,7 @@ export default function useAuth() {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { passwordConfirm, ...registerForm } = userForm;
       await registerAPI(registerForm);
-      window.location.replace(Path.LoginPage);
-      // console.log('register request success');
+      navigate(Path.LoginPage, { replace: true });
     } catch (error: unknown) {
       // if (error instanceof Error) {
       //   if (error.message === '다른 유저와 중복된 이메일입니다.') {
