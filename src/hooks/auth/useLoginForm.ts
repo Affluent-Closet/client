@@ -12,7 +12,7 @@ export default function useLoginForm() {
   const onLogin = async () => {
     try {
       const data = await loginAPI(loginData);
-      localStorage.setItem('token', data.jwtString);
+      localStorage.setItem('token', data.accessToken);
       console.log('login request success');
     } catch (error) {
       console.log(`login request fail: ${error}`);
