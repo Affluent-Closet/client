@@ -2,7 +2,7 @@ import Button from 'components/common/Button';
 import { PageContainer } from 'components/common/CommonComponents';
 import useForm from 'hooks/common/useForm';
 import requestPayMents from 'hooks/pay/requestPayMents';
-import { MAIN_URL } from 'libs/constants';
+import { MAIN_URL } from 'libs/utils/constants';
 import React from 'react';
 import styled from 'styled-components';
 

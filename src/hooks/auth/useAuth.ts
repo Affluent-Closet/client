@@ -1,15 +1,16 @@
-/* eslint-disable no-console */
-
 import useDaumAddress from 'hooks/common/useDaumAddress';
-import { registerAPI } from 'libs/api/registerAPI';
-import { IRequestRegister } from 'model/auth';
+import { registerAPI } from 'libs/api/authAPI';
+import { IRegisterRequest } from 'model/auth';
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Path from 'routes/Path';
 import useAuthValidation from './useAuthValidation';
 
 export default function useAuth() {
+  const navigate = useNavigate();
   const { errorMessage, onFormValidation } = useAuthValidation();
-  const [userForm, setUserForm] = useState<IRequestRegister>({
-    name: '',
+  const [userForm, setUserForm] = useState<IRegisterRequest>({
+    name: 'test',
     role: 'USER',
     email: '',
     password: '',
@@ -37,17 +38,18 @@ export default function useAuth() {
 
   const onCompletePost = useDaumAddress(onChangeAddress);
 
-  const onRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onRegister = async () => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { passwordConfirm, ...registerForm } = userForm;
       await registerAPI(registerForm);
-      console.log('register request success');
-    } catch (error) {
-      console.log(`register request fail: ${error}`);
-    } finally {
-      console.log('register request end');
+      navigate(Path.LoginPage, { replace: true });
+    } catch (error: unknown) {
+      // if (error instanceof Error) {
+      //   if (error.message === '다른 유저와 중복된 이메일입니다.') {
+      //     console.log('Network Error');
+      //   }
+      // }
     }
   };
 
@@ -85,6 +87,7 @@ export default function useAuth() {
         ...prev,
         [name]: value,
       }));
+      //  버튼 활성화를 위한 유효성 검사 확인
       if (onFormValidation(name, value, password)) {
         onErrorCheck(name);
       }

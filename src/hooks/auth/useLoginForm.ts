@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import useForm from 'hooks/common/useForm';
-import { loginAPI } from 'libs/api/loginAPI';
-import { ILoginData } from 'model/auth';
+import { loginAPI } from 'libs/api/authAPI';
+import { ILoginRequest } from 'model/auth';
 
 export default function useLoginForm() {
-  const { form: loginData, onChangeForm } = useForm<ILoginData>({
+  const { form: loginData, onChangeForm } = useForm<ILoginRequest>({
     email: '',
     password: '',
   });
@@ -12,10 +12,10 @@ export default function useLoginForm() {
   const onLogin = async () => {
     try {
       const data = await loginAPI(loginData);
-      localStorage.setItem('token', data.jwtString);
+      localStorage.setItem('token', data.accessToken);
       console.log('login request success');
-    } catch (err) {
-      console.log(`login request fail: ${err}`);
+    } catch (error) {
+      console.log(`login request fail: ${error}`);
     } finally {
       console.log('login request end');
     }
