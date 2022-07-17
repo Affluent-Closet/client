@@ -51,7 +51,7 @@ client.interceptors.response.use(
     } = error;
 
     const originalRequest = config;
-    console.log(error.response);
+    // console.log(error.response);
 
     switch (status) {
       case 401: // Unauthorized (access token expired)
