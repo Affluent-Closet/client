@@ -3,7 +3,7 @@ import { ILoginRequest, ILoginResponse, IRegisterRequest } from 'model/auth';
 
 export const registerAPI = async (registerRequest: IRegisterRequest) => {
   const response = await axios.post('/user', registerRequest);
-  return response;
+  return response.data;
 };
 
 export const loginAPI = async (loginRequest: ILoginRequest) => {
@@ -11,5 +11,5 @@ export const loginAPI = async (loginRequest: ILoginRequest) => {
     '/user/login',
     loginRequest,
   );
-  return response;
+  return response.data;
 };

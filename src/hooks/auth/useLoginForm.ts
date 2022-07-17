@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import useForm from 'hooks/common/useForm';
-import { loginAPI } from 'libs/api/loginAPI';
+import { loginAPI } from 'libs/api/authAPI';
 import { ILoginRequest } from 'model/auth';
 
 export default function useLoginForm() {
