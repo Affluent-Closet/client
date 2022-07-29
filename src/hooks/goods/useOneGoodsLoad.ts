@@ -1,4 +1,4 @@
-import client from 'libs/api';
+import client from 'libs/api/client';
 import { IGoodsItem } from 'model/goods';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

@@ -6,12 +6,8 @@ export default function useDaumAdress(
   onChangeAddress: (address1: string, address2: string) => void,
 ): UseDaumAdress {
   // const [zonecode, setZonecode] = useState(''); // 우편번호
-  // const { setUserForm } = useAuth();
 
-  const onCompletePost = (
-    data: Address,
-    // , setForm: () => void
-  ) => {
+  const onCompletePost = (data: Address) => {
     let fullAddr = data.address;
     let extraAddr = '';
 
@@ -26,11 +22,6 @@ export default function useDaumAdress(
       fullAddr += extraAddr !== '' ? ` (${extraAddr})` : '';
     }
     onChangeAddress(fullAddr, extraAddr);
-    // setUserForm((prev) => ({
-    //   ...prev,
-    //   address1: fullAddr,
-    //   address2: extraAddr,
-    // }));
   };
 
   return onCompletePost;

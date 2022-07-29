@@ -1,5 +1,5 @@
 import { IReviewQuery } from 'model/review';
-import client from '.';
+import client from './client';
 
 export const getReviewAPI = async (reviewQueryString: IReviewQuery) => {
   const { goodsId } = reviewQueryString;

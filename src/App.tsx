@@ -7,7 +7,8 @@ import { mediaSize } from 'libs/styles/media';
 import Footer from 'components/footer';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import Routing from './routes/Routing';
+import { isLogin } from 'libs/utils/auth';
+import { PrivateRouting, PublicRouting } from 'routes/Routing';
 
 const ContentsLayout = styled.div`
   width: 100%;
@@ -37,7 +38,7 @@ function App() {
         <MobileHeader />
         <WebHeader />
         <ContentsLayout>
-          <Routing />
+          {isLogin() ? <PrivateRouting /> : <PublicRouting />}
         </ContentsLayout>
         <Footer />
       </AppLayout>

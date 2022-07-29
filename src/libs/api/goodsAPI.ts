@@ -1,6 +1,6 @@
 import { IGoodsQuery, IRequestGoods, IRequestSizeInfo } from 'model/goods';
 
-import client from '.';
+import client from './client';
 
 export const getGoodsAPI = async (goodsQueryString: IGoodsQuery) => {
   const { pageNo, category, name, pageSize, sortBy } = goodsQueryString;
