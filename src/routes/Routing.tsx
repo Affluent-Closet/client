@@ -14,7 +14,6 @@ const ProfilePage = React.lazy(() => import('pages/ProfilePage'));
 const CartPage = React.lazy(() => import('pages/CartPage'));
 const PostGoodsPage = React.lazy(() => import('pages/PostGoodsPage'));
 const PostReviewPage = React.lazy(() => import('pages/PostReviewPage'));
-const LogoutPage = React.lazy(() => import('pages/LogoutPage'));
 const PostSizePage = React.lazy(() => import('pages/PostSizePage'));
 const PaymentPage = React.lazy(() => import('pages/PaymentPage'));
 const SuccessPage = React.lazy(() => import('pages/SuccessPage'));
@@ -53,10 +52,8 @@ const privateRoutingComponents = [
   { path: Path.PostReviewPage, element: <PostReviewPage /> },
   { path: Path.PostGoodsSizePage, element: <PostSizePage /> },
   { path: Path.PaymentPage, element: <PaymentPage /> },
-  { path: Path.LogoutPage, element: <LogoutPage /> },
   { path: Path.SuccessPage, element: <SuccessPage /> },
   { path: Path.MyOrderPage, element: <MyOrderPage /> },
-  { path: Path.LogoutPage, element: <LogoutPage /> },
 ];
 
 export function PublicRouting() {
