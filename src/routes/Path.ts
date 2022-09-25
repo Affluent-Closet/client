@@ -1,26 +1,29 @@
 enum Path {
-  LandingPage = '/',
+  // logged In
   LogoutPage = '/logout',
-  GoodsPage = '/goods/:goodsid',
-  GoodsPath = '/goods',
-  SearchPage = '/search',
-  SearchResultPage = '/search/result',
   OrderPage = '/order',
-  CategoryPage = '/category/:categoryid',
-  CategoryPath = '/category',
-  LoginPage = '/login',
-  RegisterPage = '/register',
   ProfilePage = '/profile',
   MyPage = '/mypage',
   CartPage = '/cart',
   PostGoodsPage = '/postgoods',
   PostGoodsSizePage = '/postgoods/:goodsid',
   PostReviewPage = '/postreview',
-  NewPage = '/new',
-  BestPage = '/best',
   PaymentPage = '/payment',
   SuccessPage = '/success',
   MyOrderPage = '/myorder',
+
+  // no Logged In
+  LandingPage = '/',
+  GoodsPage = '/goods/:goodsid',
+  GoodsPath = '/goods',
+  SearchPage = '/search',
+  SearchResultPage = '/search/result',
+  CategoryPage = '/category/:categoryid',
+  CategoryPath = '/category',
+  LoginPage = '/login',
+  RegisterPage = '/register',
+  NewPage = '/new',
+  BestPage = '/best',
 }
 
 export default Path;

@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import useForm from 'hooks/common/useForm';
 import { loginAPI } from 'libs/api/authAPI';
+import userStorage from 'libs/utils/userStorage';
 import { ILoginRequest } from 'model/auth';
+import Path from 'routes/Path';
 
 export default function useLoginForm() {
   const { form: loginData, onChangeForm } = useForm<ILoginRequest>({
@@ -12,13 +14,12 @@ export default function useLoginForm() {
   const onLogin = async () => {
     try {
       const data = await loginAPI(loginData);
-      localStorage.setItem('token', data.accessToken);
-      console.log('login request success');
+      userStorage.set(data);
+      window.location.replace(Path.LandingPage);
     } catch (error) {
       console.log(`login request fail: ${error}`);
-    } finally {
-      console.log('login request end');
     }
   };
+
   return { onLogin, loginData, onChangeForm };
 }
